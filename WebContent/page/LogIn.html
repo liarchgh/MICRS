@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>登录医疗保险中心</title>
+    <script>
+        function changeAction(toHttp) {
+            var form = document.getElementById("logInForm");
+            form.action = toHttp;
+        }
+    </script>
+</head>
+
+<body>
+    <form action="" method="post" onsubmit="return true" id="logInForm">
+        用户名：<input type="text" name="username"><span name="usernameS"></span>
+        密码：<input type="password" name="password"><span name="passwordS"></span>
+        <input type="submit" value="登录" onclick=changeAction("https://cn.bing.com")>
+        <input type="submit" value="注册" onclick=changeAction("https://www.baidu.com")>
+    </form>
+</body>
+
+</html>

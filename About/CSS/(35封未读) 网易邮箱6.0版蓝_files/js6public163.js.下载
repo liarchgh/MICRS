@@ -1,0 +1,98 @@
+﻿(function(){
+    if(!window.gAd){
+        window.gAd = {};
+    }
+    var blank = {
+        type: 0
+    };
+    window.gAd.biz = {
+        welBanner : fAdWelBanner,
+        composeBanner : fAdComposeBanner,
+        readFlash : fAdReadFlash,
+        close : fAdClose,
+        compose: fCompose,
+        letter: fLetter,
+        composeTips: fComposeTips,
+        logout: fLogout
+    };
+
+    // 写信成功左下角大图背景广告 620x330
+    function fCompose(){
+        var o = [];
+        o[0] = blank;
+        o[1] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<a style="display:inline-block" href="http://g.163.com/a?CID=51158&Values=3022644200&Redirect=http://e.cn.miaozhen.com/r/k=2052484&p=77MIt&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&vo=3c775cc30&vr=2&o=http%3A%2F%2Fclass.hujiang.com%2Fclasszt%2FMKTTopic_p92104%3Fchannel%3D3487%26ch_campaign%3Dcls14230%26ch_source%3Dopp_163yx_0_yxcgfxxm" target="_blank"><img src="https://img1.126.net/channel19/028668/620330_0719j.jpg" width="620" height="330" alt=""></a>' + '</div>';
+        o[2] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<a style="display:inline-block" href="http://g.163.com/a?CID=51305&Values=480544529&Redirect=http://clickc.admaster.com.cn/c/a89218,b1848286,c369,i0,m101,8a1,8b2,h" target="_blank"><img src="https://img1.126.net/channel19/028845/620330_0717.jpg" width="620" height="330" alt=""></a>' + '</div>';
+		return o;
+    }
+
+    // 假信（霸王邮）
+    function fLetter(){
+        var o = [];
+        o[0] = blank;
+		//o[3] = '<div style="background-color: #f7f7f7;padding: 0 25px 0 12px;overflow-y: hidden;height: 32px;line-height: 32px;border: 1px solid #f1f1f1;font-size: 12px;position: relative;color: #999;"><span style="float: right;">[<a href="http://g.163.com/a?CID=51214&Values=2360747180&Redirect=http://e.cn.miaozhen.com/r/k=2052484&p=77MIu&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&vo=3c775cc30&vr=2&o=http%3A%2F%2Fclass.hujiang.com%2Fclasszt%2FMKTTopic_p92104%3Fchannel%3D3487%26ch_campaign%3Dcls14230%26ch_source%3Dopp_163yx_0_bwy" style="color:#999;" target="_blank">Hitalk</a>]' + '&nbsp;[广告]' + '</span><a href="http://g.163.com/a?CID=51214&Values=2360747180&Redirect=http://e.cn.miaozhen.com/r/k=2052484&p=77MIu&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&vo=3c775cc30&vr=2&o=http%3A%2F%2Fclass.hujiang.com%2Fclasszt%2FMKTTopic_p92104%3Fchannel%3D3487%26ch_campaign%3Dcls14230%26ch_source%3Dopp_163yx_0_bwy" target="_blank">汤唯的英语秘籍戳这里>></a><div style="position: absolute;right: 0;top: 0;width: 25px;height: 22px;overflow: hidden;padding-top: 5px;"><a href="javascript:void(0)" style="color: #bfbfbf;margin-left: 1px;float: left;width: 16px;height: 16px;overflow: hidden;display: inline-block;+display: inline;+zoom:1;vertical-align: middle;" hidefocus="hidefocus" onclick="gAd.util.closeInbox(this);" title="关闭"><b class="nui-ico nui-ico-close" style="margin-top: 5px;margin-left: 5px;vertical-align: top;"></b></a></div></div>';
+
+		return o;
+    }
+
+    // 写信成功小黄条
+    function fComposeTips(){
+        var o = [];
+        o[0] = blank;
+        
+	    //o[3] = '<div style="padding:4px 12px;margin:12px 0;color:#CE0000" class="nui-assistBlock nui-block nui-txt-s18 nui-txt-bold">' + '<span style="float:right;color:#999;font-size:12px;font-weight:normal;line-height:1;padding-top:8px;">[广告]</span>' + '<a href="http://g.163.com/a?CID=51030&Values=3726085459&Redirect=http://xf.house.163.com/fs/BSJL.html" target="_blank" style="color:#D90000">佛山恒大悦府 </a></div>';
+
+		return o;
+    }
+
+	// 退出页 巨幅广告995x350
+    function fLogout(){
+        var o = []; 
+	    //o[0] = '<div style="position:relative;+zoom:1;height:350px;width:100%;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x"><div>' + '<div style="width:995px;height:350px;margin: 0 auto;"><a href="http://g.163.com/a?CID=50317&Values=3309282409&Redirect=http://e.cn.miaozhen.com/r/k=2047848&p=76gc2&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&o=http://go.163.com/2017/0511/weilaixing/index.html" target="_blank"><img src="https://img1.126.net/channel19/028046/995350_0616.jpg"></a></div>';
+		o[0] = blank;
+		//o[1] = '<div style="position:relative;+zoom:1;height:350px;width:100%;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x"><div>' + '<div style="width:995px;height:350px;margin: 0 auto;"><a href="http://g.163.com/a?CID=50317&Values=3309282409&Redirect=http://e.cn.miaozhen.com/r/k=2047848&p=76gc2&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&o=http://go.163.com/2017/0511/weilaixing/index.html" target="_blank"><img src="https://img1.126.net/channel19/028046/995350_0616.jpg"></a></div>';
+
+		return o;
+    }
+
+
+    // 欢迎页右侧banner 190x360
+    function fAdWelBanner(){
+        var o = [];        
+		o[0] = blank;
+		o[1] = blank;
+		o[2] = blank;
+        o[3] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<a pid="41" href="http://g.163.com/a?CID=51264&Values=140443419&Redirect=https://www.hgmonitor.com/re,44741316ebc94f86aa8843f73039bf50,ck,http://www.189.cn/hd/dxgkd/?cmpid=jt-163-163new-kuandai" target="_blank"><img width="190px" height="360px" src="https://img1.126.net/channel19/028796/190360_0717.jpg" /></a>' + '</div>';
+
+		return o;
+    }
+
+    // 写信成功右下角 260x330
+    function fAdComposeBanner(){
+        var o = [];
+		//o[0] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<embed src="https://img1.126.net/channel19/028706/260330_0704.swf" quality="high" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash  type=application/x-shockwave-flash" width="260px" height="330px" wmode="opaque"></embed>' + '</div>';
+        //o[0] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<a href="http://g.163.com/a?CID=50607&Values=3580687090&Redirect=http://datacollect.vmall.com:28080/clickv1?sid=63311499053824&cid=60963&url=https://www.vmall.com/product/84570258.html%23cid=60963%26sid=63311499053824" target="_blank"><img src="http://img1.126.net/channel14/163_260330_0703.jpg" alt=""></a>' + '</div>';
+        //o[0] = '<div style="position:relative:+zoom:1;"><img src="http://mimg.127.net/ggimg/all/img19/ico_gg.png" style="position:absolute; left:2px; bottom:2px;z-index:10;" srcset="http://mimg.127.net/ggimg/all/img19/ico_gg.png 1x, http://mimg.127.net/ggimg/all/img19/ico_gg@2x.png 2x">' + '<iframe src="http://g.163.com/r?site=netease&affiliate=freemail163&cat=sendmsg&type=pip260x330&location=1" width="260" height="330" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>' + '</div>';
+
+		return o;
+		
+    }
+
+    // 读信右上角flash 135x98
+    function fAdReadFlash(){
+        var o = [];
+        o[0] = blank;
+		
+        return o;
+    }
+
+    // 浏览器关闭弹框 720x300
+    function fAdClose(){
+        var o = [];
+		//o[0] = 'http://img1.126.net/mail/html/mail163_yitou_newb.html';
+        o[0] = blank;
+		return o;
+    }
+
+})();
+
+// END  201707181800
