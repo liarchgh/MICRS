@@ -2168,7 +2168,8 @@ span.section {
     width: 100%
 }
 .form-horizontal .control-label {
-    padding-top: 8px
+    color: #000fe9;
+    font-size : 150%;
 }
 .form-control:focus {
     border-color: #CCD0D7;
@@ -4248,4 +4249,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 
 #thumbail2{
     margin-left: 350px;
+}
+.required{
+    color: #717171;
+    font-size : small;
 }

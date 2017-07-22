@@ -23,7 +23,7 @@ function SmartWizard(target, options) {
     this.buttons = {
         next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
         previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
-        finish  : $('<a>'+options.labelFinish+'</a>').attr("href","#").addClass("buttonFinish")
+        finish  : $('<a>'+options.labelFinish+'</a>').attr("href","https://www.bing.com").addClass("buttonFinish")
     };
 
     /*
@@ -58,7 +58,22 @@ function SmartWizard(target, options) {
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
 
+        //if this button next is clicked, it will submit the form whose id is userQuery when it's on the first page and it alwayse jump to the next page
         $($this.buttons.next).click(function() {
+            if($this.curStepIdx == 0){
+                $('#userQuery').submit();
+            }
+            for(var i = 0; i <= $this.curStepIdx; ++i){
+                alert(i);
+                var step = this.steps.eq(i);
+                $(step, this.target).attr("isDone",1);
+                $(step, this.target).removeClass("disabled").removeClass("selected").addClass("done");
+            }
+            for(var i = $this.curStepIdx; i < 4; ++i){
+                var step = this.steps.eq(i);
+                $(step, this.target).attr("isDone",1);
+                $(step, this.target).removeClass("done").removeClass("selected").addClass("disabled");
+            }
             $this.goForward();
             return false;
         });
@@ -68,16 +83,9 @@ function SmartWizard(target, options) {
         });
         $($this.buttons.finish).click(function() {
             if(!$(this).hasClass('buttonDisabled')){
-                if($.isFunction($this.options.onFinish)) {
-                    var context = { fromStep: $this.curStepIdx + 1 };
-                    if(!$this.options.onFinish.call(this,$($this.steps), context)){
-                        return false;
-                    }
-                }else{
-                    var frm = $this.target.parents('form');
-                    if(frm && frm.length){
-                        frm.submit();
-                    }
+                var context = { fromStep: $this.curStepIdx + 1 };
+                if(!$this.options.onFinish.call(this,$($this.steps), context)){
+                    return false;
                 }
             }
             return false;
@@ -112,13 +120,13 @@ function SmartWizard(target, options) {
     };
 
     var _prepareSteps = function($this) {
-        if(! $this.options.enableAllSteps){
-            $($this.steps, $this.target).removeClass("selected").removeClass("done").addClass("disabled");
-            $($this.steps, $this.target).attr("isDone",0);
-        }else{
-            $($this.steps, $this.target).removeClass("selected").removeClass("disabled").addClass("done");
-            $($this.steps, $this.target).attr("isDone",1);
-        }
+        // if(! $this.options.enableAllSteps){
+        //     $($this.steps, $this.target).removeClass("selected").removeClass("done").addClass("disabled");
+        //     $($this.steps, $this.target).attr("isDone",0);
+        // }else{
+        //     $($this.steps, $this.target).removeClass("selected").removeClass("disabled").addClass("done");
+        //     $($this.steps, $this.target).attr("isDone",1);
+        // }
 
         $($this.steps, $this.target).each(function(i){
             $($(this).attr("href").replace(/^.+#/, '#'), $this.target).hide();
@@ -233,14 +241,14 @@ function SmartWizard(target, options) {
     };
 
     var _setupStep = function($this, curStep, selStep) {
-        $(curStep, $this.target).removeClass("selected");
-        $(curStep, $this.target).addClass("done");
+        // $(curStep, $this.target).removeClass("selected");
+        // $(curStep, $this.target).addClass("done");
+        //
+        // $(selStep, $this.target).removeClass("disabled");
+        // $(selStep, $this.target).removeClass("done");
+        // $(selStep, $this.target).addClass("selected");
 
-        $(selStep, $this.target).removeClass("disabled");
-        $(selStep, $this.target).removeClass("done");
-        $(selStep, $this.target).addClass("selected");
-
-        $(selStep, $this.target).attr("isDone",1);
+        // $(selStep, $this.target).attr("isDone",1);
 
         _adjustButton($this);
 
@@ -335,8 +343,8 @@ function SmartWizard(target, options) {
             return false;
         }
         var step = this.steps.eq(stepIdx);
-        $(step, this.target).attr("isDone",1);
-        $(step, this.target).removeClass("disabled").removeClass("selected").addClass("done");
+        // $(step, this.target).attr("isDone",1);
+        // $(step, this.target).removeClass("disabled").removeClass("selected").addClass("done");
     }
     SmartWizard.prototype.disableStep = function(stepNum) {
         var stepIdx = stepNum - 1;
@@ -344,8 +352,8 @@ function SmartWizard(target, options) {
             return false;
         }
         var step = this.steps.eq(stepIdx);
-        $(step, this.target).attr("isDone",0);
-        $(step, this.target).removeClass("done").removeClass("selected").addClass("disabled");
+        // $(step, this.target).attr("isDone",0);
+        // $(step, this.target).removeClass("done").removeClass("selected").addClass("disabled");
     }
     SmartWizard.prototype.currentStep = function() {
         return this.curStepIdx + 1;
@@ -397,7 +405,6 @@ function SmartWizard(target, options) {
 
 
 (function($){
-
 $.fn.smartWizard = function(method) {
     var args = arguments;
     var rv = undefined;
@@ -443,7 +450,17 @@ $.fn.smartWizard.defaults = {
     noForwardJumping: false,
     onLeaveStep: null, // triggers when leaving a step
     onShowStep: null,  // triggers when showing a step
-    onFinish: null  // triggers when Finish button is clicked
+    onFinish: "https://www.bing.com"  // triggers when Finish button is clicked
 };
 
 })(jQuery);
+
+function postForm(){$.ajax({
+    type: "POST",
+    url: "post.go",
+    data : "",
+    success: function(msg) {
+    }
+});
+    return false;
+}

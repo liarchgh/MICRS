@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script>
-        function onlyWord(){
-            var tar = document.getElementById("this");
-            tar.style.imeMode='disabled';
-        }
-    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Form提交表单页面不跳转</title>
 </head>
 <body>
-<INPUT onkeyup="onlyWord()" id="this" style="ime-mode: disabled"/>
+<form action="https://www.bing.com/" id="" method="post" target="id_iframe">
+    <input type="text" id="input_text" name="input_text"/>
+    <input type="submit" id="sobmit" name="submit" value="提交" />
+</form>
+<iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
 </body>
 </html>
