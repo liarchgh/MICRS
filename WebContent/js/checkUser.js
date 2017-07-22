@@ -1,17 +1,20 @@
 /**
  * Created by new on 2017/7/20.
  */
-function checkLogin(){
-    var res = checkUsername();
+function checkSignIn(){
+    alert("S");
+    var res = checkUsername(false);
+    res = checkPassword1(false) && res;
+    alert(res);
     return res;
 }
-function checkResign(){
-    var res = checkPassword1();
-    res = checkPassword2() && res;
-    res = checkUsername() && res;
+function checkSignUp(){
+    var res = checkPassword1(true);
+    res = checkPassword2(true) && res;
+    res = checkUsername(true) && res;
     return res;
 }
-function checkPassword1(){
+function checkPassword1(whe){
     var pass1 = document.getElementById("pass1").value;
     var passS = document.getElementById("pass1S");
     var sta = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{8,20}$/;
@@ -31,12 +34,17 @@ function checkPassword1(){
         return false;
     }
     else{
-        passS.innerHTML = "√";
-        passS.style = "color:green;font-size:150%;font-weight:bold;";
+        if(whe == null || whe) {
+            passS.innerHTML = "√";
+            passS.style = "color:green;font-size:150%;";
+        }
+        else{
+            passS.innerHTML = "";
+        }
         return true;
     }
 }
-function checkPassword2(){
+function checkPassword2(whe){
     var pass1 = document.getElementById("pass1").value;
     var pass2 = document.getElementById("pass2").value;
     var passS = document.getElementById("pass2S");
@@ -46,12 +54,17 @@ function checkPassword2(){
         return false;
     }
     else{
-        passS.innerHTML = "√";
-        passS.style = "color:green;font-size:150%;font-weight:bold;";
+        if(whe == null || whe) {
+            passS.innerHTML = "√";
+            passS.style = "color:green;font-size:150%;";
+        }
+        else{
+            passS.innerHTML = "";
+        }
         return true;
     }
 }
-function checkUsername(){
+function checkUsername(whe){
     var uname = document.getElementById("username").value;
     var sta = /^(?![a-zA-Z]+$)[0-9A-Za-z]{5,20}$/;
     var uns = document.getElementById("usernameS");
@@ -70,8 +83,13 @@ function checkUsername(){
         uns.style = "color:red;";
         return false;
     }
-    uns.innerHTML = "√";
-    uns.style = "color:green";
+    if(whe == null || whe) {
+        uns.innerHTML = "√";
+        uns.style = "color:green";
+    }
+    else{
+        uns.innerHTML = "";
+    }
     return true;
 }
 function restrictUsername(){
