@@ -22,21 +22,7 @@
   <!-- Custom Theme Style -->
   <link href="../build/css/custom.css" rel="stylesheet">
 
-  <!--jss实现隔行表格颜色不同-->
-  <script type="text/javascript">
-      window.onload = function changebackgroundcolor() {
-        var trs = document.getElementById("table1").getElementsByTagName("tr");
 
-        for(var i = 0; i<trs.length; i++){
-            if(i%2 != 0){
-                trs[i].style.backgroundColor = "#FFFFFF";
-            }else{
-                trs[i].style.backgroundColor = "#9D9D9D";
-            }
-        }
-
-    }
-  </script>
 </head>
 
 <body class="nav-md">
@@ -287,14 +273,12 @@
                     <div class="row-fluid">
                       <form action="" method="post">
                         <div class="" style="height: 90px;">
-                          <div id="" style="float: left; mar">
-                            <span><font color="black">人员编码：</font></span><input type="text" value="" class="input-large"
-                                                                                name="medicineid" /><br />  <br />
-                            <span><font color="black">人员名称：</font></span><input
-                                  type="text" value="" class="input-large" name="factoryname" />
+                          <div id="" style="float: left;">
+                            <span><font color="black">人员编码：</font></span><input type="text" value="" class="input-large" name="medicineid" /><br/>  <br/>
+                            <span><font color="black">人员名称：</font></span><input type="text" value="" class="input-large" name="factoryname" />
                           </div>
                           <div class="btn-toolbar"
-                               style="float: left; margin-top: 39px; margin-left: 40px;">
+                               style="float: left; margin-top: 45px; margin-left: 40px;">
                             <font color="#6495ed"> <input type="submit" value="查询" class="btn" /></font>
                           </div>
                         </div>
@@ -326,8 +310,8 @@
                       <td>在职</td>
                       <td>00000000000000000</td>
                       <td>
-                        <a href="jiuzhen.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> 查询就诊信息</a>
-                        <a href="annual_account.html" class="btn btn-info btn-xs"><i class="fa fa-folder"></i>年度费用累计信息</a>
+                        <a href="jiuzhen.html" class="btn btn-primary btn-xs"><i class="fa fa-folder "></i> 查询就诊信息</a>
+                        <a href="annual_account.html" class="btn btn-info btn-xs "><i class="fa fa-folder"></i>年度费用累计信息</a>
                       </td>
                     </tr>
                     </tbody>
@@ -361,23 +345,15 @@
 <script src="../vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
 <script src="../vendors/nprogress/nprogress.js"></script>
-
 <!--datatable-->
 <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
-<!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
 <!-- iCheck -->
 <script src="../vendors/iCheck/icheck.min.js"></script>
-<!-- Datatables -->
+
+
 <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -394,8 +370,6 @@
 <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
 <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
-<!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
 
 </body>
 </html>

@@ -20,7 +20,7 @@
     <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body class="nav-md">
+<body class="nav-md" style="overflow:hidden">
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
@@ -220,20 +220,16 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" id="allPrescriptionTable">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Form Wizards</h3>
+                        <h3>报销进行中</h3>
                     </div>
 
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
-                                <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">Go!</button>
-                          </span>
                             </div>
                         </div>
                     </div>
@@ -243,39 +239,18 @@
                 <div class="row">
 
                     <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
-                            <div class="x_title">
-                                <h2>Form Wizards <small>Sessions</small></h2>
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                    </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Settings 1</a>
-                                            </li>
-                                            <li><a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+                        <div class="x_panel" id="allPanel">
                             <div class="x_content">
-
-
                                 <!-- Smart Wizard -->
-                                <p>This is a basic form wizard example that inherits the colors from the selected scheme.</p>
+                                <p></p>
                                 <div id="wizard" class="form_wizard wizard_horizontal">
                                     <ul class="wizard_steps">
                                         <li>
                                             <a href="#step-1">
                                                 <span class="step_no">1</span>
                                                 <span class="step_descr">
-                                              Step 1<br />
-                                              <small>Step 1 description</small>
+                                              第一步<br />
+                                              <small>查找报销人员</small>
                                           </span>
                                             </a>
                                         </li>
@@ -283,8 +258,8 @@
                                             <a href="#step-2">
                                                 <span class="step_no">2</span>
                                                 <span class="step_descr">
-                                              Step 2<br />
-                                              <small>Step 2 description</small>
+                                              第二步<br />
+                                              <small>添加诊疗信息</small>
                                           </span>
                                             </a>
                                         </li>
@@ -292,8 +267,8 @@
                                             <a href="#step-3">
                                                 <span class="step_no">3</span>
                                                 <span class="step_descr">
-                                              Step 3<br />
-                                              <small>Step 3 description</small>
+                                              第三步<br />
+                                              <small>添加处方信息</small>
                                           </span>
                                             </a>
                                         </li>
@@ -301,8 +276,8 @@
                                             <a href="#step-4">
                                                 <span class="step_no">4</span>
                                                 <span class="step_descr">
-                                              Step 4<br />
-                                              <small>Step 4 description</small>
+                                              第四步<br />
+                                              <small>确认报销信息</small>
                                           </span>
                                             </a>
                                         </li>
@@ -327,10 +302,12 @@
                                         </form>
                                     </div>
                                     <div id="step-2">
-                                        <div class="x_title" style="font-size:150%">就诊信息
-                                            <span style="color: #959595;font-size: x-small;">填写完成后请点击下一步</span>
-                                        </div>
-                                        <form class="form-horizontal form-label-left" id="userQuery" action="https://www.bing.com/" onsubmit="return postForm()">
+                                        <div class="x_title">
+                                        <h2 style="font-size:150%">就诊信息</h2>
+                                            <span style="color: #959595;font-size: x-small;position:absolute;top:25px;right:640px;">填写完成后请点击下一步</span>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                        <form class="form-horizontal form-label-left" action="https://www.bing.com/" onsubmit="return postForm()">
 
                                             <div class="form-group">
                                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> 住院号（门诊号）<span class="required">可为空</span>
@@ -412,58 +389,136 @@
                                         </form>
                                     </div>
                                     <div id="step-3">
-                                        <form class="form-horizontal form-label-left" id="userQuery" action="https://www.bing.com/" onsubmit="return postForm()">
+                                        <div class="x_panel PrescriptionTable" style="display:none">
+                                            <div class="x_title">
+                                                <h2 style="font-size:150%">处方信息</h2>
+                                                <span style="color: #959595;font-size: x-small;position:absolute;top:25px;right:640px;">填写完成后请点击下一步</span>
+                                                <ul class="nav navbar-right panel_toolbox">
+                                                    <li><a class="close-link" onclick="deleteTable(this.parentNode.parentNode.parentNode.parentNode)"><i class="fa fa-close"></i></a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="x_panel">
+                                                <form class="form-horizontal form-label-left" action="" onkeyup="calculatePrice(this)" >
 
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> 住院号（门诊号）<span class="required">可为空</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> 住院号（门诊号）<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">项目编码<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">单价<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" required="required" class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice" onkeyup="checkPrompt()" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">数量<span class="required" ></span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" required="required" class="form-control col-md-7 col-xs-12 prescriptionNumber" onKeyUp="value=value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">金额<span class="required"></span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="number" required="required" class="form-control col-md-7 col-xs-12 prescriptionPrice" readonly="readonly">
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">项目编码<span class="required">可为空</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
+                                        </div>
+                                        <div class="x_panel PrescriptionTable" style="display:block">
+                                            <div class="x_title">
+                                                <h2 style="font-size:150%">处方信息</h2>
+                                                <span style="color: #959595;font-size: x-small;position:absolute;top:25px;right:640px;">填写完成后请点击下一步</span>
+                                                <div class="clearfix"></div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">单价<span class="required">可为空</span>
-                                                </label><div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                            <div class="x_panel">
+                                                <form class="form-horizontal form-label-left" action="" onkeyup="calculatePrice(this)" >
+
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> 住院号（门诊号）<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">项目编码<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">单价<span class="required">可为空</span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" required="required" class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice" onkeyup="checkPrompt()" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">数量<span class="required" ></span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" required="required" class="form-control col-md-7 col-xs-12 prescriptionNumber" onKeyUp="value=value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">金额<span class="required"></span>
+                                                        </label>
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="number" required="required" class="form-control col-md-7 col-xs-12 prescriptionPrice" readonly="readonly">
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">数量<span class="required">可为空</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">金额<span class="required">可为空</span>
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-                                                </div>
-                                            </div>
-                                            <a href="#" class="buttonNext btn btn-success" style="position: absolute;right:200px;left:200px">下一张</a>
-                                        </form>
+                                        </div>
+                                        <div>
+                                        <a href="#" class="buttonNext btn btn-success" style="position: absolute;right:200px;left:200px" onclick="addPrescriptionTable()">下一张</a>
+                                        </div>
                                     </div>
                                     <div id="step-4">
                                         <h2 class="StepTitle">Step 4 Content</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                        </p>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>第__张处方</th>
+                                                <th>处方金额</th>
+                                                <th>可报销金额</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
                                 </div>
@@ -477,12 +532,12 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Gentelella - Bootstrap Admin Template by Colorlib. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
+        <!--<footer>-->
+            <!--<div class="pull-right">-->
+                <!--Gentelella - Bootstrap Admin Template by Colorlib. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>-->
+            <!--</div>-->
+            <!--<div class="clearfix"></div>-->
+        <!--</footer>-->
         <!-- /footer content -->
     </div>
 </div>
@@ -500,51 +555,78 @@
 <!-- Custom Theme Scripts -->
 <script src="../build/js/custom.min.js"></script>
 
+<!--<script>-->
+    <!--$(function(){-->
+        <!--function initTableCheckbox() {-->
+            <!--var $thr = $('table thead tr');-->
+            <!--var $checkAllTh = $('<th><input type="checkbox" id="checkAll" name="checkAll" /></th>');-->
+            <!--/*将全选/反选复选框添加到表头最前，即增加一列*/-->
+            <!--//$thr.prepend($checkAllTh);-->
+            <!--/*“全选/反选”复选框*/-->
+            <!--var $checkAll = $thr.find('input');-->
+            <!--$checkAll.click(function(event){-->
+                <!--/*将所有行的选中状态设成全选框的选中状态*/-->
+                <!--$tbr.find('input').prop('checked',$(this).prop('checked'));-->
+                <!--/*并调整所有选中行的CSS样式*/-->
+                <!--if ($(this).prop('checked')) {-->
+                    <!--$tbr.find('input').parent().parent().addClass('warning');-->
+                <!--} else{-->
+                    <!--$tbr.find('input').parent().parent().removeClass('warning');-->
+                <!--}-->
+                <!--/*阻止向上冒泡，以防再次触发点击操作*/-->
+                <!--event.stopPropagation();-->
+            <!--});-->
+            <!--/*点击全选框所在单元格时也触发全选框的点击操作*/-->
+            <!--$checkAllTh.click(function(){-->
+                <!--$(this).find('input').click();-->
+            <!--});-->
+            <!--var $tbr = $('table tbody tr');-->
+            <!--var $checkItemTd = $('<td><input type="checkbox" name="checkItem" /></td>');-->
+            <!--/*每一行都在最前面插入一个选中复选框的单元格*/-->
+            <!--$tbr.prepend($checkItemTd);-->
+            <!--/*点击每一行的选中复选框时*/-->
+            <!--$tbr.find('input').click(function(event){-->
+                <!--/*调整选中行的CSS样式*/-->
+                <!--$(this).parent().parent().toggleClass('warning');-->
+                <!--/*如果已经被选中行的行数等于表格的数据行数，将全选框设为选中状态，否则设为未选中状态*/-->
+                <!--$checkAll.prop('checked',$tbr.find('input:checked').length == $tbr.length ? true : false);-->
+                <!--/*阻止向上冒泡，以防再次触发点击操作*/-->
+                <!--event.stopPropagation();-->
+            <!--});-->
+            <!--/*点击每一行时也触发该行的选中操作*/-->
+            <!--$tbr.click(function(){-->
+                <!--$(this).find('input').click();-->
+            <!--});-->
+        <!--}-->
+        <!--initTableCheckbox();-->
+    <!--});-->
+<!--</script>-->
 <script>
-    $(function(){
-        function initTableCheckbox() {
-            var $thr = $('table thead tr');
-            var $checkAllTh = $('<th><input type="checkbox" id="checkAll" name="checkAll" /></th>');
-            /*将全选/反选复选框添加到表头最前，即增加一列*/
-            //$thr.prepend($checkAllTh);
-            /*“全选/反选”复选框*/
-            var $checkAll = $thr.find('input');
-            $checkAll.click(function(event){
-                /*将所有行的选中状态设成全选框的选中状态*/
-                $tbr.find('input').prop('checked',$(this).prop('checked'));
-                /*并调整所有选中行的CSS样式*/
-                if ($(this).prop('checked')) {
-                    $tbr.find('input').parent().parent().addClass('warning');
-                } else{
-                    $tbr.find('input').parent().parent().removeClass('warning');
-                }
-                /*阻止向上冒泡，以防再次触发点击操作*/
-                event.stopPropagation();
-            });
-            /*点击全选框所在单元格时也触发全选框的点击操作*/
-            $checkAllTh.click(function(){
-                $(this).find('input').click();
-            });
-            var $tbr = $('table tbody tr');
-            var $checkItemTd = $('<td><input type="checkbox" name="checkItem" /></td>');
-            /*每一行都在最前面插入一个选中复选框的单元格*/
-            $tbr.prepend($checkItemTd);
-            /*点击每一行的选中复选框时*/
-            $tbr.find('input').click(function(event){
-                /*调整选中行的CSS样式*/
-                $(this).parent().parent().toggleClass('warning');
-                /*如果已经被选中行的行数等于表格的数据行数，将全选框设为选中状态，否则设为未选中状态*/
-                $checkAll.prop('checked',$tbr.find('input:checked').length == $tbr.length ? true : false);
-                /*阻止向上冒泡，以防再次触发点击操作*/
-                event.stopPropagation();
-            });
-            /*点击每一行时也触发该行的选中操作*/
-            $tbr.click(function(){
-                $(this).find('input').click();
-            });
-        }
-        initTableCheckbox();
-    });
+    function calculatePrice(tar){
+        var unitPrice = (tar.getElementsByClassName("prescriptionUnitPrice"))[0];
+        var num = (tar.getElementsByClassName("prescriptionNumber"))[0];
+        var price = (tar.getElementsByClassName("prescriptionPrice"))[0];
+//        alert(this.typeName);
+//        if(thisType == 0){
+//            var unitPrice = this;
+//            var num = this.nextSibling;
+//            var price = this.nextSibling.nextSibling;
+//        }
+//        else if(thisType == 1){
+//            var unitPrice = this.previousSibling;
+//            var num = this;
+//            var price = this.nextSibling;
+//        }
+//        else{
+//            alert("error");
+//        }
+        unitPrice = parseFloat(unitPrice.value);
+        num = parseFloat(num.value);
+        price.value = unitPrice * num;
+    }
+    function deleteTable(deleted){
+        deleted.parentNode.removeChild(deleted);
+    }
 </script>
 </body>
 </html>

@@ -21,6 +21,8 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.css" rel="stylesheet">
+
+
 </head>
 
 <body class="nav-md">
@@ -227,7 +229,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3 class="drug2"> 医疗人员费用查询 </h3>
+                        <h3 class="drug2"> 单位基本信息查询 </h3>
                     </div>
 
                     <div class="title_right">
@@ -239,11 +241,11 @@
 
                 <div class="clearfix"></div>
 
-                <div class="row" >
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2 class="drug1">欢迎进入处方信息查询！</h2>
+                                <h2 class="drug1">欢迎进入单位基本信息查询！</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -263,17 +265,43 @@
                             </div>
                             <div class="x_content">
 
-                                <div class="row" style="height:auto">
+                                <div class="row" style="height: auto">
 
-                                    <p class="drug3 text-muted font-13 m-b-30">该模块主要功能为显示病人的处方信息</p>
+                                    <p class="drug3 text-muted font-13 m-b-30">该模块主要功能为对单位信息进行查询、增加、删除、修改操作</p>
+
+                                    <div class="container-fluid">
+                                        <div class="row-fluid">
+                                            <form action="" method="post">
+                                                <div class="" style="height: 90px;">
+                                                    <div id="" style="float: left; mar">
+                                                        <span><font color="black">单位编码：</font></span><input type="text" value="" class="input-large"
+                                                                                                            name="medicineid" /><br />  <br />
+                                                        <span><font color="black">单位名称：</font></span><input
+                                                            type="text" value="" class="input-large" name="factoryname" />
+                                                    </div>
+                                                    <div class="btn-toolbar"
+                                                         style="float: left;  margin-left: 40px; margin-top: 45px">
+                                                        <font color="#6495ed"> <input type="submit" value="查询" class="btn" /></font>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <!--<button id="reg" class="btn btn-primary"-->
+                                            <!--style="float: right; margin-top: -50px; margin-right: 400px;">-->
+                                            <!--<a href="/MInsurance/fill-medicine-form.jsp" style="color: white;"><i-->
+                                            <!--class="icon-plus"></i>添加新的药品信息</a>-->
+                                            <!--</button>-->
+                                        </div>
+                                    </div>
+
                                     <table class="table table-striped projects " id="datatable">
                                         <thead>
                                         <tr>
-                                            <th style="width: 15%">住院号</th>
-                                            <th style="width: 15%">项目编码</th>
-                                            <th style="width: 15%">单价</th>
-                                            <th style="width: 15%">数量</th>
-                                            <th style="width: 15%">金额</th>
+                                            <th style="width: 8%">单位编号</th>
+                                            <th style="width: 10%">单位名称</th>
+                                            <th style="width: 10%">单位类型</th>
+                                            <th style="width: 15%">地址</th>
+                                            <th style="width: 10%">邮编</th>
+                                            <th style="width: 10%">联系电话</th>
                                             <th style="width: 15%">操作</th>
                                         </tr>
                                         </thead>
@@ -283,9 +311,12 @@
                                             <td>张三</td>
                                             <td>男</td>
                                             <td>在职</td>
-                                            <td>00000000000000000</td>
+                                            <td>000000</td>
+                                            <td>000000000000</td>
                                             <td>
-                                                <a href="cost_query.html" class="btn btn-danger btn-xs"><i class="fa fa-mail-reply"></i>返回</a>
+                                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket "></i> 删除</a>
+                                                <a href="unit_update.html" class="btn btn-info btn-xs "><i class="fa fa-pencil"></i>修改</a>
+                                                <a href="unit_infor.html" class="btn btn-danger btn-xs"><i class="fa fa-mail-reply"></i>返回</a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -343,5 +374,7 @@
 <script src="../vendors/jszip/dist/jszip.min.js"></script>
 <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
 <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+
 </body>
 </html>
