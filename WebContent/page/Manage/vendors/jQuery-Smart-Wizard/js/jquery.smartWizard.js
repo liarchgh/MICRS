@@ -460,7 +460,9 @@ function addPrescriptionTable(){
     var controlButton = document.getElementsByClassName("actionBar");
     var buttons = controlButton[0].getElementsByTagName("a");
     allPrescriptionTable.insertBefore(newTable, allPrescriptionTable.lastElementChild);
-    allPanel.style.height += newTable.style.height;
+
+    var container = (document.getElementsByClassName("stepContainer"))[0];
+    container.style.height = "800px";
 }
 function checkPrompt(){
     var all = document.getElementsByClassName("inputPrompt");
@@ -471,4 +473,12 @@ function checkPrompt(){
             oInput.value = oInput.value.match(/\d{1,}\.{0,1}\d{0,}/) == null ? '' :oInput.value.match(/\d{1,}\.{0,1}\d{0,}/);
         }
     }
+}
+function checkForms(){
+    alert(1);
+    var forms = document.getElementsByClassName("form");
+    for(var i = 0; i < forms.length; ++i){
+        forms[i].submit(true);
+    }
+    window.location.href("index.html");
 }

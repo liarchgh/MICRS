@@ -3833,3 +3833,16 @@ ul.notifications {
 .dataTables_wrapper>.row {
     overflow:auto!important
 }
+.required{
+    font-size: x-small;
+    color: #dadbdf;
+}
+.formTag{
+    font-size:normal;
+    color: #000066;
+}
+.warning{
+    font-size:large;
+    color:red;
+    right:30px;
+}

@@ -9,9 +9,9 @@ import java.sql.Statement;
 
 public class DBUtil {
 	private static String driver = "oracle.jdbc.driver.OracleDriver";
-	private static String url = "jdbc:oracle:thin:@10.25.243.15:1521:ORCL";
-	private static String username = "scott";
-	private static String password = "tiger";
+	private static String url = "jdbc:oracle:thin:@10.25.243.6:1521:ORCL";//10.25.243.23
+	private static String username = "system";//"scott";
+	private static String password = "gaoxudong";//"tiger";
 	
 	public static void main(String[] args){
 		String sql = "select * from emp";
