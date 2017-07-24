@@ -488,7 +488,7 @@ body .container.body .right_col {
     background: #D9DEE4
 }
 body {
-    color: #fffafa;
+    color: black;
     background: #2A3F54;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
@@ -2168,8 +2168,7 @@ span.section {
     width: 100%
 }
 .form-horizontal .control-label {
-    color: #000fe9;
-    font-size : 150%;
+    padding-top: 8px
 }
 .form-control:focus {
     border-color: #CCD0D7;
@@ -4250,7 +4249,41 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 #thumbail2{
     margin-left: 350px;
 }
-.required{
-    color: #717171;
-    font-size : small;
+
+#thumbnail3{
+    margin-right: 125px;
+
+}
+#thumbnail4{
+    margin-right: 130px;
+    margin-left: 130px;
+
+}
+
+#thumbnail5{
+    margin-left: 260px;
+    margin-right: 0px;
+
+}
+
+
+.drug1{
+    color: #0f0f0f;
+    font-family: 华文行楷;
+    font-size: x-large;
+
+}
+
+.drug2{
+    color: #0f0f0f;
+    font-size: 28px;
+}
+
+.drug3{
+    color: red;
+
+}
+.drug4{
+    color: #0f0f0f;
+    font-size: small;
 }
