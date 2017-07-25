@@ -55,12 +55,11 @@
                             <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="index.html">报销系统简介</a></li>
-                                    <li><a href="main1.html">药品安全简介</a></li>
-                                    <li><a href="main2.html">诊疗项目简介</a></li>
-                                    <li><a href="main3.html">服务项目简介</a></li>
-                                    <li><a href="main4.html">疾病信息简介</a></li>
-                                    <li><a href="main5.html">定点医疗机构简介</a></li>
-                                    <li><a href="main6.html">医疗报销计算参数简介</a></li>
+                                    <li><a href="main1.html">医疗基本信息简介</a></li>
+                                    <li><a href="main2.html">医疗待遇审批简介</a></li>
+                                    <li><a href="main3.html">医保中心报销简介</a></li>
+                                    <li><a href="main4.html">综合查询简介</a></li>
+                                    <li><a href="main5.html">公共业务简介</a></li>
                                 </ul>
                             </li>
 
@@ -142,7 +141,7 @@
                                 <li><a href="javascript:;"> 定点医疗机构信息</a></li>
                                 <li>
                                     <a href="javascript:;">
-                                        <span class="badge bg-red pull-right"></span>
+                                        <span class="badge bg-red pull-right">50%</span>
                                         <span>背景</span>
                                     </a>
                                 </li>
@@ -202,9 +201,6 @@
                                 <div class="row" style="height: auto">
 
                                     <p class="drug3">该模块主要功能是查询定点医疗机构详细信息</p>
-
-                                    <div class="content">
-
                                         <div class="container-fluid">
                                             <div class="row-fluid">
                                                 <form action=" " method="post">
@@ -243,10 +239,6 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <button id="reg" class="btn btn-primary"
-                                                        style="float: right; margin-top: -39px; margin-right: 240px;">
-                                                    <a href="struc_insert.html" style="color: white;"><i class="icon-plus"></i>添加新的定点医疗机构信息</a>
-                                                </button>
                                             </div>
                                    </div>
 
@@ -278,7 +270,7 @@
                                             <td style="width: 25%">
                                                 <a href="struc_update.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>修改</a>
                                                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 删除</a>
-                                                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 详细信息 </a>
+                                                <a href="struc_details.html" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 详细信息 </a>
                                             </td>
                                         </tr>
 
@@ -293,7 +285,7 @@
                                             <td>12345678989</td>
                                             <td>黑龙江省齐齐哈尔市</td>
                                             <td style="width: 25%">
-                                                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>修改</a>
+                                                <a href="struc_update.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>修改</a>
                                                 <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 删除</a>
                                                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> 详细信息 </a>
                                             </td>
@@ -391,10 +383,13 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                <a href="struc_infor.html" target="_blank" title="药品信息">定点医疗机构信息</a>
+                <a href="struc_infor.html" target="_blank" title="定点医疗机构信息">返回</a>
                 &nbsp;
                 &nbsp;
-                <a href="acculate.html" target="_blank" title="主页">主页</a>
+                <a href="struc_insert.html" target="_blank" title="转到添加页面">添加定点医疗机构信息</a>
+                &nbsp;
+                &nbsp;
+                <a href="index.html" target="_blank" title="主页">主页</a>
             </div>
             <div class="clearfix"></div>
         </footer>
@@ -402,39 +397,38 @@
     </div>
 </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!--datatable-->
-    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!--datatable-->
+<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+<!-- iCheck -->
+<script src="../vendors/iCheck/icheck.min.js"></script>
 
 
-    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="../vendors/jszip/dist/jszip.min.js"></script>
-    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
-</div>
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="../vendors/jszip/dist/jszip.min.js"></script>
+<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 </body>
 </html>
 

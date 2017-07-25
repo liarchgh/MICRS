@@ -53,8 +53,8 @@ function SmartWizard(target, options) {
         elmActionBar.append($this.loader);
         $this.target.append($this.elmStepContainer);
         elmActionBar.append($this.buttons.finish)
-            .append($this.buttons.next)
-            .append($this.buttons.previous);
+                    .append($this.buttons.next)
+                    .append($this.buttons.previous);
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
 
@@ -262,7 +262,7 @@ function SmartWizard(target, options) {
         if (! $this.options.cycleSteps){
             if (0 >= $this.curStepIdx) {
                 $($this.buttons.previous).addClass("buttonDisabled");
-                if ($this.options.hideButtonsOnDisabled) {
+				if ($this.options.hideButtonsOnDisabled) {
                     $($this.buttons.previous).hide();
                 }
             }else{
@@ -398,87 +398,52 @@ function SmartWizard(target, options) {
 
 (function($){
 
-    $.fn.smartWizard = function(method) {
-        var args = arguments;
-        var rv = undefined;
-        var allObjs = this.each(function() {
-            var wiz = $(this).data('smartWizard');
-            if (typeof method == 'object' || ! method || ! wiz) {
-                var options = $.extend({}, $.fn.smartWizard.defaults, method || {});
-                if (! wiz) {
-                    options.labelPrevious = "上一步";
-                    options.labelNext = "下一步";
-                    options.labelFinish = "提交并报销";
-                    wiz = new SmartWizard($(this), options);
-                    $(this).data('smartWizard', wiz);
-                }
-            } else {
-                if (typeof SmartWizard.prototype[method] == "function") {
-                    rv = SmartWizard.prototype[method].apply(wiz, Array.prototype.slice.call(args, 1));
-                    return rv;
-                } else {
-                    $.error('Method ' + method + ' does not exist on jQuery.smartWizard');
-                }
+$.fn.smartWizard = function(method) {
+    var args = arguments;
+    var rv = undefined;
+    var allObjs = this.each(function() {
+        var wiz = $(this).data('smartWizard');
+        if (typeof method == 'object' || ! method || ! wiz) {
+            var options = $.extend({}, $.fn.smartWizard.defaults, method || {});
+            if (! wiz) {
+                wiz = new SmartWizard($(this), options);
+                $(this).data('smartWizard', wiz);
             }
-        });
-        if (rv === undefined) {
-            return allObjs;
         } else {
-            return rv;
+            if (typeof SmartWizard.prototype[method] == "function") {
+                rv = SmartWizard.prototype[method].apply(wiz, Array.prototype.slice.call(args, 1));
+                return rv;
+            } else {
+                $.error('Method ' + method + ' does not exist on jQuery.smartWizard');
+            }
         }
-    };
+    });
+    if (rv === undefined) {
+        return allObjs;
+    } else {
+        return rv;
+    }
+};
 
 // Default Properties and Events
-    $.fn.smartWizard.defaults = {
-        selected: 0,  // Selected Step, 0 = first step
-        keyNavigation: true, // Enable/Disable key navigation(left and right keys are used if enabled)
-        enableAllSteps: false,
-        transitionEffect: 'fade', // Effect on navigation, none/fade/slide/slideleft
-        contentURL:null, // content url, Enables Ajax content loading
-        contentCache:true, // cache step contents, if false content is fetched always from ajax url
-        cycleSteps: false, // cycle step navigation
-        enableFinishButton: false, // make finish button enabled always
-        hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
-        errorSteps:[],    // Array Steps with errors
-        labelNext:'Next',
-        labelPrevious:'Previous',
-        labelFinish:'Finish',
-        noForwardJumping: false,
-        onLeaveStep: null, // triggers when leaving a step
-        onShowStep: null,  // triggers when showing a step
-        onFinish: null  // triggers when Finish button is clicked
-    };
+$.fn.smartWizard.defaults = {
+    selected: 0,  // Selected Step, 0 = first step
+    keyNavigation: true, // Enable/Disable key navigation(left and right keys are used if enabled)
+    enableAllSteps: false,
+    transitionEffect: 'fade', // Effect on navigation, none/fade/slide/slideleft
+    contentURL:null, // content url, Enables Ajax content loading
+    contentCache:true, // cache step contents, if false content is fetched always from ajax url
+    cycleSteps: false, // cycle step navigation
+    enableFinishButton: false, // make finish button enabled always
+	hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
+    errorSteps:[],    // Array Steps with errors
+    labelNext:'Next',
+    labelPrevious:'Previous',
+    labelFinish:'Finish',
+    noForwardJumping: false,
+    onLeaveStep: null, // triggers when leaving a step
+    onShowStep: null,  // triggers when showing a step
+    onFinish: null  // triggers when Finish button is clicked
+};
 
 })(jQuery);
-
-function addPrescriptionTable(){
-    var allPrescriptionTable = document.getElementById("step-3");
-    var add = allPrescriptionTable.firstElementChild;
-    var newTable = add.cloneNode(true);
-    newTable.style.display = "block";
-    var allPanel = document.getElementById("allPanel");
-    var controlButton = document.getElementsByClassName("actionBar");
-    var buttons = controlButton[0].getElementsByTagName("a");
-    allPrescriptionTable.insertBefore(newTable, allPrescriptionTable.lastElementChild);
-
-    var container = (document.getElementsByClassName("stepContainer"))[0];
-    container.style.height = "800px";
-}
-function checkPrompt(){
-    var all = document.getElementsByClassName("inputPrompt");
-    for(var j = 0; j < all.length; ++j){
-        var oInput = all[j];
-        if('' != oInput.value.replace(/\d{1,}\.{0,1}\d{0,}/,''))
-        {
-            oInput.value = oInput.value.match(/\d{1,}\.{0,1}\d{0,}/) == null ? '' :oInput.value.match(/\d{1,}\.{0,1}\d{0,}/);
-        }
-    }
-}
-function checkForms(){
-    alert(1);
-    var forms = document.getElementsByClassName("form");
-    for(var i = 0; i < forms.length; ++i){
-        forms[i].submit(true);
-    }
-    window.location.href("index.html");
-}
