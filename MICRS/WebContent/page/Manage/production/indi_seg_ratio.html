@@ -55,12 +55,11 @@
                             <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="index.html">报销系统简介</a></li>
-                                    <li><a href="main1.html">药品安全简介</a></li>
-                                    <li><a href="main2.html">诊疗项目简介</a></li>
-                                    <li><a href="main3.html">服务项目简介</a></li>
-                                    <li><a href="main4.html">疾病信息简介</a></li>
-                                    <li><a href="main5.html">定点医疗机构简介</a></li>
-                                    <li><a href="main6.html">医疗报销计算参数简介</a></li>
+                                    <li><a href="main1.html">医疗基本信息简介</a></li>
+                                    <li><a href="main2.html">医疗待遇审批简介</a></li>
+                                    <li><a href="main3.html">医保中心报销简介</a></li>
+                                    <li><a href="main4.html">综合查询简介</a></li>
+                                    <li><a href="main5.html">公共业务简介</a></li>
                                 </ul>
                             </li>
 
@@ -77,14 +76,14 @@
 
                             <li><a><i class="fa fa-desktop"></i> *医疗待遇审批 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="wait1.html">*人员就诊机构审批s</a></li>
+                                    <li><a href="wait1.html">*人员就诊机构审批</a></li>
                                     <li><a href="wait2.html">*特检特治审批</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="new1.html">#</a></li>
+                                    <li><a href="Reimbursement.html">医保报销</a></li>
                                 </ul>
                             </li>
 
@@ -164,7 +163,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3 class="drug2">定点医疗机构信息</h3>
+                        <h3 class="drug2">医疗待遇计算参数信息维护</h3>
                     </div>
 
                     <div class="title_right">
@@ -183,15 +182,6 @@
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Settings 1</a>
-                                            </li>
-                                            <li><a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li>
 
                                     <li><a class="close-link"><i class="fa fa-close"></i></a>
                                     </li>
@@ -203,8 +193,6 @@
                                 <div class="row" style="height: auto">
 
                                     <p class="drug3">该模块主要功能是个人分段自费比例信息维护</p>
-
-                                    <div class="content">
                                         <div class="container-fluid">
                                             <div class="row-fluid">
                                                 <form action=" " method="post">
@@ -249,11 +237,8 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <button id="reg" class="btn btn-primary"
-                                                        style="float: right; margin-top: -39px; margin-right: 300px;">
-                                                    <a href=" " style="color: white;"><i class="icon-plus"></i>添加新的个人自费信息</a>
-                                                </button>
                                             </div>
+                                        </div>
                                             <table class="table table-striped projects" id="datatable">
                                                 <thead>
                                                 <tr>
@@ -278,30 +263,28 @@
                                                     <td>精神病院</td>
                                                     <td>一级</td>
                                                     <td style="width: 25%">
-                                                        <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>修改个人自费信息</a>
+                                                        <a href="indi_seg_ratio_update.html" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i>修改个人自费信息</a>
                                                         <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> 删除信息</a>
                                                     </td>
                                                 </tr>
-
-
-                                                </tr>
                                                 </tbody>
                                             </table>
-
-
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
                 <!-- /page content -->
 
                 <!-- footer content -->
                 <footer>
                     <div class="pull-right">
-                        <a href="acculate.html" target="_blank" title="医疗待遇计算参数信息维护">医疗待遇计算参数信息维护</a>
+                        <a href="acculate.html" target="_blank" title="医疗待遇计算参数信息维护">返回</a>
+                        &nbsp;
+                        &nbsp;
+                        <a href="indi_seg_ratio_insert.html" target="_blank" title="添加个人分段自费比例">转到添加页面</a>
                         &nbsp;
                         &nbsp;
                         <a href="index.html" target="_blank" title="主页">主页</a>
@@ -309,10 +292,8 @@
                     <div class="clearfix"></div>
                 </footer>
                 <!-- /footer content -->
-            </div>
-        </div>
 
-    </div>
+</div>
 </div>
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
