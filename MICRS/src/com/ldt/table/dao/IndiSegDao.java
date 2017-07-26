@@ -6,7 +6,7 @@ import com.ldt.item.entity.IndiSeg;
 
 public interface IndiSegDao {
 	public void insertIndiSeg(IndiSeg item);
-	public List<IndiSeg> selectStandPay(IndiSeg item);
+	public List<IndiSeg> selectIndiSeg(IndiSeg item);
 	public void updateIndiSeg(IndiSeg item);
-	public void deleteIndiSeg(IndiSeg medicineCode);
+	public void deleteIndiSeg(String id);
 }

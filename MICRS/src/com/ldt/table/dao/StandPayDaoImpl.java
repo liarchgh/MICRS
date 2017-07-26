@@ -12,11 +12,11 @@ import com.ldt.item.entity.UnitInfor;
 
 public class StandPayDaoImpl implements StandPayDao {
 	public static void main(String[] args) {
-		StandPayDaoImpl tt  = new StandPayDaoImpl();
+		StandPayDaoImpl tt  = new StandPayDaoImpl();3, medPersClass=cccccc]
 		System.out.println(tt.selectStandPay(new StandPay()).toString());
-		tt.insertStandPay(new StandPay(0, "", "",
-			String medPresNum, String medPresClass, String hospitalId,
-			String hospitalLevel, float standPay));(
+		tt.insertStandPay(new StandPay("", "3", "xxx",
+				"3", "cccccc", String hospitalId,
+				String hospitalLevel, float standPay));(
 	}
 
 	@Override
