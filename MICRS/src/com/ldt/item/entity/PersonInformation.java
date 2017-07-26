@@ -12,11 +12,10 @@ public class PersonInformation {
 	private String    retire;
 	private String    houseType;
 	private String    houseLoc;
-	private String    medPersNum;
-	private String    medPersClass;
+	private MedPers    medPersNum;
 	private String    securityNum;
-	private String    desiMedInsId;
-	private String     unitId;
+	private DesiMedIns    desiMedIns;
+	private UnitInfor     unit;
 	@Override
 	public String toString() {
 		return "PersonInformation [userId=" + userId + ", certificateType="
@@ -25,36 +24,8 @@ public class PersonInformation {
 				+ ", birthday=" + birthday + ", workDate=" + workDate
 				+ ", retire=" + retire + ", houseType=" + houseType
 				+ ", houseLoc=" + houseLoc + ", medPersNum=" + medPersNum
-				+ ", medPersClass=" + medPersClass + ", securityNum="
-				+ securityNum + ", desiMedInsId=" + desiMedInsId + ", unitId="
-				+ unitId + "]";
-	}
-	public PersonInformation(String userId, String certificateType,
-			String certificateID, String name, String sex, String nation,
-			String birthday, String workDate, String retire, String houseType,
-			String houseLoc, String medPersNum, String medPersClass,
-			String securityNum, String desiMedInsId, String unitId) {
-		super();
-		this.userId = userId;
-		this.certificateType = certificateType;
-		this.certificateID = certificateID;
-		this.name = name;
-		this.sex = sex;
-		this.nation = nation;
-		this.birthday = birthday;
-		this.workDate = workDate;
-		this.retire = retire;
-		this.houseType = houseType;
-		this.houseLoc = houseLoc;
-		this.medPersNum = medPersNum;
-		this.medPersClass = medPersClass;
-		this.securityNum = securityNum;
-		this.desiMedInsId = desiMedInsId;
-		this.unitId = unitId;
-	}
-	public PersonInformation() {
-		super();
-		// TODO Auto-generated constructor stub
+				+ ", securityNum=" + securityNum + ", desiMedIns=" + desiMedIns
+				+ ", unit=" + unit + "]";
 	}
 	public String getUserId() {
 		return userId;
@@ -122,17 +93,11 @@ public class PersonInformation {
 	public void setHouseLoc(String houseLoc) {
 		this.houseLoc = houseLoc;
 	}
-	public String getMedPersNum() {
+	public MedPers getMedPersNum() {
 		return medPersNum;
 	}
-	public void setMedPersNum(String medPersNum) {
+	public void setMedPersNum(MedPers medPersNum) {
 		this.medPersNum = medPersNum;
-	}
-	public String getMedPersClass() {
-		return medPersClass;
-	}
-	public void setMedPersClass(String medPersClass) {
-		this.medPersClass = medPersClass;
 	}
 	public String getSecurityNum() {
 		return securityNum;
@@ -140,18 +105,51 @@ public class PersonInformation {
 	public void setSecurityNum(String securityNum) {
 		this.securityNum = securityNum;
 	}
-	public String getDesiMedInsId() {
-		return desiMedInsId;
+	public DesiMedIns getDesiMedIns() {
+		return desiMedIns;
 	}
-	public void setDesiMedInsId(String desiMedInsId) {
-		this.desiMedInsId = desiMedInsId;
+	public void setDesiMedIns(DesiMedIns desiMedIns) {
+		this.desiMedIns = desiMedIns;
 	}
-	public String getUnitId() {
-		return unitId;
+	public UnitInfor getUnit() {
+		return unit;
 	}
-	public void setUnitId(String unitId) {
-		this.unitId = unitId;
+	public void setUnit(UnitInfor unit) {
+		this.unit = unit;
 	}
+	public PersonInformation(String userId, String certificateType,
+			String certificateID, String name, String sex, String nation,
+			String birthday, String workDate, String retire, String houseType,
+			String houseLoc, MedPers medPersNum, String securityNum,
+			DesiMedIns desiMedIns, UnitInfor unit) {
+		super();
+		this.userId = userId;
+		this.certificateType = certificateType;
+		this.certificateID = certificateID;
+		this.name = name;
+		this.sex = sex;
+		this.nation = nation;
+		this.birthday = birthday;
+		this.workDate = workDate;
+		this.retire = retire;
+		this.houseType = houseType;
+		this.houseLoc = houseLoc;
+		this.medPersNum = medPersNum;
+		this.securityNum = securityNum;
+		this.desiMedIns = desiMedIns;
+		this.unit = unit;
+	}
+	public PersonInformation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public PersonInformation(String userId, String name) {
+		super();
+		this.userId = userId;
+		this.name = name;
+	}
+	
+	
 
 
 }

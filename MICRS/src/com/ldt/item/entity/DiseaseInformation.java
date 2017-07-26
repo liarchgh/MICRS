@@ -3,28 +3,8 @@ package com.ldt.item.entity;
 public class DiseaseInformation {
 	private String  disNum;
 	private String disName;
-	private String  diseaseNum;
-	private String  disClass;
+	private DiseaseProject  diseaseNum;
 	private String  disReimbSign;
-	@Override
-	public String toString() {
-		return "DiseaseInformation [disNum=" + disNum + ", disName=" + disName
-				+ ", diseaseNum=" + diseaseNum + ", disClass=" + disClass
-				+ ", disReimbSign=" + disReimbSign + "]";
-	}
-	public DiseaseInformation(String disNum, String disName, String diseaseNum,
-			String disClass, String disReimbSign) {
-		super();
-		this.disNum = disNum;
-		this.disName = disName;
-		this.diseaseNum = diseaseNum;
-		this.disClass = disClass;
-		this.disReimbSign = disReimbSign;
-	}
-	public DiseaseInformation() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public String getDisNum() {
 		return disNum;
 	}
@@ -37,17 +17,11 @@ public class DiseaseInformation {
 	public void setDisName(String disName) {
 		this.disName = disName;
 	}
-	public String getDiseaseNum() {
+	public DiseaseProject getDiseaseNum() {
 		return diseaseNum;
 	}
-	public void setDiseaseNum(String diseaseNum) {
+	public void setDiseaseNum(DiseaseProject diseaseNum) {
 		this.diseaseNum = diseaseNum;
-	}
-	public String getDisClass() {
-		return disClass;
-	}
-	public void setDisClass(String disClass) {
-		this.disClass = disClass;
 	}
 	public String getDisReimbSign() {
 		return disReimbSign;
@@ -55,6 +29,31 @@ public class DiseaseInformation {
 	public void setDisReimbSign(String disReimbSign) {
 		this.disReimbSign = disReimbSign;
 	}
-
+	@Override
+	public String toString() {
+		return "DiseaseInformation [disNum=" + disNum + ", disName=" + disName
+				+ ", diseaseNum=" + diseaseNum + ", disReimbSign="
+				+ disReimbSign + "]";
+	}
+	public DiseaseInformation(String disNum, String disName,
+			DiseaseProject diseaseNum, String disReimbSign) {
+		super();
+		this.disNum = disNum;
+		this.disName = disName;
+		this.diseaseNum = diseaseNum;
+		this.disReimbSign = disReimbSign;
+	}
+	public DiseaseInformation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public DiseaseInformation(String disNum, String disName) {
+		super();
+		this.disNum = disNum;
+		this.disName = disName;
+	}
+	
+	
+	
 
 }

@@ -10,12 +10,7 @@ public class Drug {
 	private float  priceCeiling;
 	private String hospitalPreparationMark;
 	private String approvalMarks;
-	private String hospitalLevel;
-	private String hospitalID;
-	public Drug() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private HospitalClass hospitalID;
 	public String getMedicineCode() {
 		return medicineCode;
 	}
@@ -70,16 +65,10 @@ public class Drug {
 	public void setApprovalMarks(String approvalMarks) {
 		this.approvalMarks = approvalMarks;
 	}
-	public String getHospitalLevel() {
-		return hospitalLevel;
-	}
-	public void setHospitalLevel(String hospitalLevel) {
-		this.hospitalLevel = hospitalLevel;
-	}
-	public String getHospitalID() {
+	public HospitalClass getHospitalID() {
 		return hospitalID;
 	}
-	public void setHospitalID(String hospitalID) {
+	public void setHospitalID(HospitalClass hospitalID) {
 		this.hospitalID = hospitalID;
 	}
 	@Override
@@ -90,13 +79,13 @@ public class Drug {
 				+ chargeLevel + ", drugDosageUnit=" + drugDosageUnit
 				+ ", priceCeiling=" + priceCeiling
 				+ ", hospitalPreparationMark=" + hospitalPreparationMark
-				+ ", approvalMarks=" + approvalMarks + ", hospitalLevel="
-				+ hospitalLevel + ", hospitalID=" + hospitalID + "]";
+				+ ", approvalMarks=" + approvalMarks + ", hospitalID="
+				+ hospitalID + "]";
 	}
 	public Drug(String medicineCode, String medicineName, String chargeType,
 			String prescriptionSign, String chargeLevel, String drugDosageUnit,
 			float priceCeiling, String hospitalPreparationMark,
-			String approvalMarks, String hospitalLevel, String hospitalID) {
+			String approvalMarks, HospitalClass hospitalID) {
 		super();
 		this.medicineCode = medicineCode;
 		this.medicineName = medicineName;
@@ -107,8 +96,18 @@ public class Drug {
 		this.priceCeiling = priceCeiling;
 		this.hospitalPreparationMark = hospitalPreparationMark;
 		this.approvalMarks = approvalMarks;
-		this.hospitalLevel = hospitalLevel;
 		this.hospitalID = hospitalID;
 	}
+	public Drug() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Drug(String medicineCode, String medicineName) {
+		super();
+		this.medicineCode = medicineCode;
+		this.medicineName = medicineName;
+	}
+	
+	
 	
 }

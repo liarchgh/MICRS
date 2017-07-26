@@ -3,44 +3,15 @@ package com.ldt.item.entity;
 public class DesiMedIns {
 	private String  desiMedInsId;
 	private String   serviceName;
-	private String    hospitalId;
-	private String    hospitalLevel;
-	private String    hoId;
-	private String   medInsClass;
-	@Override
-	public String toString() {
-		return "DesiMedIns [desiMedInsId=" + desiMedInsId + ", serviceName="
-				+ serviceName + ", hospitalId=" + hospitalId
-				+ ", hospitalLevel=" + hospitalLevel + ", hoId=" + hoId
-				+ ", medInsClass=" + medInsClass + ", postalCode=" + postalCode
-				+ ", legRepName=" + legRepName + ", legRepPhone=" + legRepPhone
-				+ ", connName=" + connName + ", connPhone=" + connPhone
-				+ ", connCell=" + connCell + ", addr=" + addr + "]";
-	}
-	public DesiMedIns(String desiMedInsId, String serviceName,
-			String hospitalId, String hospitalLevel, String hoId,
-			String medInsClass, String postalCode, String legRepName,
-			String legRepPhone, String connName, String connPhone,
-			String connCell, String addr) {
-		super();
-		this.desiMedInsId = desiMedInsId;
-		this.serviceName = serviceName;
-		this.hospitalId = hospitalId;
-		this.hospitalLevel = hospitalLevel;
-		this.hoId = hoId;
-		this.medInsClass = medInsClass;
-		this.postalCode = postalCode;
-		this.legRepName = legRepName;
-		this.legRepPhone = legRepPhone;
-		this.connName = connName;
-		this.connPhone = connPhone;
-		this.connCell = connCell;
-		this.addr = addr;
-	}
-	public DesiMedIns() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private HospitalClass hospitalId;
+	private HospitalOrganization hoId;
+	private String   postalCode;
+	private String   legRepName;
+	private String   legRepPhone;
+	private String   connName;
+	private String   connPhone;
+	private String   connCell;
+	private String   addr;
 	public String getDesiMedInsId() {
 		return desiMedInsId;
 	}
@@ -53,29 +24,17 @@ public class DesiMedIns {
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
 	}
-	public String getHospitalId() {
+	public HospitalClass getHospitalId() {
 		return hospitalId;
 	}
-	public void setHospitalId(String hospitalId) {
+	public void setHospitalId(HospitalClass hospitalId) {
 		this.hospitalId = hospitalId;
 	}
-	public String getHospitalLevel() {
-		return hospitalLevel;
-	}
-	public void setHospitalLevel(String hospitalLevel) {
-		this.hospitalLevel = hospitalLevel;
-	}
-	public String getHoId() {
+	public HospitalOrganization getHoId() {
 		return hoId;
 	}
-	public void setHoId(String hoId) {
+	public void setHoId(HospitalOrganization hoId) {
 		this.hoId = hoId;
-	}
-	public String getMedInsClass() {
-		return medInsClass;
-	}
-	public void setMedInsClass(String medInsClass) {
-		this.medInsClass = medInsClass;
 	}
 	public String getPostalCode() {
 		return postalCode;
@@ -119,13 +78,42 @@ public class DesiMedIns {
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
-	private String   postalCode;
-	private String   legRepName;
-	private String   legRepPhone;
-	private String   connName;
-	private String   connPhone;
-	private String   connCell;
-	private String   addr;
+	@Override
+	public String toString() {
+		return "DesiMedIns [desiMedInsId=" + desiMedInsId + ", serviceName="
+				+ serviceName + ", hospitalId=" + hospitalId + ", hoId=" + hoId
+				+ ", postalCode=" + postalCode + ", legRepName=" + legRepName
+				+ ", legRepPhone=" + legRepPhone + ", connName=" + connName
+				+ ", connPhone=" + connPhone + ", connCell=" + connCell
+				+ ", addr=" + addr + "]";
+	}
+	public DesiMedIns(String desiMedInsId, String serviceName,
+			HospitalClass hospitalId, HospitalOrganization hoId,
+			String postalCode, String legRepName, String legRepPhone,
+			String connName, String connPhone, String connCell, String addr) {
+		super();
+		this.desiMedInsId = desiMedInsId;
+		this.serviceName = serviceName;
+		this.hospitalId = hospitalId;
+		this.hoId = hoId;
+		this.postalCode = postalCode;
+		this.legRepName = legRepName;
+		this.legRepPhone = legRepPhone;
+		this.connName = connName;
+		this.connPhone = connPhone;
+		this.connCell = connCell;
+		this.addr = addr;
+	}
+	public DesiMedIns() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public DesiMedIns(String desiMedInsId, String serviceName) {
+		super();
+		this.desiMedInsId = desiMedInsId;
+		this.serviceName = serviceName;
+	}
+	
 
-
+	
 }

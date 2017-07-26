@@ -2,27 +2,15 @@ package com.ldt.item.entity;
 
 public class PrescriptionDetail {
 	private String  outpatientNum;
-	private String   medicineCode;
+	private Drug   medicineCode;
 	private float   price;
 	private int    total;
+	private float    account;
 	@Override
 	public String toString() {
 		return "PrescriptionDetail [outpatientNum=" + outpatientNum
 				+ ", medicineCode=" + medicineCode + ", price=" + price
 				+ ", total=" + total + ", account=" + account + "]";
-	}
-	public PrescriptionDetail(String outpatientNum, String medicineCode,
-			float price, int total, float account) {
-		super();
-		this.outpatientNum = outpatientNum;
-		this.medicineCode = medicineCode;
-		this.price = price;
-		this.total = total;
-		this.account = account;
-	}
-	public PrescriptionDetail() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	public String getOutpatientNum() {
 		return outpatientNum;
@@ -30,10 +18,10 @@ public class PrescriptionDetail {
 	public void setOutpatientNum(String outpatientNum) {
 		this.outpatientNum = outpatientNum;
 	}
-	public String getMedicineCode() {
+	public Drug getMedicineCode() {
 		return medicineCode;
 	}
-	public void setMedicineCode(String medicineCode) {
+	public void setMedicineCode(Drug medicineCode) {
 		this.medicineCode = medicineCode;
 	}
 	public float getPrice() {
@@ -54,6 +42,25 @@ public class PrescriptionDetail {
 	public void setAccount(float account) {
 		this.account = account;
 	}
-	private float    account;
+	public PrescriptionDetail(String outpatientNum, Drug medicineCode,
+			float price, int total, float account) {
+		super();
+		this.outpatientNum = outpatientNum;
+		this.medicineCode = medicineCode;
+		this.price = price;
+		this.total = total;
+		this.account = account;
+	}
+	public PrescriptionDetail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public PrescriptionDetail(String outpatientNum, Drug medicineCode) {
+		super();
+		this.outpatientNum = outpatientNum;
+		this.medicineCode = medicineCode;
+	}
+	
+	
 
 }

@@ -2,47 +2,15 @@ package com.ldt.item.entity;
 
 public class RersMedInfor {
 	private String  outpatientNum;
-	private String   num;
-	private String  desiMedInsId;
-	private String   indiSegId;
-	private String   indiSeg;
+	private PersonInformation   num;
+	private DesiMedIns  desiMedIns;
+	private IndiSeg   indiSegId;
 	private String   inDate;
 	private String   outDate;
 	private String   distypeNum;
-	private String   hospitalId;
-	private String   hospitalLevel;
-	private String   disNum;
-	private String   disName;
+	private HospitalClass   hospital;
+	private DiseaseInformation   disNum;
 	private String   outReason;
-	@Override
-	public String toString() {
-		return "RersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num
-				+ ", desiMedInsId=" + desiMedInsId + ", indiSegId=" + indiSegId
-				+ ", indiSeg=" + indiSeg + ", inDate=" + inDate + ", outDate="
-				+ outDate + ", distypeNum=" + distypeNum + ", hospitalId="
-				+ hospitalId + ", hospitalLevel=" + hospitalLevel + ", disNum="
-				+ disNum + ", disName=" + disName + ", outReason=" + outReason
-				+ "]";
-	}
-	public RersMedInfor(String outpatientNum, String num, String desiMedInsId,
-			String indiSegId, String indiSeg, String inDate, String outDate,
-			String distypeNum, String hospitalId, String hospitalLevel,
-			String disNum, String disName, String outReason) {
-		super();
-		this.outpatientNum = outpatientNum;
-		this.num = num;
-		this.desiMedInsId = desiMedInsId;
-		this.indiSegId = indiSegId;
-		this.indiSeg = indiSeg;
-		this.inDate = inDate;
-		this.outDate = outDate;
-		this.distypeNum = distypeNum;
-		this.hospitalId = hospitalId;
-		this.hospitalLevel = hospitalLevel;
-		this.disNum = disNum;
-		this.disName = disName;
-		this.outReason = outReason;
-	}
 	public RersMedInfor() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -53,29 +21,23 @@ public class RersMedInfor {
 	public void setOutpatientNum(String outpatientNum) {
 		this.outpatientNum = outpatientNum;
 	}
-	public String getNum() {
+	public PersonInformation getNum() {
 		return num;
 	}
-	public void setNum(String num) {
+	public void setNum(PersonInformation num) {
 		this.num = num;
 	}
-	public String getDesiMedInsId() {
-		return desiMedInsId;
+	public DesiMedIns getDesiMedIns() {
+		return desiMedIns;
 	}
-	public void setDesiMedInsId(String desiMedInsId) {
-		this.desiMedInsId = desiMedInsId;
+	public void setDesiMedIns(DesiMedIns desiMedIns) {
+		this.desiMedIns = desiMedIns;
 	}
-	public String getIndiSegId() {
+	public IndiSeg getIndiSegId() {
 		return indiSegId;
 	}
-	public void setIndiSegId(String indiSegId) {
+	public void setIndiSegId(IndiSeg indiSegId) {
 		this.indiSegId = indiSegId;
-	}
-	public String getIndiSeg() {
-		return indiSeg;
-	}
-	public void setIndiSeg(String indiSeg) {
-		this.indiSeg = indiSeg;
 	}
 	public String getInDate() {
 		return inDate;
@@ -95,29 +57,17 @@ public class RersMedInfor {
 	public void setDistypeNum(String distypeNum) {
 		this.distypeNum = distypeNum;
 	}
-	public String getHospitalId() {
-		return hospitalId;
+	public HospitalClass getHospital() {
+		return hospital;
 	}
-	public void setHospitalId(String hospitalId) {
-		this.hospitalId = hospitalId;
+	public void setHospital(HospitalClass hospital) {
+		this.hospital = hospital;
 	}
-	public String getHospitalLevel() {
-		return hospitalLevel;
-	}
-	public void setHospitalLevel(String hospitalLevel) {
-		this.hospitalLevel = hospitalLevel;
-	}
-	public String getDisNum() {
+	public DiseaseInformation getDisNum() {
 		return disNum;
 	}
-	public void setDisNum(String disNum) {
+	public void setDisNum(DiseaseInformation disNum) {
 		this.disNum = disNum;
-	}
-	public String getDisName() {
-		return disName;
-	}
-	public void setDisName(String disName) {
-		this.disName = disName;
 	}
 	public String getOutReason() {
 		return outReason;
@@ -125,6 +75,36 @@ public class RersMedInfor {
 	public void setOutReason(String outReason) {
 		this.outReason = outReason;
 	}
+	public RersMedInfor(String outpatientNum, PersonInformation num,
+			DesiMedIns desiMedIns, IndiSeg indiSegId, String inDate,
+			String outDate, String distypeNum, HospitalClass hospital,
+			DiseaseInformation disNum, String outReason) {
+		super();
+		this.outpatientNum = outpatientNum;
+		this.num = num;
+		this.desiMedIns = desiMedIns;
+		this.indiSegId = indiSegId;
+		this.inDate = inDate;
+		this.outDate = outDate;
+		this.distypeNum = distypeNum;
+		this.hospital = hospital;
+		this.disNum = disNum;
+		this.outReason = outReason;
+	}
+	@Override
+	public String toString() {
+		return "RersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num
+				+ ", desiMedIns=" + desiMedIns + ", indiSegId=" + indiSegId
+				+ ", inDate=" + inDate + ", outDate=" + outDate
+				+ ", distypeNum=" + distypeNum + ", hospital=" + hospital
+				+ ", disNum=" + disNum + ", outReason=" + outReason + "]";
+	}
+	public RersMedInfor(String outpatientNum) {
+		super();
+		this.outpatientNum = outpatientNum;
+	}
+	
+	
 
 
 }

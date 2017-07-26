@@ -1,38 +1,17 @@
 package com.ldt.item.entity;
 
 public class PersonalCostInformation {
-	private String  userId;
+	private PersonInformation  user;
 	private String  time;
 	private int  times;
 	private float  expAccumulat;
 	private float  remAccumulat;
 	private float  paiedPerAccu;
-	@Override
-	public String toString() {
-		return "PersonalCostInformation [userId=" + userId + ", time=" + time
-				+ ", times=" + times + ", expAccumulat=" + expAccumulat
-				+ ", remAccumulat=" + remAccumulat + ", paiedPerAccu="
-				+ paiedPerAccu + "]";
+	public PersonInformation getUser() {
+		return user;
 	}
-	public PersonalCostInformation(String userId, String time, int times,
-			float expAccumulat, float remAccumulat, float paiedPerAccu) {
-		super();
-		this.userId = userId;
-		this.time = time;
-		this.times = times;
-		this.expAccumulat = expAccumulat;
-		this.remAccumulat = remAccumulat;
-		this.paiedPerAccu = paiedPerAccu;
-	}
-	public PersonalCostInformation() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUser(PersonInformation user) {
+		this.user = user;
 	}
 	public String getTime() {
 		return time;
@@ -64,6 +43,34 @@ public class PersonalCostInformation {
 	public void setPaiedPerAccu(float paiedPerAccu) {
 		this.paiedPerAccu = paiedPerAccu;
 	}
-
+	@Override
+	public String toString() {
+		return "PersonalCostInformation [user=" + user + ", time=" + time
+				+ ", times=" + times + ", expAccumulat=" + expAccumulat
+				+ ", remAccumulat=" + remAccumulat + ", paiedPerAccu="
+				+ paiedPerAccu + "]";
+	}
+	public PersonalCostInformation(PersonInformation user, String time,
+			int times, float expAccumulat, float remAccumulat,
+			float paiedPerAccu) {
+		super();
+		this.user = user;
+		this.time = time;
+		this.times = times;
+		this.expAccumulat = expAccumulat;
+		this.remAccumulat = remAccumulat;
+		this.paiedPerAccu = paiedPerAccu;
+	}
+	public PersonalCostInformation() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public PersonalCostInformation(PersonInformation user, String time) {
+		super();
+		this.user = user;
+		this.time = time;
+	}
+	
+	
 
 }

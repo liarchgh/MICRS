@@ -2,8 +2,7 @@ package com.ldt.item.entity;
 
 public class CapLine {
 	private String   id;
-	private String  indiSegId;
-	private String  medPersClass;
+	private  IndiSeg indiSeg ;
 	private float  capLine;
 	public String getId() {
 		return id;
@@ -11,17 +10,11 @@ public class CapLine {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getIndiSegId() {
-		return indiSegId;
+	public IndiSeg getIndiSeg() {
+		return indiSeg;
 	}
-	public void setIndiSegId(String indiSegId) {
-		this.indiSegId = indiSegId;
-	}
-	public String getMedPersClass() {
-		return medPersClass;
-	}
-	public void setMedPersClass(String medPersClass) {
-		this.medPersClass = medPersClass;
+	public void setIndiSeg(IndiSeg indiSeg) {
+		this.indiSeg = indiSeg;
 	}
 	public float getCapLine() {
 		return capLine;
@@ -29,23 +22,26 @@ public class CapLine {
 	public void setCapLine(float capLine) {
 		this.capLine = capLine;
 	}
+	@Override
+	public String toString() {
+		return "CapLine [id=" + id + ", indiSeg=" + indiSeg + ", capLine="
+				+ capLine + "]";
+	}
+	public CapLine(String id, IndiSeg indiSeg, float capLine) {
+		super();
+		this.id = id;
+		this.indiSeg = indiSeg;
+		this.capLine = capLine;
+	}
 	public CapLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CapLine(String id, String indiSegId, String medPersClass,
-			float capLine) {
+	public CapLine(String id) {
 		super();
 		this.id = id;
-		this.indiSegId = indiSegId;
-		this.medPersClass = medPersClass;
-		this.capLine = capLine;
 	}
-	@Override
-	public String toString() {
-		return "CapLine [id=" + id + ", indiSegId=" + indiSegId
-				+ ", medPersClass=" + medPersClass + ", capLine=" + capLine
-				+ "]";
-	}
+	
+	
 	
 }
