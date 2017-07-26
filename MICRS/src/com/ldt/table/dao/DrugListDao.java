@@ -5,8 +5,8 @@ import java.util.List;
 import com.ldt.item.entity.Drug;
 
 public interface DrugListDao {
-	public void insertUsers(Drug drug);
-	public List<Drug> selectUsers(String code, String name);
-	public void updateTable(Drug drug);
-	public void deleteTable(String medicineCode);
+	public void insertDrug(Drug drug);
+	public List<Drug> selectDrug(Drug item);
+	public void updateDrug(Drug drug);
+	public void deleteDrug(String medicineCode);
 }

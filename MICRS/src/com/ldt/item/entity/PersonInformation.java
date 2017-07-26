@@ -148,8 +148,4 @@ public class PersonInformation {
 		this.userId = userId;
 		this.name = name;
 	}
-	
-	
-
-
 }

@@ -2,19 +2,16 @@ package com.ldt.item.entity;
 
 public class CapLine {
 	private String   id;
-	private  IndiSeg indiSeg ;
+	private  MedPers medpers ;
 	private float  capLine;
 	public String getId() {
 		return id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public MedPers getMedpers() {
+		return medpers;
 	}
-	public IndiSeg getIndiSeg() {
-		return indiSeg;
-	}
-	public void setIndiSeg(IndiSeg indiSeg) {
-		this.indiSeg = indiSeg;
+	public void setMedpers(MedPers medpers) {
+		this.medpers = medpers;
 	}
 	public float getCapLine() {
 		return capLine;
@@ -22,26 +19,22 @@ public class CapLine {
 	public void setCapLine(float capLine) {
 		this.capLine = capLine;
 	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
-		return "CapLine [id=" + id + ", indiSeg=" + indiSeg + ", capLine="
+		return "CapLine [id=" + id + ", medpers=" + medpers + ", capLine="
 				+ capLine + "]";
 	}
-	public CapLine(String id, IndiSeg indiSeg, float capLine) {
+	public CapLine(String id, MedPers medpers, float capLine) {
 		super();
 		this.id = id;
-		this.indiSeg = indiSeg;
+		this.medpers = medpers;
 		this.capLine = capLine;
 	}
 	public CapLine() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CapLine(String id) {
-		super();
-		this.id = id;
-	}
-	
-	
-	
 }
