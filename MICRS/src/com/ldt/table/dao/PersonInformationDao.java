@@ -8,5 +8,5 @@ public interface PersonInformationDao {
 	public List<PersonInformation> selectPersonInformation(PersonInformation item);
 	public void insertPersonInformation(PersonInformation item);
 	public void updatePersonInformation(PersonInformation item);
-	public void deleteHospitalOrganization(String id);
+	public void deletePersonInformation(String id);
 }

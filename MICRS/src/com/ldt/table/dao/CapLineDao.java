@@ -6,7 +6,7 @@ import com.ldt.item.entity.CapLine;
 
 public interface CapLineDao {
 	public void insertCapLine(CapLine capline);
-	public List<CapLine> selectCapLine(String id);
+	public List<CapLine> selectCapLine(CapLine capline);
 	public void updateTable(CapLine capline);
 	public void deleteTable(String id);
 

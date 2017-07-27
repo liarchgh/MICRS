@@ -8,5 +8,5 @@ public interface PersonalCostInformationDao {
 	public List<PersonalCostInformation> selectPersonalCostInformation(PersonalCostInformation item);
 	public void insertPersonalCostInformation(PersonalCostInformation item);
 	public void updatePersonalCostInformation(PersonalCostInformation item);
-	public void deletePersonalCostInformation(String id);
+	public void deletePersonalCostInformation(String id, String time);
 }

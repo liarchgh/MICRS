@@ -15,12 +15,12 @@ public class PersonalCostInformationDaoImpl implements
 PersonalCostInformationDao {
 //	public static void main(String[] args) {
 //		PersonalCostInformationDaoImpl tt = new PersonalCostInformationDaoImpl();
-//System.out.println(tt.selectPersonalCostInformation((new PersonalCostInformation())).toString());
-//tt.insertPersonalCostInformation(new PersonalCostInformation(new PersonInformation(), String time,
-//		int times, float expAccumulat, float remAccumulat,
-//		float paiedPerAccu));
-////tt.updatePersonalCostInformation(new HospitalClass("2", "qqqqqq"));
-////tt.deletePersonalCostInformation("3");
+//System.out.println(tt.selectPersonalCostInformation((new PersonalCostInformation())));
+////tt.insertPersonalCostInformation(new PersonalCostInformation(new PersonInformation("3",null), "2011",
+////		5, 22.22f, 2.2f,
+////		22.2f));
+////tt.updatePersonalCostInformation(new PersonalCostInformation(new PersonInformation("3",null), "2011", 9, 11.11f,111.1f, 1111f));
+//tt.deletePersonalCostInformation("3", "2011");
 //System.out.println(tt.selectPersonalCostInformation((new PersonalCostInformation())).toString());
 //}
 
@@ -71,13 +71,13 @@ PersonalCostInformationDao {
 
 	@Override
 	public void insertPersonalCostInformation(PersonalCostInformation item) {
-		String sql = "insert into PERSONAL_COST_INFORMATION (USER_ID, TIME, TIMES, EXP_ACCUMULAT, REM_ACCUMULAT, PAIED_PER_ACCU) values(PERSONAL_COST_INFORMATION_seq.nextval,?)";
+		String sql = "insert into PERSONAL_COST_INFORMATION (USER_ID, TIME, TIMES, EXP_ACCUMULAT, REM_ACCUMULAT, PAIED_PER_ACCU) values(?,?,?,?,?,?)";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
 			if(item.getUser() != null
-					&& item.getUser().getUserId() != null
-					&& item.getTime() != null){
+					&& item.getTime() != null
+					&& item.getUser().getUserId() != null){
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getUser().getUserId());
 			ps.setString(2, item.getTime());
@@ -99,7 +99,7 @@ PersonalCostInformationDao {
 	@Override
 	public void updatePersonalCostInformation(PersonalCostInformation item) {
 		// TODO Auto-generated method stub
-		String sql = "update PERSONAL_COST_INFORMATION set TIME=?, TIMES=?, EXP_ACCUMULAT=?, REM_ACCUMULAT=?, PAIED_PER_ACCU=? where USER_ID = ?";
+		String sql = "update PERSONAL_COST_INFORMATION set TIMES=?, EXP_ACCUMULAT=?, REM_ACCUMULAT=?, PAIED_PER_ACCU=? where USER_ID = ? and time = ?";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
@@ -107,12 +107,12 @@ PersonalCostInformationDao {
 			if(item.getTime() != null
 					&& item.getUser() != null
 					&& item.getUser().getUserId() != null){
-			ps.setString(1, item.getTime());
-			ps.setInt(2, item.getTimes());
-			ps.setFloat(3, item.getExpAccumulat());
-			ps.setFloat(4, item.getRemAccumulat());
-			ps.setFloat(5, item.getPaiedPerAccu());
+			ps.setInt(1, item.getTimes());
+			ps.setFloat(2, item.getExpAccumulat());
+			ps.setFloat(3, item.getRemAccumulat());
+			ps.setFloat(4, item.getPaiedPerAccu());
 			ps.setString(5, item.getUser().getUserId());
+			ps.setString(6, item.getTime());
 			ps.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -125,14 +125,15 @@ PersonalCostInformationDao {
 	}
 
 	@Override
-	public void deletePersonalCostInformation(String id) {
-		String sql = "delete from Hospital_Organization where USER_ID = ?";
+	public void deletePersonalCostInformation(String id, String time) {
+		String sql = "delete from PERSONAL_COST_INFORMATION where USER_ID = ? and time = ?";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
-			if(id != null){
-			ps.setString(1, id);
+			if(id != null && time != null){
+				ps.setString(1, id);
+				ps.setString(2, time);
 			ps.executeUpdate();
 			}
 		} catch (SQLException e) {

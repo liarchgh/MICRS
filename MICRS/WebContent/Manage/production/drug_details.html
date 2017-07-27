@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>医疗保险中心报销系统 </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.css" rel="stylesheet">
+
+    <script language="JavaScript" type="text/javascript">
+        function  printPage(){
+            var newWin=window.open();
+            var titleHTML=document.getElementById("doctitle").innerHTML;
+            newWin.document.write(titleHTML);
+            newWin.document.location.reload();
+            newWin.print();
+        }
+        </script>
+
+        </head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                    <a href="index.html" class="site_title"><i class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>欢迎,</span>
+                        <h2>John Doe</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+                        <h3>系统业务</h3>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="index.html">报销系统简介</a></li>
+                                    <li><a href="main1.html">医疗基本信息简介</a></li>
+                                    <li><a href="main2.html">医疗待遇审批简介</a></li>
+                                    <li><a href="main3.html">医保中心报销简介</a></li>
+                                    <li><a href="main4.html">综合查询简介</a></li>
+                                    <li><a href="main5.html">公共业务简介</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-edit"></i> 医疗基本信息 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="drug_infor.html">药品信息</a></li>
+                                    <li><a href="project_infor.html">*诊疗项目信息</a></li>
+                                    <li><a href="dept_pro.html">*服务设施项目</a></li>
+                                    <li><a href="disea_infor.html">病种信息</a></li>
+                                    <li><a href="struc_infor.html">定点医疗机构信息</a></li>
+                                    <li><a href="acculate.html">医疗报销计算参数</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-desktop"></i> *医疗待遇审批 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="wait1.html">*人员就诊机构审批</a></li>
+                                    <li><a href="wait2.html">*特检特治审批</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="Reimbursement.html">医保报销</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-table"></i> 综合查询 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="cost_query.html">医疗人员费用查询</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a><i class="fa fa-briefcase"></i> 公共业务 <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="unit_infor.html">单位基本信息</a></li>
+                                    <li><a href="person_infor.html">个人基本信息</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
+
+                <!-- /menu footer buttons -->
+                <div class="sidebar-footer hidden-small">
+                    <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                    </a>
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                </div>
+                <!-- /menu footer buttons -->
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="images/img.jpg" alt="">医疗基本信息
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="javascript:;"> 药品信息</a></li>
+                                <li>
+                                    <a href="javascript:;">
+                                        <!-- <span class="badge bg-red pull-right">50%</span>-->
+                                        <span>背景</span>
+                                    </a>
+                                </li>
+                                <li><a href="javascript:;">帮助</a></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>药品基本信息</h3>
+                    </div>
+
+                    <div class="title_right">
+                        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">点击查询!</button>
+                          </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>药品信息详情<small>查询药品详细信息</small></h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div>
+
+                                <form action="" class="form-horizontal form-label-left" novalidate>
+
+                                    <p>该页面的主要功能是进行<code>药品详细信息</code>的查找，带<code>*</code>是<code>必填项</code>，点击此处可以跳转到<a href="drug_query.html">查询页面</a>
+                                    </p>
+                                    <span class="section">药品详细信息</span>
+                                    <div id="doctitle">
+                                    <table class="table table-striped projects">
+                                    <tr>
+                                        <th style="text-align: right">药品编码：</th>
+                                        <td><input name="" type="text" value="10001" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">药品名称：</th>
+                                        <td><input name="" type="text" value="阿莫西林"readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">收费类别：</th>
+                                        <td><input name="" type="text" value="一类" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">处方药标志：</th>
+                                        <td><input name="" type="text" value="是" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">收费项目等级：</th>
+                                        <td><input name="" type="text" value="一级" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="text-align: right">药品剂量单位：</td>
+                                        <td><input name="" type="text" value="盒" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">最高限价：</th>
+                                        <td><input name="" type="text" value="16" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">院内制药标志：</th>
+                                        <td><input name="" type="text" value="是" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">是否需要审批标志：</th>
+                                        <td><input name="" type="text" value="否" readonly="readonly"></td>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: right">医院等级：</th>
+                                        <td><input name="" type="text" value="甲类" readonly="readonly"></td>
+                                    </tr>
+                                    </table>
+                                    </div>
+
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group" align="right">
+                                        <!--<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">-->
+                                            <a href="drug_query.html">
+                                                <button type="button" class="btn btn-primary">取消</button>
+                                            </a>
+                                            <a>
+                                                <button type="button" class="btn btn-success" onclick=printPage()>打印</button>
+                                            </a>
+                                        <!--</div>-->
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                <a href="drug_infor.html" target="_blank" title="药品信息">药品信息</a>
+                &nbsp;
+                &nbsp;
+                <a href="index.html" target="_blank" title="主页">主页</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- validator -->
+<script src="../vendors/validator/validator.js"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+</body>
+</html>
