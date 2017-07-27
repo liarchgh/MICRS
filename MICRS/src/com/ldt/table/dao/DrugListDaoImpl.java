@@ -68,7 +68,7 @@ public class DrugListDaoImpl implements DrugListDao {
 		if(item.getMedicineName() != null){
 			sql = sql + " and medicineName = '"+ item.getMedicineName() + "'";
 		}
-			
+
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

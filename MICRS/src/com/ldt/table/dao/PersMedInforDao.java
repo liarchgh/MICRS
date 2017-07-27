@@ -5,8 +5,8 @@ import java.util.List;
 import com.ldt.item.entity.PersMedInfor;
 
 public interface PersMedInforDao {
-	public List<PersMedInfor> selectRersMedInfor(PersMedInfor item);
-	public void insertRersMedInfor(PersMedInfor item);
-	public void updateRersMedInfor(PersMedInfor item);
-	public void deleteRersMedInfor(String id);
+	public List<PersMedInfor> selectPersMedInfor(PersMedInfor item);
+	public void insertPersMedInfor(PersMedInfor item);
+	public void updatePersMedInfor(PersMedInfor item);
+	public void deletePersMedInfor(String id);
 }

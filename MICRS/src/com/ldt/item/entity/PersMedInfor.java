@@ -7,15 +7,38 @@ public class PersMedInfor {
 		private IndiSeg   indiSegId;
 		private String   inDate;
 		private String   outDate;
-		private String   distypeNum;
+		private DiseaseProject   diseaseProject;
 		private HospitalClass   hospital;
 		private DiseaseInformation   disNum;
 		private String   outReason;
 		public String getOutpatientNum() {
 			return outpatientNum;
 		}
-		public void setOutpatientNum(String outpatientNum) {
+		public PersMedInfor() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		public PersMedInfor(String outpatientNum, PersonInformation num, DesiMedIns desiMedIns, IndiSeg indiSegId,
+				String inDate, String outDate, DiseaseProject diseaseProject, HospitalClass hospital,
+				DiseaseInformation disNum, String outReason) {
+			super();
 			this.outpatientNum = outpatientNum;
+			this.num = num;
+			this.desiMedIns = desiMedIns;
+			this.indiSegId = indiSegId;
+			this.inDate = inDate;
+			this.outDate = outDate;
+			this.diseaseProject = diseaseProject;
+			this.hospital = hospital;
+			this.disNum = disNum;
+			this.outReason = outReason;
+		}
+		@Override
+		public String toString() {
+			return "PersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num + ", desiMedIns=" + desiMedIns
+					+ ", indiSegId=" + indiSegId + ", inDate=" + inDate + ", outDate=" + outDate + ", diseaseProject="
+					+ diseaseProject + ", hospital=" + hospital + ", disNum=" + disNum + ", outReason=" + outReason
+					+ "]";
 		}
 		public PersonInformation getNum() {
 			return num;
@@ -47,11 +70,11 @@ public class PersMedInfor {
 		public void setOutDate(String outDate) {
 			this.outDate = outDate;
 		}
-		public String getDistypeNum() {
-			return distypeNum;
+		public DiseaseProject getDiseaseProject() {
+			return diseaseProject;
 		}
-		public void setDistypeNum(String distypeNum) {
-			this.distypeNum = distypeNum;
+		public void setDiseaseProject(DiseaseProject diseaseProject) {
+			this.diseaseProject = diseaseProject;
 		}
 		public HospitalClass getHospital() {
 			return hospital;
@@ -71,34 +94,7 @@ public class PersMedInfor {
 		public void setOutReason(String outReason) {
 			this.outReason = outReason;
 		}
-		@Override
-		public String toString() {
-			return "PersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num + ", desiMedIns=" + desiMedIns
-					+ ", indiSegId=" + indiSegId + ", inDate=" + inDate + ", outDate=" + outDate + ", distypeNum="
-					+ distypeNum + ", hospital=" + hospital + ", disNum=" + disNum + ", outReason=" + outReason + "]";
-		}
-		public PersMedInfor(String outpatientNum, PersonInformation num, DesiMedIns desiMedIns, IndiSeg indiSegId,
-				String inDate, String outDate, String distypeNum, HospitalClass hospital, DiseaseInformation disNum,
-				String outReason) {
-			super();
+		public void setOutpatientNum(String outpatientNum) {
 			this.outpatientNum = outpatientNum;
-			this.num = num;
-			this.desiMedIns = desiMedIns;
-			this.indiSegId = indiSegId;
-			this.inDate = inDate;
-			this.outDate = outDate;
-			this.distypeNum = distypeNum;
-			this.hospital = hospital;
-			this.disNum = disNum;
-			this.outReason = outReason;
 		}
-		public PersMedInfor() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-		
-		
-		
-
-
 }

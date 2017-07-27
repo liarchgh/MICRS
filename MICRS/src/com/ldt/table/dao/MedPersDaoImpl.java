@@ -11,12 +11,12 @@ import com.ldt.item.entity.MedPers;
 
 public class MedPersDaoImpl implements MedPersDao {
 
-	public static void main(String[] args) {
-		MedPersDaoImpl tt = new MedPersDaoImpl();
-		System.out.println(tt.selectMedPers(new MedPers()).toString());
-//		tt.deleteMedPers("2");
+//	public static void main(String[] args) {
+//		MedPersDaoImpl tt = new MedPersDaoImpl();
 //		System.out.println(tt.selectMedPers(new MedPers()).toString());
-	}
+////		tt.deleteMedPers("2");
+////		System.out.println(tt.selectMedPers(new MedPers()).toString());
+//	}
 	@Override
 	public void insertMedPers(MedPers item) {
 		String sql = "insert into MED_PERS (MED_PERS_NUM, MED_PERS_CLASS) values(MED_PERS_seq.nextval,?)";

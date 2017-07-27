@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@page import="java.util.List"%>
+    <%@page import="com.ldt.item.entity.DiseaseInformation"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +15,16 @@
     <title>医疗保险中心报销系统 </title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.css" rel="stylesheet">
+    <link href="/MICRS/Manage/build/css/custom.css" rel="stylesheet">
     <script>
         function checkeid(){
 //            var enamespan = document.getElementById("enamespan");
@@ -59,7 +64,7 @@
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
-                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        <img src="/MICRS/Manage/production/images/img.jpg" alt="..." class="img-circle profile_img">
                     </div>
                     <div class="profile_info">
                         <span>欢迎,</span>
@@ -157,7 +162,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="images/img.jpg" alt="">医疗基本信息
+                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">医疗基本信息
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -226,13 +231,13 @@
                                     <p class="drug3">该模块主要功能是查询病种详细信息</p>
                                     <div class="container-fluid">
                                         <div class="row-fluid">
-                                            <form action="/MICRS/query/diseaseinformation" method="post" onsubmit="true">
+                                            <form action="/MICRS/query/diseaseinformation " method="post" onsubmit="return true">
                                                 <div class="" style="height: 90px;">
                                                     <div id="" style="float: left;">
                                                         <span><font color="black">疾病编码：</font></span><input type="text" value="" class="input-large"
                                                                                                            id="diseid" name="diseid" placeholder="" /><span id = "idspan"></span><br />  <br />
                                                         <span><font color="black">疾病名称：</font></span><input
-                                                            type="text" value="" class="input-large" name="disname" id = "disname" />
+                                                            type="text" value="" class="input-large" name="disename" id="disename" />
                                                     </div>
                                                     <div class="btn-toolbar"
                                                          style="float: left; margin-top: 39px; margin-left: 40px;">
@@ -255,16 +260,18 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items = "${requestScope.dlist}" var="d" >
                                         <tr>
-                                            <td>1</td>
-                                            <td>张三</td>
-                                            <td>男</td>
-                                            <td>在职</td>
+                                            <td>${d.disNum}</td>
+                                            <td>${d.disName}</td>
+                                            <td>${d.diseaseNum.disClass}</td>
+                                            <td>${d.disReimbSign}</td>
                                             <td style="width: 25%">
-                                                <a href="disea_update.html" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>修改病种信息</a>
-                                                <a href="#" class="btn btn-info btn-xs"><i class="fa fa-bitbucket"></i> 删除病种信息</a>
+                                                <a href="/MICRS/update/diseaseinformation" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i>修改病种信息</a>
+                                                <a href="/MICRS/delete/diseaseinformation" class="btn btn-info btn-xs"><i class="fa fa-bitbucket"></i> 删除病种信息</a>
                                             </td>
                                         </tr>
+                                        </c:forEach>
                                         </tbody>
                                     </table>
 
@@ -296,37 +303,37 @@
 </div>
 
 <!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="/MICRS/Manage/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/MICRS/Manage/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<script src="/MICRS/Manage/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
+<script src="/MICRS/Manage/vendors/nprogress/nprogress.js"></script>
 <!--datatable-->
-<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 
 <!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+<script src="/MICRS/Manage/build/js/custom.min.js"></script>
 <!-- iCheck -->
-<script src="../vendors/iCheck/icheck.min.js"></script>
+<script src="/MICRS/Manage/vendors/iCheck/icheck.min.js"></script>
 
 
-<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="../vendors/jszip/dist/jszip.min.js"></script>
-<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+<script src="/MICRS/Manage/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+<script src="/MICRS/Manage/vendors/jszip/dist/jszip.min.js"></script>
+<script src="/MICRS/Manage/vendors/pdfmake/build/pdfmake.min.js"></script>
+<script src="/MICRS/Manage/vendors/pdfmake/build/vfs_fonts.js"></script>
 </body>
 </html>
 

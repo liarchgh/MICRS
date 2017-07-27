@@ -9,19 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ldt.item.entity.UnitInfor;
-import com.ldt.item.filter.EncodingFilter;
-import com.ldt.table.dao.UnitInforDao;
-import com.ldt.table.dao.UnitInforDaoImpl;
-import com.sun.net.httpserver.Filter;
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.Filter.Chain;
+import com.ldt.item.entity.DiseaseInformation;
+import com.ldt.table.dao.DiseaseInformationDao;
+import com.ldt.table.dao.DiseaseInformationDaoImpl;
 
 /**
- * Servlet implementation class UnitQuerySeverlet
+ * Servlet implementation class DiseaseInformationQuerySeverlet
  */
-@WebServlet("/query/unit")
-public class UnitQuerySeverlet extends HttpServlet {
+@WebServlet("/query/diseaseinformation")
+public class DiseaseInformationQuerySeverlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -37,16 +33,18 @@ public class UnitQuerySeverlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String diseid = request.getParameter("diseid");
+		String disename = request.getParameter("disename");
 		
-		String unitid = request.getParameter("unitid");
-		String unitname = request.getParameter("unitname");
-		UnitInforDao uid = new UnitInforDaoImpl();
-		System.out.println(unitname + "1111");
-		List<UnitInfor> ui = uid.selectUnitInfor(new UnitInfor(unitid,unitname,null,null,null,null));
+		DiseaseInformationDao did = new DiseaseInformationDaoImpl();
+		System.out.println(diseid+"111");
+		System.out.println(disename+"111");
+		List<DiseaseInformation> d= did.selectDiseaseInformation(new DiseaseInformation(diseid,disename,null,null));
+		System.out.println(d.toString());
+		System.out.println(d.size());
 		
-		System.out.println(ui.size());
-		request.setAttribute("uilist", ui);
-		request.getRequestDispatcher("/Manage/production/unit_query.jsp").forward(request, response);
+		request.setAttribute("dlist", d);
+		request.getRequestDispatcher("/Manage/production/disea_query.jsp").forward(request, response);
 		
 	}
 
