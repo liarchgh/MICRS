@@ -12,7 +12,7 @@ import com.ldt.item.entity.IndiSeg;
 public class IndiSegDaoImpl implements IndiSegDao {
 //	public static void main(String[] args) {
 //		IndiSegDaoImpl tt = new IndiSegDaoImpl();
-//		System.out.println(tt.selectStandPay(new IndiSeg()).toString());
+//		System.out.println(tt.selectIndiSeg(new IndiSeg(null, "新农合")));
 //	}
 
 	@Override
@@ -41,10 +41,10 @@ public class IndiSegDaoImpl implements IndiSegDao {
 		List<IndiSeg> ans = new ArrayList<IndiSeg>();
 		String sql = "select * from Indi_Seg where 1=1 ";
 		if(item.getIndiSeg() != null){
-			sql = sql + " and IndiSeg = '" + item.getIndiSeg() + "' ";
+			sql = sql + " and INDI_SEG = '" + item.getIndiSeg() + "' ";
 		}
 		if(item.getIndiSegID() != null){
-			sql = sql + " and IndiSegID = '" + item.getIndiSegID() + "' ";
+			sql = sql + " and INDI_SEG_ID = '" + item.getIndiSegID() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;

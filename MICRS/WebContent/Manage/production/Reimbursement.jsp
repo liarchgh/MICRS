@@ -13,15 +13,15 @@
     <title>医疗保险中心报销系统</title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/MICRS/Manage/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="/MICRS/Manage/build/css/custom.min.css" rel="stylesheet">
 </head>
 
 <body class="nav-md" style="overflow:hidden">
@@ -374,14 +374,18 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_content">
-                                                <form class="form-horizontal form-label-left"
-                                                      action="/MICRS/PPServlet" onsubmit="return postForm()">
+                                                <form class="form-horizontal form-label-left SubmitForm" target="nm_iframe"
+                                                      action="/MICRS/Insert/PersMedInfor" onsubmit="return postForm()">
 
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"> 住院号（门诊号）<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="outpatientNumber" class="form-control col-md-7 col-xs-12 prescriptionNumber" onkeyup="value=value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onblur="checkOutpatientNumber()" placeholder="请输入9位数字">
+                                                            <input type="text" id="outpatientNumber" class="form-control col-md-7 col-xs-12 prescriptionNumber"
+                                                            onkeyup="value=value.replace(/[^\d]/g,'');"
+                                                            onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+                                                            onblur="checkOutpatientNumber()"
+                                                            placeholder="请输入9位数字" name="outpatientNum">
                                                         </div>
                                                         <span id="outNumS" class="warning"></span>
                                                     </div>
@@ -390,7 +394,11 @@
                                                                for="last-name">人员ID<span class="required" ></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" class="form-control col-md-7 col-xs-12 prescriptionNumber" onkeyup="value=value.replace(/[^\d]/g,'');" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" onblur="checkOutpatientNumber()" readonly="readonly" >
+                                                            <input type="text" class="form-control col-md-7 col-xs-12 prescriptionNumber"
+                                                            onkeyup="value=value.replace(/[^\d]/g,'');"
+                                                            onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
+                                                            onblur="checkOutpatientNumber()"
+                                                            readonly="readonly" name="num">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -399,7 +407,7 @@
                                                             <span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
+                                                            <input type="text" id="last-name" name="desiMedInsId"
                                                                    required="required"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
@@ -409,7 +417,7 @@
                                                                for="last-name">医疗类别<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <select class="select2_group form-control">
+                                                            <select class="select2_group form-control" name="indiSegId">
                                                                 <option value="0">城镇居民医疗</option>
                                                                 <option value="1">新农合</option>
                                                             </select>
@@ -426,7 +434,7 @@
                                                                         <div class="input-prepend input-group">
                                                                             <span class="add-on input-group-addon"><i
                                                                                     class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                                            <input type="date" class="form-control"
+                                                                            <input type="date" class="form-control" name="inDate"
                                                                                    id="inDate" onblur="checkDate()">
                                                                         </div>
                                                                     </div>
@@ -446,7 +454,7 @@
                                                                         <div class="input-prepend input-group">
                                                                             <span class="add-on input-group-addon"><i
                                                                                     class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
-                                                                            <input type="date" class="form-control"
+                                                                            <input type="date" class="form-control" name="outDate"
                                                                                    id="outDate" onblur="checkDate()">
                                                                         </div>
                                                                     </div>
@@ -459,7 +467,7 @@
                                                                for="last-name">病种名称<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
+                                                            <input type="text" id="last-name" name="disease"
                                                                    required="required"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
@@ -469,7 +477,7 @@
                                                                for="last-name">医院等级<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <select class="select2_group form-control">
+                                                            <select class="select2_group form-control" name="hospitalId">
                                                                 <option></option>
                                                                 <option value="0">一级</option>
                                                                 <option value="1">二级</option>
@@ -484,7 +492,7 @@
                                                                for="last-name">入院诊断疾病名称<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
+                                                            <input type="text" id="last-name" name="disNum"
                                                                    required="required"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
@@ -494,12 +502,13 @@
                                                                for="last-name">出院原因<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
+                                                            <input type="text" id="last-name" name="outReason"
                                                                    required="required"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
                                                     </div>
                                                 </form>
+                                                <button onclick="test()">SSS</button>
                                                 <div style="position: absolute; width: 54; left: 50%; margin-left: -(54/2);">
                                                     <button class="buttonNext btn btn-success"
                                                             onclick="clearTable(this)">重置
@@ -522,8 +531,8 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_panel">
-                                                <form class="form-horizontal form-label-left" action=""
-                                                      onkeyup="calculatePrice(this)">
+                                                <form class="form-horizontal form-label-left" action="/MICRS/Insert/PrescriptionDetail"
+                                                      onkeyup="calculatePrice(this)" target="nm_iframe">
 
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
@@ -585,8 +594,8 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_panel">
-                                                <form class="form-horizontal form-label-left" action=""
-                                                      onkeyup="calculatePrice(this)">
+                                                <form class="form-horizontal form-label-left" action="/MICRS/Insert/PrescriptionDetail"
+                                                      onkeyup="calculatePrice(this)" target="nm_iframe">
 
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
@@ -644,12 +653,13 @@
                                         <div>
                                             <a href="#" class="buttonNext btn btn-success"
                                                style="position: absolute;right:200px;left:200px;"
-                                               onclick="addPrescriptionTable()">下一张</a>
+                                               onclick="addPrescriptionTable()">添加一张</a>
                                         </div>
                                     </div>
                                     <div id="step-4">
                                         <h2 class="StepTitle" >预报销（此时仅显示，不报销，报销请点击按钮）</h2>
                                         <!--startprint1-->
+                                        <iframe id="id_iframe" name="nm_iframe" style="display:none;"></iframe>
                                         <table
                                                class="table table-striped table-bordered dataTable no-footer"
                                                role="grid" aria-describedby="datatable_info"
@@ -729,17 +739,17 @@
     </div>
 
 <!-- jQuery -->
-<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="/MICRS/Manage/vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/MICRS/Manage/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<script src="/MICRS/Manage/vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->
-<script src="../vendors/nprogress/nprogress.js"></script>
+<script src="/MICRS/Manage/vendors/nprogress/nprogress.js"></script>
 <!-- jQuery Smart Wizard -->
-<script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+<script src="/MICRS/Manage/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 <!-- Custom Theme Scripts -->
-<script src="../build/js/custom.min.js"></script>
+<script src="/MICRS/Manage/build/js/custom.min.js"></script>
 
 
 <!-- jQuery -->
@@ -830,7 +840,7 @@
         buttonFinish.onclick = function () {
             var forms = document.getElementsByTagName("form");
             alert(forms.length);
-            for (var i = 0; i < forms.length; ++i) {
+            for (var i = 1; i < forms.length; ++i) {
                 forms[i].submit(true);
             }
             window.location.href = "index.html";
@@ -875,6 +885,11 @@
         newWin.document.body.innerHTML=prnhtml;
         newWin.print();
 //        window.document.body.innerHTML=bdhtml;
+    }
+    function test(){
+    	alert('s');
+    	var form = document.getElementById('PersMedInforForm');
+    	form.submit(true);
     }
 </script>
 </body>

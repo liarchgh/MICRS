@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -11,11 +13,10 @@
         <meta name="author" content="">
 
         <!-- CSS -->
-        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
-        <link rel="stylesheet" href="assets/css/reset.css">
-        <link rel="stylesheet" href="assets/css/supersized.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <script src="../../js/checkUser.js"></script>
+        <link rel="stylesheet" href="/MICRS/Manage/production/assets/css/http.css">
+        <link rel="stylesheet" href="/MICRS/Manage/production/assets/css/reset.css">
+        <link rel="stylesheet" href="/MICRS/Manage/production/assets/css/supersized.css">
+        <link rel="stylesheet" href="/MICRS/Manage/production/assets/css/style.css">
 
         <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
@@ -43,13 +44,15 @@
                 <input type="text" name="username" class="username" placeholder="用户名" id="username" />
                 <span id="usernameS"></span>
                 <input type="password" name="password" class="password" placeholder="密码" id="pass1" />
-                <span id="pass1S"></span>
+                <span id="pass1S">
+                </span>
+                <p style="color:red">${requestScope.message }</p>
                 <button type="submit">登录</button>
                 <div class="error"><span>不能为空</span></div>
             </form>
             <div>
                 <br>
-                <a href="signUp.html" title="signUp" style="color: #404ada;">还没有账户，去注册></a>
+                <a href="/MICRS/Manage/production/signUp.html" title="signUp" style="color: #404ada;">还没有账户，去注册></a>
             </div>
         </div>
         <br>
@@ -57,11 +60,10 @@
         <div align="center">Collect from <a href="http://www.who.int/zh/" target="_blank" title="医疗保险中心" style="color: #da9000;">医疗保险中心</a></div>
 
         <!-- Javascript -->
-        <script src="assets/js/jquery-1.8.2.min.js"></script>
-        <script src="assets/js/supersized.3.2.7.min.js"></script>
-        <script src="assets/js/supersized-init.js"></script>
-        <script src="assets/js/scripts.js"></script>
-
+        <script src="/MICRS/Manage/production/assets/js/jquery-1.8.2.min.js"></script>
+        <script src="/MICRS/Manage/production/assets/js/supersized.3.2.7.min.js"></script>
+        <script src="/MICRS/Manage/production/assets/js/supersized-init.js"></script>
+        <script src="/MICRS/Manage/production/assets/js/scripts.js"></script>
     </body>
 
 </html>

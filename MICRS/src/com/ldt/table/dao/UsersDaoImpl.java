@@ -12,8 +12,8 @@ import com.ldt.item.entity.User;
 public class UsersDaoImpl implements UsersDao{
 //	public static void main(String[] args){
 //		UsersDaoImpl uu = new UsersDaoImpl();
-//		uu.insertUsers(new User(0, "adminnnnnn", "rootnnnnn"));
-//		uu.selectUsers(new User(0, null, null));
+////		System.out.println(uu.insertUsers(new User(0, "adminnnnnn", "rootnnnnn")));
+////		uu.selectUsers(new User(0, null, null));
 //	}
 
 	@Override
@@ -21,18 +21,18 @@ public class UsersDaoImpl implements UsersDao{
 		String sql = "insert into users (id, account,password) values(user_id_seq.nextval,?,?)";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
+		ResultSet rs = null;
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getAccount());
 			ps.setString(2, user.getPassword());
-			System.out.println(sql);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		finally{
-			DBUtil.close(null, ps, conn);
+			DBUtil.close(rs, ps, conn);
 		}
 	}
 
@@ -50,6 +50,7 @@ public class UsersDaoImpl implements UsersDao{
 		if(user.getPassword() != null){
 			sql = sql + " and password = '" + user.getPassword() + "'";
 		}
+		sql = sql + " order by id desc";
 
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;

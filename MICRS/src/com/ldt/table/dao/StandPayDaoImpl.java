@@ -56,9 +56,9 @@ public class StandPayDaoImpl implements StandPayDao {
 		List<StandPay> ans = new ArrayList<StandPay>();
 		String sql = "select * from Stand_Pay where 1=1 ";
 		if (item.getIndiSegId() != null) {
-			sql = sql + " and IndiSegId = '" + item.getIndiSegId() + "' ";
+			sql = sql + " and INDI_SEG_ID = '" + item.getIndiSegId().getIndiSegID() + "' ";
 			if (item.getIndiSegId().getClass() != null) {
-				sql = sql + " and IndiSeg = '" + item.getIndiSegId().getClass()
+				sql = sql + " and INDI_SEG = '" + item.getIndiSegId().getIndiSeg()
 						+ "' ";
 			}
 		}

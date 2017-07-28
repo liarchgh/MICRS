@@ -21,15 +21,25 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 		PersMedInforDaoImpl tt = new PersMedInforDaoImpl();
 		System.out.println(tt.selectPersMedInfor(new PersMedInfor()));
 //		tt.deleteMedPers("2");
-		tt.insertPersMedInfor(new PersMedInfor("2",
-				new PersonInformation("5", null),
-				new DesiMedIns("5", null),
-				new IndiSeg("1", "www"),
-				"2015-4-4", "2017-4-5",
-				new DiseaseProject("5", null),
-				new HospitalClass("2", "yy"),
-				new DiseaseInformation("5", "gg"),
-				"ss"));
+//		tt.insertPersMedInfor(new PersMedInfor("2",
+//				new PersonInformation("2", null),
+//				new DesiMedIns("5", null),
+//				new IndiSeg("1", "www"),
+//				"2015-4-4", "2017-4-5",
+//				new DiseaseProject("2", null),
+//				new HospitalClass("2", "yy"),
+//				new DiseaseInformation("2", "gg"),
+//				"ss"));
+//		tt.updatePersMedInfor(new PersMedInfor("38",
+//				new PersonInformation("2", null),
+//				new DesiMedIns("5", null),
+//				new IndiSeg("1", "xxx"),
+//				"2025-2-2", "2022-2-2",
+//				new DiseaseProject("2", null),
+//				new HospitalClass("2", "xx"),
+//				new DiseaseInformation("2", "xx"),
+//				"ss"));
+		tt.deletePersMedInfor("38");
 //		System.out.println(tt.selectMedPers(new MedPers()).toString());
 		System.out.println(tt.selectPersMedInfor(new PersMedInfor()));
 	}
@@ -149,7 +159,18 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 					&& item.getDisNum().getDisName() != null && !item.getDisNum().getDisName().equals("")
 					&& item.getOutReason() != null && !item.getOutReason().equals("")){
 			ps = conn.prepareStatement(sql);
-//			System.out.println(item.getIndiSegId().getIndiSegID());
+			System.out.println(item.getNum().getUserId());
+			System.out.println(item.getDesiMedIns().getDesiMedInsId());
+			System.out.println(item.getIndiSegId().getIndiSegID());
+			System.out.println(item.getIndiSegId().getIndiSeg());
+			System.out.println(item.getInDate());
+			System.out.println(item.getOutDate());
+			System.out.println(item.getDiseaseProject().getDiseaseNum());
+			System.out.println(item.getHospital().getHospitalId());
+			System.out.println(item.getHospital().getHospitalLevel());
+			System.out.println(item.getDisNum().getDisNum());
+			System.out.println(item.getDisNum().getDisName());
+			System.out.println(item.getOutReason());
 			ps.setString(1, item.getNum().getUserId());
 			ps.setString(2, item.getDesiMedIns().getDesiMedInsId());
 			ps.setString(3, item.getIndiSegId().getIndiSegID());
@@ -176,13 +197,73 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 	@Override
 	public void updatePersMedInfor(PersMedInfor item) {
 		// TODO Auto-generated method stub
-		
+		String sql = "update PERS_MED_INFOR set NUM=?,DESI_MED_INS_ID=?,INDI_SEG_ID=?,"
+				+ "INDI_SEG=?,in_date=to_date(?,'yyyy-mm-dd'),OUT_DATE=to_date(?,'yyyy-mm-dd'),DISTYPE_NUM=?,HOSPITAL_ID=?,"
+				+ "HOSPITAL_LEVEL=?,DIS_NUM=?,DIS_NAME=?,OUT_REASON=? "
+				+ "where OUTPATIENT_NUM = ?";
+		Connection conn =  DBUtil.getPreparedStatement();
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			if(item.getNum() != null
+					&& item.getInDate() != null && !item.getInDate().equals("")
+					&& item.getDesiMedIns() != null && item.getDesiMedIns().getDesiMedInsId() != null && !item.getDesiMedIns().getDesiMedInsId().equals("")
+					&& item.getIndiSegId() != null
+					&& item.getIndiSegId().getIndiSegID() != null && !item.getIndiSegId().getIndiSegID().equals("")
+					&& item.getIndiSegId().getIndiSeg() != null && !item.getIndiSegId().getIndiSeg().equals("")
+					&& item.getOutDate() != null && !item.getOutDate().equals("")
+					&& item.getDiseaseProject() != null && item.getDiseaseProject().getDiseaseNum() != null && !item.getDiseaseProject().getDiseaseNum().equals("")
+					&& item.getHospital() != null
+					&& item.getHospital().getHospitalId() != null && !item.getHospital().getHospitalId().equals("")
+					&& item.getHospital().getHospitalLevel() != null && !item.getHospital().getHospitalLevel().equals("")
+					&& item.getDisNum() != null
+					&& item.getDisNum().getDisNum() != null && !item.getDisNum().getDisNum().equals("")
+					&& item.getDisNum().getDisName() != null && !item.getDisNum().getDisName().equals("")
+					&& item.getOutReason() != null && !item.getOutReason().equals("")){
+			ps = conn.prepareStatement(sql);
+//			System.out.println(item.getIndiSegId().getIndiSegID());
+			ps.setString(1, item.getNum().getUserId());
+			ps.setString(2, item.getDesiMedIns().getDesiMedInsId());
+			ps.setString(3, item.getIndiSegId().getIndiSegID());
+			ps.setString(4, item.getIndiSegId().getIndiSeg());
+			ps.setString(5, item.getInDate());
+			ps.setString(6, item.getOutDate());
+			ps.setString(7, item.getDiseaseProject().getDiseaseNum());
+			ps.setString(8, item.getHospital().getHospitalId());
+			ps.setString(9, item.getHospital().getHospitalLevel());
+			ps.setString(10, item.getDisNum().getDisNum());
+			ps.setString(11, item.getDisNum().getDisName());
+			ps.setString(12, item.getOutReason());
+			ps.setString(13, item.getOutpatientNum());
+			ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.close(null, ps, conn);
+		}
 	}
 
 	@Override
 	public void deletePersMedInfor(String id) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from PERS_MED_INFOR where OUTPATIENT_NUM = ?";
+		Connection conn =  DBUtil.getPreparedStatement();
+		PreparedStatement ps = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			if(id != null){
+			ps.setString(1, id);
+			ps.executeUpdate();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally{
+			DBUtil.close(null, ps, conn);
+		}
 	}
 
 }
