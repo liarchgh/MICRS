@@ -35,10 +35,10 @@ public class PersMedInforInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ss");
+//		System.out.println("ss");
 		String outpatientNum = request.getParameter("outpatientNum");
 		String num = request.getParameter("num");
-		String desiMedInsId = request.getParameter("desiMedInsId");
+		String desiMedInsId = request.getParameter("desiMedIns");
 		String indiSegId = request.getParameter("indiSegId");
 		String inDate = request.getParameter("inDate");
 		String outDate = request.getParameter("outDate");
@@ -78,13 +78,13 @@ public class PersMedInforInsert extends HttpServlet {
 			personInformation = personInformations.get(0);
 		}
 
+//		System.out.println("disease is " + diseaseProject);
 		PersMedInforDaoImpl pp = new PersMedInforDaoImpl();
-		System.out.println(new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
+		PersMedInfor ans = new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
 				inDate, outDate, diseaseProject, hospitalClass,
-				diseaseInformation, outReason));
-//		pp.insertPersMedInfor(new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
-//				inDate, outDate, diseaseProject, hospitalClass,
-//				diseaseInformation, outReason));
+				diseaseInformation, outReason);
+		System.out.println(ans);
+		pp.insertPersMedInfor(ans);
 	}
 
 	/**

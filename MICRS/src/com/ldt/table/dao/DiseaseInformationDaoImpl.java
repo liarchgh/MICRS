@@ -49,20 +49,21 @@ public class DiseaseInformationDaoImpl implements DiseaseInformationDao{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
+//		System.out.println(item.getDisNum());
 		String sql = "select * from DISEASE_INFORMATION where 1=1 ";
-		if(item.getDisNum() != null){
+		if(item.getDisNum() != null && item.getDisNum() != ""){
 			sql = sql + " and DIS_NUM = '"+ item.getDisNum()+"'";
 		}
-		if(item.getDisName() != null){
+		if(item.getDisName() != null && item.getDisName() != ""){
 			sql = sql + " and DIS_NAME='"+item.getDisName()+"'";
 		}
-		if(item.getDiseaseNum()!= null && item.getDiseaseNum().getDiseaseNum() != null){
+		if(item.getDiseaseNum()!= null && item.getDiseaseNum().getDiseaseNum() != null && item.getDiseaseNum().getDiseaseNum() !=""){
 			sql = sql + " and DISEASE_NUM='"+item.getDiseaseNum().getDiseaseNum()+"'";
 		}
-		if(item.getDiseaseNum()!= null && item.getDiseaseNum().getDisClass() != null){
+		if(item.getDiseaseNum()!= null && item.getDiseaseNum().getDisClass() != null && item.getDiseaseNum().getDisClass() != ""){
 			sql = sql + " and DIS_CLASS='"+item.getDiseaseNum().getDisClass()+"'";
 		}
-		if(item.getDisReimbSign()!=null){
+		if(item.getDisReimbSign()!=null && item.getDisReimbSign()!= ""){
 			sql = sql + " and DIS_REIMB_SIGN = '"+item.getDisReimbSign()+"'";
 		}
 			

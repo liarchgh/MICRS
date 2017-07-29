@@ -11,14 +11,14 @@ import com.ldt.item.entity.Drug;
 import com.ldt.item.entity.PrescriptionDetail;
 
 public class PrescriptionDetailDaoImpl implements PrescriptionDetailDao {
-	public static void main(String[] args) {
-		PrescriptionDetailDaoImpl tt = new PrescriptionDetailDaoImpl();
-System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toString());
-tt.insertPrescriptionDetail(new PrescriptionDetail("4665935", new Drug("2", "xxxx"), 11.11f, 22, 44.22f));
-//tt.updatePrescriptionDetail(new PrescriptionDetail("0000000", new Drug("2", "xxxx"), 99.99f, 55, 11.11f));
-//tt.deleteHospitalOrganization("0000000");
-System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toString());
-}
+//	public static void main(String[] args) {
+//		PrescriptionDetailDaoImpl tt = new PrescriptionDetailDaoImpl();
+//System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toString());
+//tt.insertPrescriptionDetail(new PrescriptionDetail("4665935", new Drug("2", "xxxx"), 11.11f, 22, 44.22f));
+////tt.updatePrescriptionDetail(new PrescriptionDetail("0000000", new Drug("2", "xxxx"), 99.99f, 55, 11.11f));
+////tt.deleteHospitalOrganization("0000000");
+//System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toString());
+//}
 
 	@Override
 	public List<PrescriptionDetail> selectPrescriptionDetail(
@@ -26,10 +26,10 @@ System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toStr
 		// TODO Auto-generated method stub
 		List<PrescriptionDetail> ans = new ArrayList<PrescriptionDetail>();
 		String sql = "select * from PRESCRIPTION_DETAIL where 1=1 ";
-		if(item.getOutpatientNum() != null){
+		if(item.getOutpatientNum() != null && item.getOutpatientNum() != ""){
 			sql = sql + " and OUTPATIENT_NUM = '" + item.getOutpatientNum() + "' ";
 		}
-		if(item.getMedicineCode() != null && item.getMedicineCode().getMedicineCode() != null){
+		if(item.getMedicineCode() != null && item.getMedicineCode().getMedicineCode() != null && item.getMedicineCode().getMedicineCode() != ""){
 			sql = sql + " and MEDICINE_CODE = '" + item.getMedicineCode().getMedicineCode() + "' ";
 		}
 		if(item.getPrice() > 0){
@@ -67,8 +67,8 @@ System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toStr
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
-			if(item.getMedicineCode() != null
-					&& item.getOutpatientNum() != null){
+//			if(item.getMedicineCode() != null
+//					&& item.getOutpatientNum() != null){
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getOutpatientNum());
 			ps.setString(2, item.getMedicineCode().getMedicineCode());
@@ -76,7 +76,7 @@ System.out.println(tt.selectPrescriptionDetail((new PrescriptionDetail())).toStr
 			ps.setInt(4, item.getTotal());
 			ps.setFloat(5, item.getAccount());
 			ps.executeUpdate();
-			}
+//			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

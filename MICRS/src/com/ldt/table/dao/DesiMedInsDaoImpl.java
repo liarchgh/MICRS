@@ -36,10 +36,11 @@ public class DesiMedInsDaoImpl implements DesiMedInsDao {
 			ps.setString(8, des.getLegRepPhone());
 			ps.setString(9,des.getConnName());
 			ps.setString(10, des.getConnPhone());
-			ps.setString(10, des.getConnCell());
+			ps.setString(11, des.getConnCell());
+			ps.setString(12, des.getAddr());
 			
 			
-			System.out.println(sql);
+//			System.out.println(sql);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,43 +60,43 @@ public class DesiMedInsDaoImpl implements DesiMedInsDao {
 		ResultSet rs = null;
 		
 		String sql = "select * from desi_med_ins where 1=1 ";
-		if(item.getDesiMedInsId() != null){
+		if(item.getDesiMedInsId() != null && item.getDesiMedInsId() != ""){
 			sql = sql + " and DESI_MED_INS_ID = '"+ item.getDesiMedInsId() +"'";
 		}
-		if(item.getServiceName() != null){
+		if(item.getServiceName() != null && item.getServiceName() != ""){
 			sql = sql + " and SERVICE_NAME = '"+ item.getServiceName()+"''";
 		}
-		if(item.getHospitalId()!=null && item.getHospitalId().getHospitalId()!= null){
+		if(item.getHospitalId()!=null && item.getHospitalId().getHospitalId()!= null && item.getHospitalId().getHospitalId()!=""){
 			sql = sql + "and HOSPITAL_ID='"+item.getHospitalId().getHospitalId()+"'";
 		}
-		if(item.getHospitalId()!=null && item.getHospitalId().getHospitalLevel()!= null){
+		if(item.getHospitalId()!=null && item.getHospitalId().getHospitalLevel()!= null && item.getHospitalId().getHospitalLevel()!= ""){
 			sql = sql + "and HOSPITAL_LEVEL='"+item.getHospitalId().getHospitalLevel()+"'";
 		}
-		if(item.getHoId()!= null && item.getHoId().getHoId() != null){
+		if(item.getHoId()!= null && item.getHoId().getHoId() != null && item.getHoId().getHoId() != ""){
 			sql = sql + "and HO_ID= '"+item.getHoId().getHoId()+"'";
 		}
-		if(item.getHoId()!= null && item.getHoId().getMedInsClass() != null){
+		if(item.getHoId()!= null && item.getHoId().getMedInsClass() != null && item.getHoId().getMedInsClass() !=""){
 			sql = sql +"and MED_INS_CLASS='"+item.getHoId().getMedInsClass()+"'";
 		}
-		if(item.getPostalCode()!=null){
+		if(item.getPostalCode()!=null && item.getPostalCode()!= ""){
 			sql = sql + "and POSTALCODE= '"+item.getPostalCode()+"'";
 		}
-		if(item.getLegRepName()!= null){
+		if(item.getLegRepName()!= null && item.getLegRepName()!=""){
 			sql = sql + "and LEG_REP_NAME= '"+item.getLegRepName()+"'";
 		}
-		if(item.getLegRepPhone()!= null){
+		if(item.getLegRepPhone()!= null && item.getLegRepPhone()!=""){
 			sql = sql + "and LEG_REP_PHONE='"+item.getLegRepPhone()+"'";
 		}
-		if(item.getConnName()!= null){
+		if(item.getConnName()!= null && item.getConnName()!= ""){
 			sql = sql + "and CONN_NAME ='"+item.getConnName()+"'";
 		}
-		if(item.getConnPhone()!=null){
+		if(item.getConnPhone()!=null && item.getConnPhone()!= ""){
 			sql = sql + "and CONN_PHONE='"+item.getConnPhone()+"'";
 		}
-		if(item.getConnCell()!= null){
+		if(item.getConnCell()!= null && item.getConnCell()!= ""){
 			sql = sql + "and CONN_CELL = '"+item.getConnCell()+"'";
 		}
-		if(item.getAddr() != null){
+		if(item.getAddr() != null && item.getAddr() != ""){
 			sql = sql +"and ADDR = '"+item.getAddr()+"'";
 		}
 			
@@ -120,7 +121,7 @@ public class DesiMedInsDaoImpl implements DesiMedInsDao {
 		}finally{
 			DBUtil.close(rs, ps, conn);
 		}
-		System.out.println(ans.toString());
+//		System.out.println(ans.toString());
 		return ans;
 		
 	}

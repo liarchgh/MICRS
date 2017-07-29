@@ -36,7 +36,6 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 			ps.setFloat(8, isr.getBootomMon());
 			ps.setFloat(9,isr.getRatio());
 			
-			System.out.println(sql);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -51,30 +50,28 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 	public List<IndiSegRatio> selectIndiSegRatio(IndiSegRatio item) {
 		// TODO Auto-generated method stub
 		List<IndiSegRatio> ans = new ArrayList<IndiSegRatio>();
-		Connection conn = DBUtil.getPreparedStatement();
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
+	
 		String sql = "select * from INDI_SEG_RATIO where 1=1 ";
-		if(item.getId() != null){
+		if(item.getId() != null && item.getId() != ""){
 			sql = sql + " and id =' "+ item.getId()+"'";
 		}
-		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSegID() != null){
-			sql = sql + "and INDI_ SEG_ID ='" + item.getIndiSeg().getIndiSegID() +"'";
+		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSegID() != null && item.getIndiSeg().getIndiSegID() != ""){
+			sql = sql + "and INDI_ SEG_ID = '" +item.getIndiSeg().getIndiSegID()+"'";
 		}
-		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSeg()!= null){
-			sql = sql + "and INDI_ SEG='"+item.getIndiSeg().getIndiSeg()+"'";
+		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSeg() != null && item.getIndiSeg().getIndiSeg()!=""){
+			sql = sql + "and INDI_ SEG = '"+item.getIndiSeg().getIndiSeg()+"'";
 		}
-		if(item.getMedPers()!=null && item.getMedPers().getMedPersNum() != null){
+		
+		if(item.getMedPers()!=null && item.getMedPers().getMedPersNum() != null && item.getMedPers().getMedPersNum() != ""){
 			sql = sql + "and MED_PERS_NUM= '" +item.getMedPers().getMedPersNum()+"'";
 		}
-		if(item.getMedPers()!=null && item.getMedPers().getMedPersClass()!= null){
+		if(item.getMedPers()!=null && item.getMedPers().getMedPersClass()!= null && item.getMedPers().getMedPersClass()!=""){
 			sql = sql + "and MED_PERS_CLASS = '"+item.getMedPers().getMedPersClass()+"'";
 		}
-		if(item.getHospital()!= null && item.getHospital().getHospitalId() != null){
+		if(item.getHospital()!= null && item.getHospital().getHospitalId() != null && item.getHospital().getHospitalId() != ""){
 			sql = sql + "and HOSPITAL_ID='" +item.getHospital().getHospitalId()+"'";
 		}
-		if(item.getHospital()!= null && item.getHospital().getHospitalLevel()!= null){
+		if(item.getHospital()!= null && item.getHospital().getHospitalLevel()!= null && item.getHospital().getHospitalLevel()!= ""){
 			sql = sql + "and HOSPITAL_LEVEL='"+item.getHospital().getHospitalLevel()+"'";
 		}
 		if(item.getTopMon()>0){
@@ -86,29 +83,15 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 		if(item.getRatio()>0){
 			sql = sql + "and RATIO= '"+item.getRatio()+"'";
 		}
-			
+		Connection conn = DBUtil.getPreparedStatement();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
+			System.out.println(sql);
 			while(rs.next()){
-				
-				String id1 = rs.getString(1);
-				String isid = rs.getString(2);
-				String is1 = rs.getString(3);
-				String mpid = rs.getString(4);
-				String mp1 = rs.getString(5);
-				String hi1 = rs.getString(6);
-				String hl = rs.getString(7);
-				Float tm = rs.getFloat(8);
-				Float bm = rs.getFloat(9);
-				Float ro = rs.getFloat(10);
-				
-				IndiSeg i = new IndiSeg(isid,is1);
-				MedPers m = new MedPers(mpid, mp1);
-				HospitalClass h = new HospitalClass(hi1,hl);
-				
-				IndiSegRatio cp = new IndiSegRatio(id1,i,m,h,tm,bm,ro);
-				ans.add(cp);
+				ans.add(new IndiSegRatio(rs.getString(1), new IndiSeg(rs.getString(2), rs.getString(3)), new MedPers(rs.getString(4), rs.getString(5)), new HospitalClass(rs.getString(6),rs.getString(7)), rs.getFloat(8), rs.getFloat(9), rs.getFloat(10)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -116,7 +99,6 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 		}finally{
 			DBUtil.close(rs, ps, conn);
 		}
-		System.out.println(ans.toString());
 		return ans;
 	}
 

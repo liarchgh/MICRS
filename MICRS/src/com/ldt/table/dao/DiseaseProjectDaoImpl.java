@@ -48,10 +48,10 @@ public class DiseaseProjectDaoImpl implements DiseaseProjectDao{
 		ResultSet rs = null;
 		
 		String sql = "select * from DISEASE_PROJECT where 1=1 ";
-		if(item.getDiseaseNum() != null){
+		if(item.getDiseaseNum() != null && item.getDiseaseNum() != ""){
 			sql = sql + " and DISEASE_NUM ='" + item.getDiseaseNum() +"'";
 		}
-		if(item.getDisClass()!= null){
+		if(item.getDisClass()!= null && item.getDisClass()!= ""){
 			sql = sql + "and DIS_CLASS = '"+item.getDisClass()+"'";
 		}
 			

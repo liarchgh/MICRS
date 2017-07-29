@@ -159,18 +159,19 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 					&& item.getDisNum().getDisName() != null && !item.getDisNum().getDisName().equals("")
 					&& item.getOutReason() != null && !item.getOutReason().equals("")){
 			ps = conn.prepareStatement(sql);
-			System.out.println(item.getNum().getUserId());
-			System.out.println(item.getDesiMedIns().getDesiMedInsId());
-			System.out.println(item.getIndiSegId().getIndiSegID());
-			System.out.println(item.getIndiSegId().getIndiSeg());
-			System.out.println(item.getInDate());
-			System.out.println(item.getOutDate());
-			System.out.println(item.getDiseaseProject().getDiseaseNum());
-			System.out.println(item.getHospital().getHospitalId());
-			System.out.println(item.getHospital().getHospitalLevel());
-			System.out.println(item.getDisNum().getDisNum());
-			System.out.println(item.getDisNum().getDisName());
-			System.out.println(item.getOutReason());
+//			System.out.println(item.getNum().getUserId());
+//			System.out.println(item.getDesiMedIns().getDesiMedInsId());
+//			System.out.println(item.getIndiSegId().getIndiSegID());
+//			System.out.println(item.getIndiSegId().getIndiSeg());
+//			System.out.println(item.getInDate());
+//			System.out.println(item.getOutDate());
+//			System.out.println("getDiseaseProject" + item.getDiseaseProject().getDiseaseNum());
+//			System.out.println(item.getHospital().getHospitalId());
+//			System.out.println(item.getHospital().getHospitalLevel());
+//			System.out.println(item.getDisNum().getDisNum());
+//			System.out.println(item.getDisNum().getDisName());
+//			System.out.println(item.getOutReason());
+		
 			ps.setString(1, item.getNum().getUserId());
 			ps.setString(2, item.getDesiMedIns().getDesiMedInsId());
 			ps.setString(3, item.getIndiSegId().getIndiSegID());

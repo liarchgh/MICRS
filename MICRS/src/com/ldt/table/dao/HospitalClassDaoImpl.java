@@ -51,10 +51,10 @@ public class HospitalClassDaoImpl implements HospitalClassDao {
 		// TODO Auto-generated method stub
 		List<HospitalClass> ans = new ArrayList<HospitalClass>();
 		String sql = "select * from HOSPITAL_CLASS where 1=1 ";
-		if(item.getHospitalId() != null){
+		if(item.getHospitalId() != null && item.getHospitalId() != ""){
 			sql = sql + " and HOSPITAL_ID = '" + item.getHospitalId() + "' ";
 		}
-		if(item.getHospitalLevel() != null){
+		if(item.getHospitalLevel() != null && item.getHospitalLevel() != ""){
 			sql = sql + " and HOSPITAL_LEVEL = '" + item.getHospitalLevel() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();

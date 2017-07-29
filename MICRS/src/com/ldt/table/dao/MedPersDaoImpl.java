@@ -11,23 +11,23 @@ import com.ldt.item.entity.MedPers;
 
 public class MedPersDaoImpl implements MedPersDao {
 
-//	public static void main(String[] args) {
-//		MedPersDaoImpl tt = new MedPersDaoImpl();
+	public static void main(String[] args) {
+		MedPersDaoImpl tt = new MedPersDaoImpl();
+		System.out.println(tt.selectMedPers(new MedPers()).toString());
+//		tt.deleteMedPers("2");
 //		System.out.println(tt.selectMedPers(new MedPers()).toString());
-////		tt.deleteMedPers("2");
-////		System.out.println(tt.selectMedPers(new MedPers()).toString());
-//	}
+	}
 	@Override
 	public void insertMedPers(MedPers item) {
 		String sql = "insert into MED_PERS (MED_PERS_NUM, MED_PERS_CLASS) values(MED_PERS_seq.nextval,?)";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
-			if(item.getMedPersClass() != null){
+//			if(item.getMedPersClass() != null){
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getMedPersClass());
 			ps.executeUpdate();
-			}
+//			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,10 +42,10 @@ public class MedPersDaoImpl implements MedPersDao {
 		// TODO Auto-generated method stub
 		List<MedPers> ans = new ArrayList<MedPers>();
 		String sql = "select * from MED_PERS where 1=1 ";
-		if(item.getMedPersNum() != null){
+		if(item.getMedPersNum() != null && item.getMedPersNum() != ""){
 			sql = sql + " and MED_PERS_NUM = '" + item.getMedPersNum() + "' ";
 		}
-		if(item.getMedPersNum() != null){
+		if(item.getMedPersClass() != null && item.getMedPersClass() != ""){
 			sql = sql + " and MED_PERS_CLASS = '" + item.getMedPersClass() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();

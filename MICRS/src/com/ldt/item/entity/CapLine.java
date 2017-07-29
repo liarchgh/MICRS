@@ -1,15 +1,8 @@
 package com.ldt.item.entity;
 
 public class CapLine {
-	private String   id;
 	private  MedPers medpers ;
 	private double  capLine;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	public MedPers getMedpers() {
 		return medpers;
 	}
@@ -24,12 +17,10 @@ public class CapLine {
 	}
 	@Override
 	public String toString() {
-		return "CapLine [id=" + id + ", medpers=" + medpers + ", capLine="
-				+ capLine + "]";
+		return "CapLine [medpers=" + medpers + ", capLine=" + capLine + "]";
 	}
-	public CapLine(String id, MedPers medpers, double capLine) {
+	public CapLine(MedPers medpers, double capLine) {
 		super();
-		this.id = id;
 		this.medpers = medpers;
 		this.capLine = capLine;
 	}
@@ -37,9 +28,6 @@ public class CapLine {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public CapLine(String id) {
-		super();
-		this.id = id;
-	}
+	
 	
 }

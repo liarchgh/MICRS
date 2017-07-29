@@ -42,6 +42,7 @@ public class DrugListDaoImpl implements DrugListDao {
 			ps.setString(9,drug.getHospitalID().getHospitalId());
 			ps.setString(10, drug.getHospitalID().getHospitalLevel());
 			
+			
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -62,13 +63,40 @@ public class DrugListDaoImpl implements DrugListDao {
 		ResultSet rs = null;
 		
 		String sql = "select * from drug_list where 1=1 ";
-		if(item.getMedicineCode() != null){
-			sql = sql + " and medicineCode = '" + item.getMedicineCode() + "'";
+		if(item.getMedicineCode() != null && item.getMedicineCode() != ""){
+			sql = sql + " and medicine_Code = '" + item.getMedicineCode() + "'";
 		}
-		if(item.getMedicineName() != null){
-			sql = sql + " and medicineName = '"+ item.getMedicineName() + "'";
+		if(item.getMedicineName() != null && item.getMedicineName() != ""){
+			sql = sql + " and medicine_Name = '"+ item.getMedicineName() + "'";
 		}
-
+		if(item.getChargeType() != null && item.getChargeType() != "") {
+			sql = sql + "and charge_type = '"+ item.getChargeType() +"'";
+		}
+		if(item.getPrescriptionSign() != null && item.getPrescriptionSign() != "") {
+			sql = sql + "and prescription_sign = '"+item.getPrescriptionSign()+"'";
+		}
+		if(item.getChargeLevel() != null && item.getChargeLevel() != "") {
+			sql = sql + "and charge_level = '"+item.getChargeLevel()+"'";
+		}
+		if(item.getDrugDosageUnit() != null && item.getDrugDosageUnit() != "") {
+			sql = sql + "and drug_dosage_unit = '"+item.getDrugDosageUnit()+"'";
+		}
+		if(item.getPriceCeiling() > 0) {
+			sql = sql + "and  price ceiling = '"+item.getPriceCeiling()+"'";
+		}
+		if(item.getHospitalPreparationMark() != null && item.getHospitalPreparationMark() != "") {
+			sql = sql + "and hospital_preparation_mark = '"+item.getHospitalPreparationMark()+"'";
+		}
+		if(item.getApprovalMarks() != null && item.getApprovalMarks() != "") {
+			sql = sql + "and approval_marks = '"+item.getApprovalMarks()+"'";
+		}
+		if(item.getHospitalID() != null && item.getHospitalID().getHospitalLevel() != null && item.getHospitalID().getHospitalLevel() != "") {
+			sql = sql + "and hospital_level = '"+item.getHospitalID().getHospitalLevel()+"'";
+		}
+		if(item.getHospitalID() != null && item.getHospitalID().getHospitalId() != null && item.getHospitalID().getHospitalId() != "") {
+			sql = sql + "and HOSPITAL_ID = '"+item.getHospitalID().getHospitalId()+"'";
+		}
+			
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

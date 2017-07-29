@@ -25,6 +25,64 @@
 
     <!-- Custom Theme Style -->
     <link href="/MICRS/Manage/build/css/custom.css" rel="stylesheet">
+    
+    <script src="/MICRS/Manage/production/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		$.ajax({
+    					url:"/MICRS/standpay/medper/ajax",
+    					type:"GET",
+    					dataType:"json",
+    					success:function(data){
+    						var str = "";
+    						str = str + "<option></option>";
+    						$(data).each(function(i,mp){
+    							str = str + "<option value="+mp.medPersNum+">"+mp.medPersClass+"</option>";
+    						});
+    						$("#hospi_peo_class").html(str);
+    					},
+    					error:function(){
+    						alert("error");
+    					}
+    			});
+    	});
+    	$(function(){
+    		$.ajax({
+    					url:"/MICRS/standpay/hospitalclass/ajax",
+    					type:"GET",
+    					dataType:"json",
+    					success:function(data){
+    						var str = "";
+    						str = str + "<option></option>";
+    						$(data).each(function(i,hc){
+    							str = str + "<option value="+hc.hospitalId+">"+hc.hospitalLevel+"</option>";
+    						});
+    						$("#hospital_ranks").html(str);
+    					},
+    					error:function(){
+    						alert("error");
+    					}
+    			});
+    	});
+    	$(function(){
+    		$.ajax({
+    					url:"/MICRS/standpay/indiseg/ajax",
+    					type:"GET",
+    					dataType:"json",
+    					success:function(data){
+    						var str = "";
+    						str = str + "<option></option>";
+    						$(data).each(function(i,ilist){
+    							str = str + "<option value="+ilist.indiSegID+">"+ilist.indiSeg+"</option>";
+    						});
+    						$("#institution_type").html(str);
+    					},
+    					error:function(){
+    						alert("error");
+    					}
+    			});
+    	});
+    	 </script>
 </head>
 
 <body class="nav-md">
@@ -213,16 +271,9 @@
                                                     <div class="" style="height: 70px;">
                                                         <div style="float: left;">
                                                             <span>起付标准编号：</span><input type="text" value=""
-                                                                                       class="input-large" name="standpanyid" id="standpanyid"/><br /> <br />
+                                                                                       class="input-large" name="pay_start_id" id="pay_start_id"/><br /> <br />
                                                             <span>医疗人员类别：</span><select
                                                                 id="hospi_peo_class" name="hospi_peo_class" style="height: 25px;width: 173px">
-                                                            <option ></option>
-                                                            <option >医生</option>
-                                                            <option >护士</option>
-                                                            <option >药剂师</option>
-                                                            <option >医技人员</option>
-                                                             <option >主治医师</option>
-                                                         
                                                             
 
                                                         </select>
@@ -230,23 +281,12 @@
                                                         <div id="" style="float: left; margin-left: 30px;">
                                                             <span>医疗类别：</span>
                                                             <select id="institution_type" name="institution_type"  style="height: 25px;width: 170px" >
-                                                                <option ></option>
-                                                                <option >新农合</option>
-                                                                <option >城镇居民医疗</option>
-                                                           
+                                                                
                                                             </select><br />  <br />
                                                             <span>医院等级：</span>
                                                             <select id="hospital_ranks" name="hospital_ranks"  style="height: 25px;width: 170px" >
-                                                                <option ></option>
-                                                                <option >一级</option>
-                                                                <option >二级</option>
-                                                                <option >三级</option>
-                                                                <option >社区医院</option>
+                                                                
                                                             </select>
-
-
-                                                            <span>起付标准：</span><input type="text" value=""
-                                                                                       class="input-large" name="standpay" id="standpay"/><br /> <br />
 
                                                         </div>
                                                         <div class="btn-toolbar"
@@ -285,7 +325,6 @@
 
                                                 </c:forEach>
                                                 </tbody>
-                                                
                                             </table>
 
 
@@ -330,8 +369,6 @@
 <script src="/MICRS/Manage/build/js/custom.min.js"></script>
 <!-- iCheck -->
 <script src="/MICRS/Manage/vendors/iCheck/icheck.min.js"></script>
-
-
 <script src="/MICRS/Manage/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="/MICRS/Manage/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="/MICRS/Manage/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -348,9 +385,5 @@
 <script src="/MICRS/Manage/vendors/pdfmake/build/pdfmake.min.js"></script>
 <script src="/MICRS/Manage/vendors/pdfmake/build/vfs_fonts.js"></script>
 </body>
+
 </html>
-
-
-
-
-

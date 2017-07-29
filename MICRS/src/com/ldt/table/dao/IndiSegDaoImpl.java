@@ -12,7 +12,7 @@ import com.ldt.item.entity.IndiSeg;
 public class IndiSegDaoImpl implements IndiSegDao {
 //	public static void main(String[] args) {
 //		IndiSegDaoImpl tt = new IndiSegDaoImpl();
-//		System.out.println(tt.selectIndiSeg(new IndiSeg(null, "新农合")));
+//		System.out.println(tt.selectStandPay(new IndiSeg()).toString());
 //	}
 
 	@Override
@@ -21,11 +21,11 @@ public class IndiSegDaoImpl implements IndiSegDao {
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
-			if(item.getIndiSeg() != null){
+//			if(item.getIndiSeg() != null){
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getIndiSeg());
 			ps.executeUpdate();
-			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -40,11 +40,11 @@ public class IndiSegDaoImpl implements IndiSegDao {
 		// TODO Auto-generated method stub
 		List<IndiSeg> ans = new ArrayList<IndiSeg>();
 		String sql = "select * from Indi_Seg where 1=1 ";
-		if(item.getIndiSeg() != null){
-			sql = sql + " and INDI_SEG = '" + item.getIndiSeg() + "' ";
+		if(item.getIndiSeg() != null && item.getIndiSeg() != ""){
+			sql = sql + " and Indi_Seg = '" + item.getIndiSeg() + "' ";
 		}
-		if(item.getIndiSegID() != null){
-			sql = sql + " and INDI_SEG_ID = '" + item.getIndiSegID() + "' ";
+		if(item.getIndiSegID() != null && item.getIndiSegID() != ""){
+			sql = sql + " and Indi_Seg_ID = '" + item.getIndiSegID() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;

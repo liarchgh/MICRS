@@ -24,10 +24,10 @@ public class HospitalOrganizationDaoImpl implements HospitalOrganizationDao {
 		// TODO Auto-generated method stub
 		List<HospitalOrganization> ans = new ArrayList<HospitalOrganization>();
 		String sql = "select * from Hospital_Organization where 1=1 ";
-		if(item.getHoId() != null){
+		if(item.getHoId() != null && item.getHoId() != ""){
 			sql = sql + " and HO_ID = '" + item.getHoId() + "' ";
 		}
-		if(item.getMedInsClass() != null){
+		if(item.getMedInsClass() != null && item.getMedInsClass() != ""){
 			sql = sql + " and MED_INS_CLASS = '" + item.getMedInsClass() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();

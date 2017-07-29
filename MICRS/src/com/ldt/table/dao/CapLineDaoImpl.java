@@ -16,7 +16,7 @@ public class CapLineDaoImpl implements CapLineDao{
 	@Override
 	public void insertCapLine(CapLine capline) {
 		// TODO Auto-generated method stub
-		String sql = "insert into cap_line values(cap_line_seq.nextval,?,?,?)";
+		String sql = "insert into cap_line values(?,?,?)";
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		
@@ -47,13 +47,10 @@ public class CapLineDaoImpl implements CapLineDao{
 		ResultSet rs = null;
 		
 		String sql = "select * from cap_line where 1=1 ";
-		if(capline.getId() != null){
-			sql = sql + " and id = '"+ capline.getId()+"'";
-		}
-		if(capline.getMedpers()!= null && capline.getMedpers().getMedPersNum() != null){
+		if(capline.getMedpers()!= null && capline.getMedpers().getMedPersNum() != null && capline.getMedpers().getMedPersNum() != ""){
 			sql = sql + "and INDI_ SEG_ID ='" + capline.getMedpers().getMedPersNum()+"'";
 		}
-		if(capline.getMedpers()!= null &&  capline.getMedpers().getMedPersClass() != null){
+		if(capline.getMedpers()!= null &&  capline.getMedpers().getMedPersClass() != null && capline.getMedpers().getMedPersClass() != ""){
 			sql = sql +"and MED_PERS_CLASS= '"+ capline.getMedpers().getMedPersClass()+"'";
 		}
 		if(capline.getCapLine()>0){
@@ -71,7 +68,7 @@ public class CapLineDaoImpl implements CapLineDao{
 				float cap = rs.getFloat(4);
 				
 				MedPers mp = new MedPers(medid,medname);
-				CapLine cp = new CapLine(id1,mp,cap);
+				CapLine cp = new CapLine(mp,cap);
 				
 				ans.add(cp);
 			}
@@ -88,17 +85,16 @@ public class CapLineDaoImpl implements CapLineDao{
 	@Override
 	public void updateTable(CapLine capline) {
 		// TODO Auto-generated method stub
-		String sql = "update cap_line set INDI_ SEG_ID=? , MED_PERS_CLASS=?,CAP_LINE=?"
-				+ " where ID = ?";
+		String sql = "update cap_line set MED_PERS_CLASS=?,CAP_LINE=?"
+				+ " where INDI_ SEG_ID=?";
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, capline.getMedpers().getMedPersNum());
-			ps.setString(2, capline.getMedpers().getMedPersClass());
-			ps.setDouble(3, capline.getCapLine());
-			ps.setString(4, capline.getId());
+			ps.setString(1, capline.getMedpers().getMedPersClass());
+			ps.setDouble(2, capline.getCapLine());
+			ps.setString(3, capline.getMedpers().getMedPersNum());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -114,7 +110,7 @@ public class CapLineDaoImpl implements CapLineDao{
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
-		String sql = "delete from Cap_Line where id = ?";
+		String sql = "delete from Cap_Line where INDI_ SEG_ID= ?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);

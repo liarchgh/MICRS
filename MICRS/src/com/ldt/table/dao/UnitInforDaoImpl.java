@@ -25,11 +25,11 @@ public class UnitInforDaoImpl implements UnitInforDao {
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
-			if(item.getUnitName() != null
-					&& item.getPhone() != null
-					&& item.getPostcode() != null
-					&& item.getUnitAddr() != null
-					&& item.getUnitType() != null){
+//			if(item.getUnitName() != null
+//					&& item.getPhone() != null
+//					&& item.getPostcode() != null
+//					&& item.getUnitAddr() != null
+//					&& item.getUnitType() != null){
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getUnitName());
 			ps.setString(2, item.getUnitType());
@@ -37,7 +37,7 @@ public class UnitInforDaoImpl implements UnitInforDao {
 			ps.setString(4, item.getPostcode());
 			ps.setString(5, item.getPhone());
 			ps.executeUpdate();
-			}
+//			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,23 +52,23 @@ public class UnitInforDaoImpl implements UnitInforDao {
 		// TODO Auto-generated method stub
 		List<UnitInfor> ans = new ArrayList<UnitInfor>();
 		String sql = "select * from UNIT_INFOR where 1=1 ";
-		if(item.getPhone() != null){
+		if(item.getPhone() != null && item.getPhone() != ""){
 			sql = sql + " and Phone = '" + item.getPhone() + "' ";
 		}
-		if(item.getPostcode() != null){
+		if(item.getPostcode() != null && item.getPostcode() != ""){
 			sql = sql + " and Postcode = '" + item.getPostcode() + "' ";
 		}
-		if(item.getUnitAddr() != null){
-			sql = sql + " and UnitAddr = '" + item.getUnitAddr() + "' ";
+		if(item.getUnitAddr() != null && item.getUnitAddr() != ""){
+			sql = sql + " and Unit_Addr = '" + item.getUnitAddr() + "' ";
 		}
-		if(item.getUnitId() != null){
-			sql = sql + " and UnitId = '" + item.getUnitId() + "' ";
+		if(item.getUnitId() != null && item.getUnitId() != ""){
+			sql = sql + " and Unit_Id = '" + item.getUnitId() + "' ";
 		}
-		if(item.getUnitName() != null){
-			sql = sql + " and UnitName = '" + item.getUnitName() + "' ";
+		if(item.getUnitName() != null && item.getUnitName() != ""){
+			sql = sql + " and Unit_Name = '" + item.getUnitName() + "' ";
 		}
-		if(item.getUnitType() != null){
-			sql = sql + " and UnitType = '" + item.getUnitType() + "' ";
+		if(item.getUnitType() != null && item.getUnitType() != ""){
+			sql = sql + " and Unit_Type = '" + item.getUnitType() + "' ";
 		}
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;

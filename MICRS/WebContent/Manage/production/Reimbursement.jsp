@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.ldt.item.entity.UnitInfor"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +25,7 @@
 
     <!-- Custom Theme Style -->
     <link href="/MICRS/Manage/build/css/custom.min.css" rel="stylesheet">
+
 </head>
 
 <body class="nav-md" style="overflow:hidden">
@@ -361,6 +365,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                                    <input type="submit" value="test">
                                         </form>
                                         <!--<div class="center-block">-->
                                         <!--<span>均为空则查询全部</span>-->
@@ -398,7 +403,7 @@
                                                             onkeyup="value=value.replace(/[^\d]/g,'');"
                                                             onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
                                                             onblur="checkOutpatientNumber()"
-                                                            readonly="readonly" name="num">
+                                                             name="num">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -407,9 +412,8 @@
                                                             <span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="desiMedInsId"
-                                                                   required="required"
-                                                                   class="form-control col-md-7 col-xs-12">
+                                                            <select class="select2_group form-control" name="desiMedIns" id="desiMedIns">
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -418,8 +422,8 @@
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                                             <select class="select2_group form-control" name="indiSegId">
-                                                                <option value="0">城镇居民医疗</option>
-                                                                <option value="1">新农合</option>
+                                                                <option value="2">城镇居民医疗</option>
+                                                                <option value="3">新农合</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -466,11 +470,15 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
                                                                for="last-name">病种名称<span class="required"></span>
                                                         </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="disease"
-                                                                   required="required"
-                                                                   class="form-control col-md-7 col-xs-12">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12" >
+                                                            <select class="select2_group form-control" name="disease" 
+                                                            id="disease">
+                                                            </select>
                                                         </div>
+                                                        <!-- <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <input type="text" name="disease" class="form-control col-md-7 col-xs-12 prescriptionNumber"
+                                                            id="disease" readonly="readonly">
+                                                        </div> -->
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
@@ -478,11 +486,10 @@
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                                             <select class="select2_group form-control" name="hospitalId">
-                                                                <option></option>
-                                                                <option value="0">一级</option>
-                                                                <option value="1">二级</option>
-                                                                <option value="2">三级</option>
-                                                                <option value="3">四级</option>
+                                                                <option value="2">一级</option>
+                                                                <option value="3">二级</option>
+                                                                <option value="4">三级</option>
+                                                                <option value="5">四级</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -492,9 +499,8 @@
                                                                for="last-name">入院诊断疾病名称<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="disNum"
-                                                                   required="required"
-                                                                   class="form-control col-md-7 col-xs-12">
+                                                            <select class="select2_group form-control" name="disNum" id="diseaseInf">
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -507,8 +513,8 @@
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
                                                     </div>
+                                                    <input type="submit" value="test">
                                                 </form>
-                                                <button onclick="test()">SSS</button>
                                                 <div style="position: absolute; width: 54; left: 50%; margin-left: -(54/2);">
                                                     <button class="buttonNext btn btn-success"
                                                             onclick="clearTable(this)">重置
@@ -531,15 +537,15 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                             <div class="x_panel">
-                                                <form class="form-horizontal form-label-left" action="/MICRS/Insert/PrescriptionDetail"
-                                                      onkeyup="calculatePrice(this)" target="nm_iframe">
+                                                <form class="form-horizontal form-label-left TestForm" action="/MICRS/Insert/PrescriptionDetail"
+                                                      onkeyup="calculatePrice(this)" target="nm_iframe" method="post">
 
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
                                                                for="first-name"> 住院号（门诊号）
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" required="required"
+                                                            <input type="text" name="OUTPATIENT_NUM"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
                                                     </div>
@@ -548,8 +554,7 @@
                                                                for="last-name">项目编码
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
-                                                                   required="required"
+                                                            <input type="text" id="last-name" name="MEDICINE_CODE"
                                                                    class="form-control col-md-7 col-xs-12">
                                                         </div>
                                                     </div>
@@ -558,7 +563,7 @@
                                                                for="last-name">单价
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" required="required"
+                                                            <input type="text" name="PRICE"
                                                                    class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice"
                                                                    onkeyup="checkPrompt()"/>
                                                         </div>
@@ -568,7 +573,7 @@
                                                                for="last-name">数量<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" required="required"
+                                                            <input type="text" name="NUMBER"
                                                                    class="form-control col-md-7 col-xs-12 prescriptionNumber"
                                                                    onKeyUp="value=value.replace(/[^\d]/g,'');"
                                                                    onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
@@ -579,82 +584,25 @@
                                                                for="last-name">金额<span class="required"></span>
                                                         </label>
                                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="number" required="required"
+                                                            <input type="number" name="ACCOUNT"
                                                                    class="form-control col-md-7 col-xs-12 prescriptionPrice"
                                                                    readonly="readonly">
                                                         </div>
                                                     </div>
+                                                    <input type="submit" value="test">
                                                 </form>
                                             </div>
                                         </div>
-                                        <div class="x_panel PrescriptionTable" style="display:block">
-                                            <div class="x_title">
-                                                <h2 style="font-size:150%">处方信息</h2>
-                                                <!--<span style="color: #959595;font-size: x-small;position:absolute;top:25px;right:640px;">填写完成后请点击下一步</span>-->
-                                                <div class="clearfix"></div>
-                                            </div>
+                                        <div class="x_panel PrescriptionTable">
                                             <div class="x_panel">
-                                                <form class="form-horizontal form-label-left" action="/MICRS/Insert/PrescriptionDetail"
-                                                      onkeyup="calculatePrice(this)" target="nm_iframe">
-
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-                                                               for="first-name"> 住院号（门诊号）<span class="required"></span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="first-name" required="required"
-                                                                   class="form-control col-md-7 col-xs-12">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-                                                               for="last-name">项目编码<span class="required"></span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" id="last-name" name="last-name"
-                                                                   required="required"
-                                                                   class="form-control col-md-7 col-xs-12">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-                                                               for="last-name">单价<span class="required"></span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" required="required"
-                                                                   class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice"
-                                                                   onkeyup="checkPrompt()"/>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-                                                               for="last-name">数量<span class="required"></span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" required="required"
-                                                                   class="form-control col-md-7 col-xs-12 prescriptionNumber"
-                                                                   onKeyUp="value=value.replace(/[^\d]/g,'');"
-                                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-                                                               for="last-name">金额<span class="required"></span>
-                                                        </label>
-                                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="number" required="required"
-                                                                   class="form-control col-md-7 col-xs-12 prescriptionPrice"
-                                                                   readonly="readonly">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
                                         <div>
                                             <a href="#" class="buttonNext btn btn-success"
                                                style="position: absolute;right:200px;left:200px;"
                                                onclick="addPrescriptionTable()">添加一张</a>
                                         </div>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
                                     <div id="step-4">
                                         <h2 class="StepTitle" >预报销（此时仅显示，不报销，报销请点击按钮）</h2>
@@ -674,44 +622,45 @@
                                             <!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 112px;">Salary</th></tr>-->
                                             <!--</thead>-->
                                             <!--费用总额、报销金额、自费金额、年度累计报销金额、起付标准、分段计算中自费金额、报销封顶线、乙类项目自费金额、特检特治自费金额-->
-                                            <tbody>
+                                            <tbody id="preTable">
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">费用总额</td>
-                                                <td>$162,700</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="even">
                                                 <td class="sorting_1">报销金额</td>
-                                                <td>$1,200,000</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">自费金额</td>
-                                                <td>$86,000</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="even">
                                                 <td class="sorting_1">年度累计报销金额</td>
-                                                <td>$132,000</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">起付标准</td>
-                                                <td>$206,850</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="even">
                                                 <td class="sorting_1">分段计算中自费金额</td>
-                                                <td>$372,000</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">报销封顶线</td>
-                                                <td>$163,500</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="even">
                                                 <td class="sorting_1">乙类项目自费金额</td>
-                                                <td>$106,450</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tr>
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1">特检特治自费金额</td>
-                                                <td>$145,600</td>
+                                                <td>￥<span>162,700</span></td>
                                             </tbody>
                                          </table>
+                                         <button onclick="test()">SSS</button>
                                         <!--endprint1-->
                                         <div>
                                         <a href="#" class="buttonNext btn btn-success" style="position: absolute;right:400px;left:400px" onclick="preview(1)">打印</a>
@@ -838,12 +787,16 @@
     $(function () {
         var buttonFinish = document.getElementsByClassName("buttonFinish buttonDisabled btn btn-default")[0];
         buttonFinish.onclick = function () {
+            window.location.href = "index.html";
+        };
+        var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[0];
+        buttonNext.onclick = function () {
+        	if(disabled)
             var forms = document.getElementsByTagName("form");
             alert(forms.length);
             for (var i = 1; i < forms.length; ++i) {
                 forms[i].submit(true);
             }
-            window.location.href = "index.html";
         };
     });
     function checkDate() {
@@ -886,11 +839,88 @@
         newWin.print();
 //        window.document.body.innerHTML=bdhtml;
     }
-    function test(){
-    	alert('s');
-    	var form = document.getElementById('PersMedInforForm');
-    	form.submit(true);
+    function changeDis(){
+    alert("is");
+        var now;
+    	var dis = document.getElementById("disease");
+    	var all = now.childNodes;
+        var index = now.selectedIndex;
+    alert(index);
+    	dis.value = all[index].diease;
     }
+    function test(){
+    	var forms = document.getElementsByTagName("form");
+    	//alert(forms.length);
+    	//获取处方信息
+		for(var i = 2; i < forms.length; ++i){
+			var ins = forms[i].getElementsByTagName("input");
+			for(var j = 0; j < ins.length; ++j){
+				ins[j].value;
+			}
+		}
+    	
+    	var ins1 = forms[1].getElementsByTagName("input");
+		var ins2 = forms[1].getElementsByTagName("select");
+		for(var i = 0; i < ins2.length; ++i){
+			alert(ins2.length);
+		}
+
+    	//获取预处理表格
+		var preTable = document.getElementById("preTable");
+		var spans = preTable.getElementsByTagName("span");
+		for(var i = 0; i < spans.length; ++i){
+			spans[i].innerHTML = i * 400;
+		}
+    }
+</script>    
+<script>
+$(function(){
+	$.ajax({
+		url:"/MICRS/DiseaseInformation/Ajax",
+		type:"GET",
+		dataType:"json",
+		success:function(data){
+			var str = "";
+			$(data).each(function(i,diseaseInformation){
+				str = str + "<option value="+diseaseInformation.disNum+ " diease=" + diseaseInformation.diseaseNum.disClass +" >"+diseaseInformation.disName+"</option>";
+			});
+			$("#diseaseInf").html(str);
+		},
+		error:function(){
+			alert("error");
+		}
+});
+	$.ajax({
+		url:"/MICRS/DiseaseProject/Ajax",
+		type:"GET",
+		dataType:"json",
+		success:function(data){
+			var str = "";
+			$(data).each(function(i,diseaseProject){
+				str = str + "<option value="+diseaseProject.diseaseNum+">"+diseaseProject.disClass+"</option>";
+			});
+			$("#disease").html(str);
+		},
+		error:function(){
+			alert("error");
+		}
+});
+	$.ajax({
+				url:"/MICRS/DesiMedIns/Ajax",
+				type:"GET",
+				dataType:"json",
+				success:function(data){
+					var str = "";
+					$(data).each(function(i,desiMedInss){
+						str = str + "<option value="+desiMedInss.desiMedInsId+">"+desiMedInss.serviceName+"</option>";
+					});
+					$("#desiMedIns").html(str);
+				},
+				error:function(){
+					alert("error");
+				}
+		});
+});
 </script>
 </body>
 

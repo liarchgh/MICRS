@@ -30,10 +30,10 @@ PersonalCostInformationDao {
 		// TODO Auto-generated method stub
 		List<PersonalCostInformation> ans = new ArrayList<PersonalCostInformation>();
 		String sql = "select * from PERSONAL_COST_INFORMATION where 1=1 ";
-		if(item.getUser() != null && item.getUser().getUserId() != null){
+		if(item.getUser() != null && item.getUser().getUserId() != null && item.getUser().getUserId() != ""){
 			sql = sql + " and USER_ID = '" + item.getUser().getUserId() + "' ";
 		}
-		if(item.getTime() != null){
+		if(item.getTime() != null && item.getTime() != ""){
 			sql = sql + " and TIME = '" + item.getTime() + "' ";
 		}
 		if(item.getTimes() > 0){

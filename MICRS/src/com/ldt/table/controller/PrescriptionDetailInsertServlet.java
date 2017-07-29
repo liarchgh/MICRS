@@ -1,11 +1,17 @@
 package com.ldt.table.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ldt.item.entity.Drug;
+import com.ldt.item.entity.PrescriptionDetail;
+import com.ldt.table.dao.DrugListDaoImpl;
 
 /**
  * Servlet implementation class PrescriptionDetailInsertServlet
@@ -17,8 +23,39 @@ public class PrescriptionDetailInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		System.out.println("SS1");
+		String outpatientNum = request.getParameter("OUTPATIENT_NUM");
+		String medicineCode = request.getParameter("MEDICINE_CODE");
+		String Price = request.getParameter("PRICE");
+		String Total = request.getParameter("NUMBER");
+		String Account = request.getParameter("ACCOUNT");
+		
+		System.out.println("SS2");
+		Drug drug = null;
+		if(medicineCode!=null && !medicineCode.equals("")) {
+			List<Drug> temp = new DrugListDaoImpl().selectDrug(new Drug(medicineCode, null));
+			if(!temp.isEmpty()) {
+				drug = temp.get(0);
+			}
+		}
+		System.out.println("SS3");
+		float price = 0;
+		if(Price!=null && !Price.equals("")){
+			price = Float.parseFloat(Price);
+		}
+		int total = 0;
+		if(Total!=null && !Total.equals("")){
+			total = Integer.parseInt(Total);
+		}
+		float account = 0;
+		if(Account!=null && !Account.equals("")){
+			account = Float.parseFloat(Account);
+		}
+
+		System.out.println("SS4");
+		PrescriptionDetail pp = new PrescriptionDetail(outpatientNum, drug,
+				price, total, account);
+		System.out.println(pp);
 	}
 
 	/**
