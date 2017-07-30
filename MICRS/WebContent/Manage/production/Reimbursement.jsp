@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.ldt.item.entity.UnitInfor"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -753,8 +752,7 @@
 	<!--</script>-->
 	<script>
 		function calculatePrice(tar) {
-			var unitPrice = (tar
-					.getElementsByClassName("prescriptionUnitPrice"))[0];
+			var unitPrice = (tar.getElementsByClassName("prescriptionUnitPrice"))[0];
 			var num = (tar.getElementsByClassName("prescriptionNumber"))[0];
 			var price = (tar.getElementsByClassName("prescriptionPrice"))[0];
 			//        alert(this.typeName);
@@ -784,27 +782,53 @@
 			now.parentNode.previousSibling.previousSibling.reset();
 		}
 		$(function() {
-			var buttonFinish = document.getElementsByClassName("buttonFinish buttonDisabled btn btn-default")[0];
+			var buttonFinish = document
+					.getElementsByClassName("buttonFinish buttonDisabled btn btn-default")[0];
 			buttonFinish.onclick = function() {
-				window.location.href = "index.html";
-			};
-			var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
-			alert(buttonNext.innerHTML);
-			buttonNext.onclick = function() {
-				setTimeout("setNext3()", 5000);
-			};
-		});
-		function setNext3(){
-				alert("next3");
- 				var forms = document.getElementsByTagName("form");
-				for (var i = 1; i < forms.length; ++i) {
-					forms[i].submit(true);
-					var ins = forms[i].getElementsByTagName("input");
-					for(var j = 0; j < ins.length; ++j){
-						ins[j].readonly = "readonly";
+				$.ajax({
+					url : "/MICRS/CenterWork/Do?midId="+forms[1].getElementsByTagName("input")[0].value,
+					type : "GET",
+					dataType : "json",
+					success : function(data) {
+						alert("json");
+						$(data).each(function(i, dd) {
+						});
+					},
+					error : function() {
+						alert("error");
 					}
+				});
+				window.location.href = "/MICRS/Manage/production/index.html";
+			};
+			var buttonNext = document
+					.getElementsByClassName("buttonNext btn btn-success")[3];
+			buttonNext.onclick = function() {
+				var step = document.getElementsByClassName("selected");
+				if(step[0].rel=="3"){
+					var forms = document.getElementsByTagName("form");
+					for (var i = 2; i < forms.length; ++i) {
+						forms[i].submit(true);
+					}
+					//.getElementsByTagName("input")[0].value
+					$.ajax({
+						url : "/MICRS/CenterWork/Pre?midId="+forms[1].getElementsByTagName("input")[0].value,
+						type : "GET",
+						dataType : "json",
+						success : function(data) {
+							alert("json");
+							$(data).each(function(i, dd) {
+								var preTable = document.getElementById("preTable");
+								var spans = preTable.getElementsByTagName("span");
+								spans[i].innerHTML = dd;
+							});
+						},
+						error : function() {
+							alert("error");
+						}
+					});
 				}
-		}
+			}
+		});
 		function checkDate() {
 			var date1 = document.getElementById("inDate").value;
 			var date2 = document.getElementById("outDate").value;
@@ -843,37 +867,12 @@
 			//        window.document.body.innerHTML=bdhtml;
 		}
 		function changeDis() {
-			alert("is");
 			var now;
 			var dis = document.getElementById("disease");
 			var all = now.childNodes;
 			var index = now.selectedIndex;
-			alert(index);
+			//alert(index);
 			dis.value = all[index].diease;
-		}
-		function test() {
-			var forms = document.getElementsByTagName("form");
-			//alert(forms.length);
-			//获取处方信息
-			for (var i = 2; i < forms.length; ++i) {
-				var ins = forms[i].getElementsByTagName("input");
-				for (var j = 0; j < ins.length; ++j) {
-					ins[j].value;
-				}
-			}
-
-			var ins1 = forms[1].getElementsByTagName("input");
-			var ins2 = forms[1].getElementsByTagName("select");
-			for (var i = 0; i < ins2.length; ++i) {
-				alert(ins2.length);
-			}
-
-			//获取预处理表格
-			var preTable = document.getElementById("preTable");
-			var spans = preTable.getElementsByTagName("span");
-			for (var i = 0; i < spans.length; ++i) {
-				spans[i].innerHTML = i * 400;
-			}
 		}
 	</script>
 	<script>

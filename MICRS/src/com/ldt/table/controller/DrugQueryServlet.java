@@ -46,17 +46,16 @@ public class DrugQueryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
 		
-		System.out.println("已跳转");
+//		System.out.println("已跳转");
 		String drugid = request.getParameter("drugid");
 		String drugname = request.getParameter("drugname");
 		
 		
 		DrugListDao did = new DrugListDaoImpl();
-		System.out.println(drugid+"src");
-		System.out.println(drugname+"src");
+//		System.out.println(drugid+"src");
+//		System.out.println(drugname+"src");
 		List<Drug> d= did.selectDrug(new Drug(drugid, drugname, null, null, null, null, 0f, null, null, new HospitalClass(null, null)));
-		System.out.println(d.toString());
-		System.out.println(d.size());
+
 		
 		request.setAttribute("druglist", d);
 		request.getRequestDispatcher("/Manage/production/drug_query.jsp").forward(request, response);

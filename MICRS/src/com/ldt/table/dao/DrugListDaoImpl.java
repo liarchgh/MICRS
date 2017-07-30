@@ -102,11 +102,14 @@ public class DrugListDaoImpl implements DrugListDao {
 			rs = ps.executeQuery();
 			while(rs.next()){
 				
-				String hl = rs.getString(11);
-				String hi = rs.getString(10);
+				String hl = rs.getString(10);
+				String hi = rs.getString(9);
 				HospitalClass hc = new HospitalClass(hi,hl);
 				
-				ans.add(new Drug(rs.getString(1), rs.getString(2),rs.getString(3),rs.getString(4), rs.getString(5), rs.getString(6), rs.getFloat(7), rs.getString(8), rs.getString(9), hc));
+				ans.add(new Drug(rs.getString(0), rs.getString(1), rs.getString(2),
+						rs.getString(3), rs.getString(4), rs.getString(5),
+						Float.parseFloat(rs.getString(6)), rs.getString(7),
+						rs.getString(8), hc));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -114,6 +117,7 @@ public class DrugListDaoImpl implements DrugListDao {
 		}finally{
 			DBUtil.close(rs, ps, conn);
 		}
+		System.out.println(ans);
 		return ans;
 	}
 

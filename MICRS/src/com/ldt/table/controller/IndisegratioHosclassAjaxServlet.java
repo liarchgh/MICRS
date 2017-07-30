@@ -15,7 +15,6 @@ import com.ldt.table.dao.HospitalClassDao;
 import com.ldt.table.dao.HospitalClassDaoImpl;
 
 import net.sf.json.JSONArray;
-import sun.awt.RepaintArea;
 
 /**
  * Servlet implementation class IndisegratioHosclassAjaxServlet
