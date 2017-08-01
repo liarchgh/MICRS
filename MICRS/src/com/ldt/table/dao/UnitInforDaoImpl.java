@@ -25,11 +25,11 @@ public class UnitInforDaoImpl implements UnitInforDao {
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
-//			if(item.getUnitName() != null
-//					&& item.getPhone() != null
-//					&& item.getPostcode() != null
-//					&& item.getUnitAddr() != null
-//					&& item.getUnitType() != null){
+		/*if(item.getUnitName() != null
+					&& item.getPhone() != null
+					&& item.getPostcode() != null
+					&& item.getUnitAddr() != null
+					&& item.getUnitType() != null){*/
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item.getUnitName());
 			ps.setString(2, item.getUnitType());
@@ -37,7 +37,7 @@ public class UnitInforDaoImpl implements UnitInforDao {
 			ps.setString(4, item.getPostcode());
 			ps.setString(5, item.getPhone());
 			ps.executeUpdate();
-//			}
+	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

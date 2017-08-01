@@ -11,34 +11,12 @@ public class PersMedInfor {
 		private HospitalClass   hospital;
 		private DiseaseInformation   disNum;
 		private String   outReason;
+		private String   mark;
 		public String getOutpatientNum() {
 			return outpatientNum;
 		}
-		public PersMedInfor() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
-		public PersMedInfor(String outpatientNum, PersonInformation num, DesiMedIns desiMedIns, IndiSeg indiSegId,
-				String inDate, String outDate, DiseaseProject diseaseProject, HospitalClass hospital,
-				DiseaseInformation disNum, String outReason) {
-			super();
+		public void setOutpatientNum(String outpatientNum) {
 			this.outpatientNum = outpatientNum;
-			this.num = num;
-			this.desiMedIns = desiMedIns;
-			this.indiSegId = indiSegId;
-			this.inDate = inDate;
-			this.outDate = outDate;
-			this.diseaseProject = diseaseProject;
-			this.hospital = hospital;
-			this.disNum = disNum;
-			this.outReason = outReason;
-		}
-		@Override
-		public String toString() {
-			return "PersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num + ", desiMedIns=" + desiMedIns
-					+ ", indiSegId=" + indiSegId + ", inDate=" + inDate + ", outDate=" + outDate + ", diseaseProject="
-					+ diseaseProject + ", hospital=" + hospital + ", disNum=" + disNum + ", outReason=" + outReason
-					+ "]";
 		}
 		public PersonInformation getNum() {
 			return num;
@@ -94,7 +72,40 @@ public class PersMedInfor {
 		public void setOutReason(String outReason) {
 			this.outReason = outReason;
 		}
-		public void setOutpatientNum(String outpatientNum) {
-			this.outpatientNum = outpatientNum;
+		public String getMark() {
+			return mark;
 		}
+		public void setMark(String mark) {
+			this.mark = mark;
+		}
+		public PersMedInfor(String outpatientNum, PersonInformation num, DesiMedIns desiMedIns, IndiSeg indiSegId,
+				String inDate, String outDate, DiseaseProject diseaseProject, HospitalClass hospital,
+				DiseaseInformation disNum, String outReason, String mark) {
+			super();
+			this.outpatientNum = outpatientNum;
+			this.num = num;
+			this.desiMedIns = desiMedIns;
+			this.indiSegId = indiSegId;
+			this.inDate = inDate;
+			this.outDate = outDate;
+			this.diseaseProject = diseaseProject;
+			this.hospital = hospital;
+			this.disNum = disNum;
+			this.outReason = outReason;
+			this.mark = mark;
+		}
+		public PersMedInfor() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		@Override
+		public String toString() {
+			return "PersMedInfor [outpatientNum=" + outpatientNum + ", num=" + num + ", desiMedIns=" + desiMedIns
+					+ ", indiSegId=" + indiSegId + ", inDate=" + inDate + ", outDate=" + outDate + ", diseaseProject="
+					+ diseaseProject + ", hospital=" + hospital + ", disNum=" + disNum + ", outReason=" + outReason
+					+ ", mark=" + mark + "]";
+		}
+		
+		
+		
 }

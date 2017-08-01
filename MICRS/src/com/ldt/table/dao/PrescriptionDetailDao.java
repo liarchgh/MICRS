@@ -8,5 +8,5 @@ public interface PrescriptionDetailDao {
 	public List<PrescriptionDetail> selectPrescriptionDetail(PrescriptionDetail item);
 	public void insertPrescriptionDetail(PrescriptionDetail item);
 	public void updatePrescriptionDetail(PrescriptionDetail item);
-	public void deleteHospitalOrganization(String id);
+	public void deleteHospitalOrganization(String id, String no);
 }

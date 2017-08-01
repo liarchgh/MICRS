@@ -43,14 +43,12 @@ public class StrucQueryServlet extends HttpServlet {
 		String strucranks = request.getParameter("strucranks");
 		String institution_name = request.getParameter("institution_name");
 		String institution_types = request.getParameter("institution_types");
-		System.out.println(strucranks + "~~ss~");
-		System.out.println(institution_types + "ss");
+//		System.out.println(strucranks + "+@");
+//		System.out.println(institution_types + "+@");
+//		System.out.println(strucid + "+@");
+//		System.out.println(institution_name + "+@");
 		
 		DesiMedInsDao dmid = new DesiMedInsDaoImpl();
-//		System.out.println(strucid+"111");
-//		System.out.println(strucranks+"111");
-//		System.out.println(institution_name+"111");
-//		System.out.println(institution_type+"111");
 		HospitalClassDao hco = new HospitalClassDaoImpl();
 		HospitalClass h = new HospitalClass();
 		if(strucranks!=null && !strucranks.equals("")){

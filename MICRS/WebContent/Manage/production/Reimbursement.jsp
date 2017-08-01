@@ -211,7 +211,7 @@
 										</ul>
 										<div id="step-1">
 											<form class="form-horizontal form-label-left" id="userQuery"
-												action="https://www.bing.com/" onsubmit="return postForm()">
+												action="/MICRS/perscost/connect/query" onsubmit="return postForm()">
 
 												<div class="form-group">
 													<label
@@ -219,7 +219,7 @@
 														for="first-name">报销人员ID：<span class="required">可为空</span>
 													</label>
 													<div class="col-md-6 col-sm-6 col-xs-12">
-														<input type="text" class="form-control col-md-7 col-xs-12">
+														<input type="text" class="form-control col-md-7 col-xs-12" name="qManId">
 													</div>
 												</div>
 												<div class="form-group">
@@ -228,7 +228,7 @@
 														for="last-name">报销人员姓名：<span class="required">可为空</span>
 													</label>
 													<div class="col-md-6 col-sm-6 col-xs-12">
-														<input type="text" class="form-control col-md-7 col-xs-12">
+														<input type="text" class="form-control col-md-7 col-xs-12" name="qName">
 													</div>
 												</div>
 												<div class="form-group">
@@ -265,33 +265,70 @@
 													</div>
 													<div class="row">
 														<div class="col-sm-12">
+														<form>
 															<table
 																class="table table-striped projects  dataTable no-footer"
 																id="datatable" role="grid"
 																aria-describedby="datatable_info">
 																<thead>
+																<!-- 姓名、公民身份号码、性别、
+																出生日期、医疗人员类别、单位编号、
+																单位名称、本年住院次数、本年中心报销累计、
+																本年个人自费累计、本年医疗费用累计 -->
 																	<tr role="row">
 																		<th style="width: 140px;" class="sorting_asc"
 																			tabindex="0" aria-controls="datatable" rowspan="1"
 																			colspan="1" aria-sort="ascending"
-																			aria-label="用户编号: activate to sort column descending">
-																			用户编号</th>
+																			aria-label="姓名: activate to sort column descending">
+																			姓名</th>
 																		<th style="width: 140px;" class="sorting" tabindex="0"
 																			aria-controls="datatable" rowspan="1" colspan="1"
-																			aria-label="用户姓名: activate to sort column ascending">
-																			用户姓名</th>
+																			aria-label="公民身份号码: activate to sort column ascending">
+																			公民身份号码</th>
 																		<th style="width: 88px;" class="sorting" tabindex="0"
 																			aria-controls="datatable" rowspan="1" colspan="1"
-																			aria-label="用户性别: activate to sort column ascending">
-																			用户性别</th>
-																		<th class="sorting" tabindex="0"
+																			aria-label="性别: activate to sort column ascending">
+																			性别</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
 																			aria-controls="datatable" rowspan="1" colspan="1"
-																			aria-label="医疗人员类别: activate to sort column ascending"
-																			style="width: 111px;">医疗人员类别</th>
-																		<th class="sorting" tabindex="0"
+																			aria-label="出生日期: activate to sort column ascending">
+																			出生日期</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
 																			aria-controls="datatable" rowspan="1" colspan="1"
-																			aria-label="社保卡号: activate to sort column ascending"
-																			style="width: 173px;">社保卡号</th>
+																			aria-label="医疗人员类别: activate to sort column ascending">
+																			医疗人员类别</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="单位编号: activate to sort column ascending">
+																			单位编号</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="单位名称: activate to sort column ascending">
+																			单位名称</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="本年住院次数: activate to sort column ascending">
+																			本年住院次数</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="上次出院时间: activate to sort column ascending">
+																			上次出院时间</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="上次出院诊断: activate to sort column ascending">
+																			上次出院诊断</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="本年中心报销累计: activate to sort column ascending">
+																			本年中心报销累计</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="本年个人自费累计: activate to sort column ascending">
+																			本年个人自费累计</th>
+																		<th style="width: 88px;" class="sorting" tabindex="0"
+																			aria-controls="datatable" rowspan="1" colspan="1"
+																			aria-label="本年医疗费用累计: activate to sort column ascending">
+																			本年医疗费用累计</th>
 																		<th style="width: 297px;" class="sorting" tabindex="0"
 																			aria-controls="datatable" rowspan="1" colspan="1"
 																			aria-label="选择: activate to sort column ascending">
@@ -299,18 +336,17 @@
 																	</tr>
 																</thead>
 																<tbody>
-
-																	<tr role="row" class="odd">
-																		<td class="sorting_1">1</td>
-																		<td>张三</td>
-																		<td>男</td>
-																		<td>在职</td>
-																		<td>00000000000000000</td>
-																		<td><label><input name="Fruit"
-																				type="radio" value="" /> </label></td>
-																	</tr>
+							                                        <c:forEach items = "${requestScope.list}" var="px">
+							                                        <tr>
+							                                        <c:forEach items = "${px}" var="pp" begin="0" end="12" step="1" varStatus="var">
+							                                            <td>${pp}</td>
+							                                        </c:forEach>
+							                                        <td><label><input type="radio" name="one" onclick="setManId(${px[13]})"></label></td>
+							                                        </tr>
+							                                        </c:forEach>
 																</tbody>
 															</table>
+															</form>
 														</div>
 													</div>
 													<div class="row">
@@ -354,8 +390,7 @@
 												</div>
 												<div class="x_content">
 													<form class="form-horizontal form-label-left SubmitForm"
-														target="nm_iframe" action="/MICRS/Insert/PersMedInfor"
-														onsubmit="return postForm()">
+														target="nm_iframe" action="/MICRS/Insert/PersMedInforT">
 
 														<div class="form-group">
 															<label
@@ -366,8 +401,7 @@
 																<input type="text" id="outpatientNumber"
 																	class="form-control col-md-7 col-xs-12 prescriptionNumber"
 																	onkeyup="value=value.replace(/[^\d]/g,'');"
-																	onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
-																	onblur="checkOutpatientNumber()" placeholder="请输入9位数字"
+																	onblur="checkOutpatientNumber();setClinicNumber(this);" placeholder="请输入9位数字"
 																	name="outpatientNum">
 															</div>
 															<span id="outNumS" class="warning"></span>
@@ -378,10 +412,9 @@
 																for="last-name">人员ID<span class="required"></span>
 															</label>
 															<div class="col-md-6 col-sm-6 col-xs-12">
-																<input type="text"
+																<input type="text" id="manId" readonly="readonly"
 																	class="form-control col-md-7 col-xs-12 prescriptionNumber"
 																	onkeyup="value=value.replace(/[^\d]/g,'');"
-																	onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))"
 																	onblur="checkOutpatientNumber()" name="num">
 															</div>
 														</div>
@@ -453,37 +486,6 @@
 														<div class="form-group">
 															<label
 																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-																for="last-name">病种名称<span class="required"></span>
-															</label>
-															<div class="col-md-6 col-sm-6 col-xs-12">
-																<select class="select2_group form-control"
-																	name="disease" id="disease">
-																</select>
-															</div>
-															<!-- <div class="col-md-6 col-sm-6 col-xs-12">
-                                                            <input type="text" name="disease" class="form-control col-md-7 col-xs-12 prescriptionNumber"
-                                                            id="disease" readonly="readonly">
-                                                        </div> -->
-														</div>
-														<div class="form-group">
-															<label
-																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-																for="last-name">医院等级<span class="required"></span>
-															</label>
-															<div class="col-md-6 col-sm-6 col-xs-12">
-																<select class="select2_group form-control"
-																	name="hospitalId">
-																	<option value="2">一级</option>
-																	<option value="3">二级</option>
-																	<option value="4">三级</option>
-																	<option value="5">四级</option>
-																</select>
-															</div>
-														</div>
-
-														<div class="form-group">
-															<label
-																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
 																for="last-name">入院诊断疾病名称<span class="required"></span>
 															</label>
 															<div class="col-md-6 col-sm-6 col-xs-12">
@@ -498,16 +500,16 @@
 																for="last-name">出院原因<span class="required"></span>
 															</label>
 															<div class="col-md-6 col-sm-6 col-xs-12">
-																<input type="text" id="last-name" name="outReason"
+																<textarea id="last-name" name="outReason"
 																	required="required"
-																	class="form-control col-md-7 col-xs-12">
+																	class="form-control col-md-7 col-xs-12"></textarea>
 															</div>
 														</div>
-														<input type="submit" value="test">
+														<!-- <input type="submit" value="test"> -->
 													</form>
 													<div
 														style="position: absolute; width: 54; left: 50%; margin-left: -(54/2);">
-														<button class="buttonNext btn btn-success"
+														<button class="buttonNext btn btn-success banned"
 															onclick="clearTable(this)">重置</button>
 													</div>
 												</div>
@@ -533,11 +535,11 @@
 
 														<div class="form-group">
 															<label
-																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
+																class="control-label col-md-3 col-sm-3 col-xs-12 formTag "
 																for="first-name"> 住院号（门诊号） </label>
 															<div class="col-md-6 col-sm-6 col-xs-12">
-																<input type="text" name="OUTPATIENT_NUM"
-																	class="form-control col-md-7 col-xs-12">
+																<input type="text" name="OUTPATIENT_NUM" readonly="readonly"
+																	class="form-control col-md-7 col-xs-12 clinicNumber">
 															</div>
 														</div>
 														<div class="form-group">
@@ -567,8 +569,7 @@
 															<div class="col-md-6 col-sm-6 col-xs-12">
 																<input type="text" name="NUMBER"
 																	class="form-control col-md-7 col-xs-12 prescriptionNumber"
-																	onKeyUp="value=value.replace(/[^\d]/g,'');"
-																	onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))">
+																	onKeyUp="value=value.replace(/[^\d]/g,'');">
 															</div>
 														</div>
 														<div class="form-group">
@@ -582,17 +583,16 @@
 																	readonly="readonly">
 															</div>
 														</div>
-														<input type="submit" value="test">
+														<!-- <input type="submit" value="test"> -->
 													</form>
 												</div>
 											</div>
 											<div class="x_panel PrescriptionTable">
 												<div class="x_panel">
-													<div>
-														<a href="#" class="buttonNext btn btn-success"
-															style="position: absolute; right: 200px; left: 200px;"
-															onclick="addPrescriptionTable()">添加一张</a>
+													<div style="position: absolute; width: 54; left: 50%; margin-left: -(54/2);">
+														<button class="buttonNext btn btn-success banned" onclick="addPrescriptionTable(this)">添加一张</button>
 													</div>
+														
 												</div>
 											</div>
 
@@ -602,20 +602,20 @@
 											<!--startprint1-->
 											<iframe id="id_iframe" name="nm_iframe"
 												style="display: none;"></iframe>
-											<table
+											<!-- <table
 												class="table table-striped table-bordered dataTable no-footer"
 												role="grid" aria-describedby="datatable_info"
 												style="width: 400px; position: relative; margin-right: auto; margin-left: auto;">
-												<!--<thead>-->
-												<!--<tr role="row">-->
-												<!--<th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;">Name</th>-->
-												<!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 309px;">Position</th>-->
-												<!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 143px;">Office</th>-->
-												<!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 76px;">Age</th>-->
-												<!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 140px;">Start date</th>-->
-												<!--<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 112px;">Salary</th></tr>-->
-												<!--</thead>-->
-												<!--费用总额、报销金额、自费金额、年度累计报销金额、起付标准、分段计算中自费金额、报销封顶线、乙类项目自费金额、特检特治自费金额-->
+											<thead>
+										<tr role="row">
+											<th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;">Name</th>
+											<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 309px;">Position</th>
+												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 143px;">Office</th>
+												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 76px;">Age</th>
+												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 140px;">Start date</th>
+												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 112px;">Salary</th></tr>
+												</thead>
+												费用总额、报销金额、自费金额、年度累计报销金额、起付标准、分段计算中自费金额、报销封顶线、乙类项目自费金额、特检特治自费金额
 												<tbody id="preTable">
 													<tr role="row" class="odd">
 														<td class="sorting_1">费用总额</td>
@@ -653,7 +653,278 @@
 														<td class="sorting_1">特检特治自费金额</td>
 														<td>￥<span>162,700</span></td>
 												</tbody>
+											</table> -->
+											<table class="MsoNormalTable" border="1" cellspacing="0"
+												cellpadding="0" width="84%"
+												style="border-collapse: collapse; mso-table-layout-alt: fixed; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 191; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext">
+												<tbody>
+													<tr
+														style="mso-yfti-irow: 0; mso-yfti-firstrow: yes; height: 21.9pt">
+														<td width="13%" valign="top"
+															style="width: 13.22%; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">单位名称</span>
+															</p>
+														</td>
+														<td width="28%" colspan="3" valign="top"
+															style="width: 28.9%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+														<td width="20%" valign="top"
+															style="width: 20.42%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">单位编号</span>
+															</p>
+														</td>
+														<td width="37%" colspan="2" valign="top"
+															style="width: 37.44%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+													</tr>
+													<tr style="mso-yfti-irow: 1">
+														<td width="13%" valign="top"
+															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">姓名</span>
+															</p>
+														</td>
+														<td width="13%" colspan="2" valign="top"
+															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+														<td width="15%" valign="top"
+															style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">个人编号</span>
+															</p>
+														</td>
+														<td width="20%" valign="top"
+															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+														<td width="13%" valign="top"
+															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">人员类别</span>
+															</p>
+														</td>
+														<td width="23%" valign="top"
+															style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+													</tr>
+													<tr style="mso-yfti-irow: 2; height: 15.75pt">
+														<td width="13%" valign="top"
+															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">申报原因</span>
+															</p>
+														</td>
+														<td width="13%" colspan="2" valign="top"
+															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span lang="EN-US"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																</span></span>
+															</p>
+														</td>
+														<td width="15%" valign="top"
+															style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal" style="tab-stops: 140.25pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">报销类别</span>
+															</p>
+														</td>
+														<td width="20%" valign="top"
+															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+														<td width="13%" valign="top"
+															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal" style="tab-stops: 140.25pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">住院次数</span>
+															</p>
+														</td>
+														<td width="23%" valign="top"
+															style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+													</tr>
+													<tr style="mso-yfti-irow: 3; height: 15.75pt">
+														<td width="13%" valign="top"
+															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">就诊医院</span>
+															</p>
+														</td>
+														<td width="28%" colspan="3" valign="top"
+															style="width: 28.9%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+														<td width="20%" valign="top"
+															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">就诊时段</span>
+															</p>
+														</td>
+														<td width="37%" colspan="2" valign="top"
+															style="width: 37.44%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
+															<p class="MsoNormal"
+																style="text-indent: 21.0pt; tab-stops: 140.25pt">
+																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+															</p>
+														</td>
+													</tr>
+													<tr style="mso-yfti-irow: 4; height: 276.6pt" id="preTable">
+														<td width="100%" colspan="7" valign="top"
+															style="width: 100.0%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 276.6pt">
+															<p class="MsoNormal" style="text-indent: 21.1pt">
+																<b style="mso-bidi-font-weight: normal"><span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">结算明细：</span><span
+																	lang="EN-US"></span></b>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">年度累计报销金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US">12345678</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">起付标准：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">分段计算中自费金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">报销封顶线：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">乙类项目自费金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">特检特治自费金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">________________________________________________________________________________
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">费用总额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">报销金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">自费金额：</span>
+															</p>
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span lang="EN-US"></span>
+															</p>
+														</td>
+													</tr>
+													<tr style="mso-yfti-irow: 5; height: 7.9pt">
+														<td width="18%" colspan="2" rowspan="2"
+															style="width: 18.72%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.9pt">
+															<p class="MsoNormal" align="center"
+																style="text-align: center; text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">拨付金额</span>
+															</p>
+														</td>
+														<td width="81%" colspan="5" valign="top"
+															style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.9pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">大写：
+																	万 <span class="GramE"> </span>仟 <span class="GramE">
+																</span>佰 <span class="GramE"> </span>拾 <span class="GramE">
+																</span>元 <span class="GramE"> </span>角 <span class="GramE">
+																</span>分
+																</span>
+															</p>
+														</td>
+													</tr>
+													<tr
+														style="mso-yfti-irow: 6; mso-yfti-lastrow: yes; height: 7.85pt">
+														<td width="81%" colspan="5" valign="top"
+															style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.85pt">
+															<p class="MsoNormal" style="text-indent: 21.0pt">
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">小写：</span>
+															</p>
+														</td>
+													</tr>
+													<!--[if !supportMisalignedColumns]-->
+													<tr height="0">
+														<td width="76" style="border: none"></td>
+														<td width="81" style="border: none"></td>
+														<td width="120" style="border: none"></td>
+														<td width="88" style="border: none"></td>
+														<td width="117" style="border: none"></td>
+														<td width="78" style="border: none"></td>
+														<td width="137" style="border: none"></td>
+													</tr>
+													<!--[endif]-->
+												</tbody>
 											</table>
+
 											<button onclick="test()">SSS</button>
 											<!--endprint1-->
 											<div>
@@ -661,6 +932,7 @@
 													style="position: absolute; right: 400px; left: 400px"
 													onclick="preview(1)">打印</a>
 											</div>
+											<a href="#" class="buttonFinish btn btn-default">提交并报销</a>
 										</div>
 									</div>
 								</div>
@@ -752,7 +1024,8 @@
 	<!--</script>-->
 	<script>
 		function calculatePrice(tar) {
-			var unitPrice = (tar.getElementsByClassName("prescriptionUnitPrice"))[0];
+			var unitPrice = (tar
+					.getElementsByClassName("prescriptionUnitPrice"))[0];
 			var num = (tar.getElementsByClassName("prescriptionNumber"))[0];
 			var price = (tar.getElementsByClassName("prescriptionPrice"))[0];
 			//        alert(this.typeName);
@@ -781,12 +1054,14 @@
 		function clearTable(now) {
 			now.parentNode.previousSibling.previousSibling.reset();
 		}
-		$(function() {
+		window.onload = function() {
 			var buttonFinish = document
 					.getElementsByClassName("buttonFinish buttonDisabled btn btn-default")[0];
 			buttonFinish.onclick = function() {
+				var forms = document.getElementsByTagName("form");
 				$.ajax({
-					url : "/MICRS/CenterWork/Do?midId="+forms[1].getElementsByTagName("input")[0].value,
+					url : "/MICRS/CenterWork/Do?midId="
+							+ forms[1].getElementsByTagName("input")[0].value,
 					type : "GET",
 					dataType : "json",
 					success : function(data) {
@@ -800,35 +1075,50 @@
 				});
 				window.location.href = "/MICRS/Manage/production/index.html";
 			};
-			var buttonNext = document
-					.getElementsByClassName("buttonNext btn btn-success")[3];
+			var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
 			buttonNext.onclick = function() {
 				var step = document.getElementsByClassName("selected");
-				if(step[0].rel=="3"){
+				if (step[0].rel == "3") {
 					var forms = document.getElementsByTagName("form");
-					for (var i = 2; i < forms.length; ++i) {
-						forms[i].submit(true);
+					var ins = document.getElementsByTagName("input");
+					var bus = document.getElementsByTagName("button");
+					var sels = document.getElementsByTagName("select");
+					for(var i = 0; i < ins.length; ++i){
+						ins[i].disabled="disable";
 					}
-					//.getElementsByTagName("input")[0].value
+					for(var i = 0; i < bus.length; ++i){
+						bus[i].disabled="disable";
+					}
+					for(var i = 0; i < ins.length; ++i){
+						sels[i].disabled="disable";
+					}
+					/* for (var i = 0; i < forms.length; ++i) {
+						forms[i].disabled="disable";
+					} */
 					$.ajax({
-						url : "/MICRS/CenterWork/Pre?midId="+forms[1].getElementsByTagName("input")[0].value,
-						type : "GET",
-						dataType : "json",
-						success : function(data) {
-							alert("json");
-							$(data).each(function(i, dd) {
-								var preTable = document.getElementById("preTable");
-								var spans = preTable.getElementsByTagName("span");
-								spans[i].innerHTML = dd;
+								url : "/MICRS/CenterWork/Preview?midId="
+										+ forms[1]
+												.getElementsByTagName("input")[0].value,
+								type : "GET",
+								dataType : "json",
+								success : function(data) {
+									$(data)
+											.each(
+													function(i, dd) {
+														var preTable = document
+																.getElementById("preTable");
+														var spans = preTable
+																.getElementsByTagName("span");
+														spans[(i+1)*2+1].innerHTML = "￥"+dd;
+													});
+								},
+								error : function() {
+									alert("error");
+								}
 							});
-						},
-						error : function() {
-							alert("error");
-						}
-					});
 				}
 			}
-		});
+		}
 		function checkDate() {
 			var date1 = document.getElementById("inDate").value;
 			var date2 = document.getElementById("outDate").value;
@@ -842,7 +1132,7 @@
 				return true;
 			}
 		}
-		function checkOutpatientNumber() {
+		function checkOutpatientNumber(now) {
 			var outNum = document.getElementById("outpatientNumber").value;
 			var outNumS = document.getElementById("outNumS");
 			var sta = /^\d{9}$/;
@@ -853,9 +1143,21 @@
 				outNumS.innerHTML = "";
 				return true;
 			}
+			$.ajax({
+				url : "/MICRS/PersMed/QUni?medId="+now.value,
+				type : "GET",
+				dataType : "json",
+				success : function(data) {
+					alert(data);
+					$("#diseaseInf").html(str);
+				},
+				error : function() {
+					alert("error");
+				}
+			});
 		}
 		function preview(oper) {
-			var newWin = window.open('about:blank', '', '');
+			var newWin = window.open('', '报销单', '', false);
 			bdhtml = window.document.body.innerHTML;//获取当前页的html代码
 			sprnstr = "<!--startprint" + oper + "-->";//设置打印开始区域
 			eprnstr = "<!--endprint" + oper + "-->";//设置打印结束区域
@@ -873,6 +1175,18 @@
 			var index = now.selectedIndex;
 			//alert(index);
 			dis.value = all[index].diease;
+		}//根据第一步选的人员设定就诊信息的人员id
+		function setManId(manId){
+			var step = document.getElementsByClassName("disabled");
+			var inManId = document.getElementById("manId");
+			inManId.value = manId;
+		}
+	//根据第二步的住院号设定第三步处方的住院号
+		function setClinicNumber(now){
+			var cns = document.getElementsByClassName("clinicNumber");
+			for(var i = 0; i < cns.length; ++i){
+				cns[i].value = now.value;
+			}
 		}
 	</script>
 	<script>
@@ -898,45 +1212,65 @@
 						}
 					});
 			$.ajax({
-						url : "/MICRS/DiseaseProject/Ajax",
-						type : "GET",
-						dataType : "json",
-						success : function(data) {
-							var str = "";
-							$(data)
-									.each(
-											function(i, diseaseProject) {
-												str = str
-														+ "<option value="+diseaseProject.diseaseNum+">"
-														+ diseaseProject.disClass
-														+ "</option>";
-											});
-							$("#disease").html(str);
-						},
-						error : function() {
-							alert("error");
-						}
-					});
+					url : "/MICRS/DiseaseProject/Ajax",
+					type : "GET",
+					dataType : "json",
+					success : function(data) {
+						var str = "";
+						$(data)
+								.each(
+										function(i, diseaseProject) {
+											str = str
+													+ "<option value="+diseaseProject.diseaseNum+">"
+													+ diseaseProject.disClass
+													+ "</option>";
+										});
+						$("#disease").html(str);
+					},
+					error : function() {
+						alert("error");
+					}
+				});
 			$.ajax({
-						url : "/MICRS/DesiMedIns/Ajax",
-						type : "GET",
-						dataType : "json",
-						success : function(data) {
-							var str = "";
-							$(data)
-									.each(
-											function(i, desiMedInss) {
-												str = str
-														+ "<option value="+desiMedInss.desiMedInsId+">"
-														+ desiMedInss.serviceName
-														+ "</option>";
-											});
-							$("#desiMedIns").html(str);
-						},
-						error : function() {
-							alert("error");
-						}
-					});
+				url : "/MICRS/DesiMedIns/Ajax",
+				type : "GET",
+				dataType : "json",
+				success : function(data) {
+					var str = "";
+					$(data)
+							.each(
+									function(i, desiMedInss) {
+										str = str
+												+ "<option value="+desiMedInss.desiMedInsId+">"
+												+ desiMedInss.serviceName
+												+ "</option>";
+									});
+					$("#desiMedIns").html(str);
+				},
+				error : function() {
+					alert("error");
+				}
+			});
+			$.ajax({
+				url : "/MICRS/DesiMedIns/Ajax",
+				type : "GET",
+				dataType : "json",
+				success : function(data) {
+					var str = "";
+					$(data)
+							.each(
+									function(i, desiMedInss) {
+										str = str
+												+ "<option value="+desiMedInss.desiMedInsId+">"
+												+ desiMedInss.serviceName
+												+ "</option>";
+									});
+					$("#desiMedIns").html(str);
+				},
+				error : function() {
+					alert("error");
+				}
+			});
 		});
 	</script>
 </body>

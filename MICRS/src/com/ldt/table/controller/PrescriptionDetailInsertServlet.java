@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ldt.item.entity.Drug;
 import com.ldt.item.entity.PrescriptionDetail;
 import com.ldt.table.dao.DrugListDaoImpl;
+import com.ldt.table.dao.PrescriptionDetailDaoImpl;
 
 /**
  * Servlet implementation class PrescriptionDetailInsertServlet
@@ -20,17 +21,20 @@ import com.ldt.table.dao.DrugListDaoImpl;
 public class PrescriptionDetailInsertServlet extends HttpServlet {
 
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("SS1");
+//		System.out.println("SS1");
 		String outpatientNum = request.getParameter("OUTPATIENT_NUM");
 		String medicineCode = request.getParameter("MEDICINE_CODE");
 		String Price = request.getParameter("PRICE");
 		String Total = request.getParameter("NUMBER");
 		String Account = request.getParameter("ACCOUNT");
-		
-		System.out.println("SS2");
 		Drug drug = null;
 		if(medicineCode!=null && !medicineCode.equals("")) {
 			List<Drug> temp = new DrugListDaoImpl().selectDrug(new Drug(medicineCode, null));
@@ -38,7 +42,7 @@ public class PrescriptionDetailInsertServlet extends HttpServlet {
 				drug = temp.get(0);
 			}
 		}
-		System.out.println("SS3");
+		System.out.println("drug is"+drug);
 		float price = 0;
 		if(Price!=null && !Price.equals("")){
 			price = Float.parseFloat(Price);
@@ -52,10 +56,11 @@ public class PrescriptionDetailInsertServlet extends HttpServlet {
 			account = Float.parseFloat(Account);
 		}
 
-		System.out.println("SS4");
+//		System.out.println("SS4");
 		PrescriptionDetail pp = new PrescriptionDetail(outpatientNum, drug,
 				price, total, account);
-		System.out.println(pp);
+		new PrescriptionDetailDaoImpl().insertPrescriptionDetail(pp);
+//		System.out.println(pp);
 	}
 
 	/**

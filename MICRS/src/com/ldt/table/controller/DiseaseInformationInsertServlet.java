@@ -39,7 +39,7 @@ public class DiseaseInformationInsertServlet extends HttpServlet {
 		String diseaname = request.getParameter("diseaname");
 		String diseatype = request.getParameter("diseatype");
 		String diseasyb = request.getParameter("diseasyb");
-
+		
 		DiseaseProjectDao dpd = new DiseaseProjectDaoImpl();
 		List<DiseaseProject> dd= dpd.selectDiseaseProject(new DiseaseProject(diseatype,null));
 		DiseaseProject p = dd.get(0);

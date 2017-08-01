@@ -55,6 +55,7 @@ public class StandPayDaoImpl implements StandPayDao {
 		// TODO Auto-generated method stub
 		List<StandPay> ans = new ArrayList<StandPay>();
 		String sql = "select * from Stand_Pay where 1=1 ";
+		System.out.println("IndiSegID is "+item);
 		if (item.getIndiSegId() != null && item.getIndiSegId().getIndiSegID() != null && item.getIndiSegId().getIndiSegID() != "") {
 			sql = sql + " and Indi_Seg_Id = '" + item.getIndiSegId().getIndiSegID() + "' ";
 			}
@@ -87,7 +88,7 @@ public class StandPayDaoImpl implements StandPayDao {
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			System.out.println(sql);
+//			System.out.println(sql);
 			while (rs.next()) {
 				ans.add(new StandPay(rs.getString(1), new IndiSeg(rs.getString(2), rs.getString(3)), new MedPers(rs.getString(4), rs.getString(5)), new HospitalClass(rs.getString(6), rs.getString(7)), rs.getFloat(8)));
 			}
@@ -119,6 +120,7 @@ public class StandPayDaoImpl implements StandPayDao {
 				ps.setString(6, item.getHospitalId().getHospitalLevel());
 				ps.setFloat(7, item.getStandPay());
 				ps.setString(8, item.getId());
+				System.out.println(sql);
 				ps.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -138,6 +140,7 @@ public class StandPayDaoImpl implements StandPayDao {
 			ps = conn.prepareStatement(sql);
 			if (id != null) {
 				ps.setString(1, id);
+//				System.out.println(sql);
 				ps.executeUpdate();
 			}
 		} catch (SQLException e) {

@@ -1,7 +1,7 @@
 package com.ldt.item.entity;
 
 public class DesiMedIns {
-	private String  desiMedInsId;
+	private String   desiMedInsId;
 	private String   serviceName;
 	private HospitalClass hospitalId;
 	private HospitalOrganization hoId;

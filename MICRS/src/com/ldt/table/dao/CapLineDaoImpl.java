@@ -48,24 +48,21 @@ public class CapLineDaoImpl implements CapLineDao{
 		
 		String sql = "select * from cap_line where 1=1 ";
 		if(capline.getMedpers()!= null && capline.getMedpers().getMedPersNum() != null && capline.getMedpers().getMedPersNum() != ""){
-			sql = sql + "and INDI_ SEG_ID ='" + capline.getMedpers().getMedPersNum()+"'";
+			sql = sql + " and INDI_SEG_ID ='" + capline.getMedpers().getMedPersNum()+"'";
 		}
 		if(capline.getMedpers()!= null &&  capline.getMedpers().getMedPersClass() != null && capline.getMedpers().getMedPersClass() != ""){
-			sql = sql +"and MED_PERS_CLASS= '"+ capline.getMedpers().getMedPersClass()+"'";
+			sql = sql +" and MED_PERS_CLASS= '"+ capline.getMedpers().getMedPersClass()+"'";
 		}
 		if(capline.getCapLine()>0){
-			sql = sql + "and CAP_LINE ='" + capline.getCapLine()+"'";
+			sql = sql + " and CAP_LINE ='" + capline.getCapLine()+"'";
 		}
-			
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()){
-				
-				String id1 = rs.getString(1);
-				String medid = rs.getString(2);
-				String medname = rs.getString(3);
-				float cap = rs.getFloat(4);
+				String medid = rs.getString(1);
+				String medname = rs.getString(2);
+				float cap = rs.getFloat(3);
 				
 				MedPers mp = new MedPers(medid,medname);
 				CapLine cp = new CapLine(mp,cap);
@@ -78,7 +75,6 @@ public class CapLineDaoImpl implements CapLineDao{
 		}finally{
 			DBUtil.close(rs, ps, conn);
 		}
-		System.out.println(ans.toString());
 		return ans;
 	}
 
@@ -86,7 +82,7 @@ public class CapLineDaoImpl implements CapLineDao{
 	public void updateTable(CapLine capline) {
 		// TODO Auto-generated method stub
 		String sql = "update cap_line set MED_PERS_CLASS=?,CAP_LINE=?"
-				+ " where INDI_ SEG_ID=?";
+				+ " where INDI_SEG_ID=?";
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
@@ -110,7 +106,7 @@ public class CapLineDaoImpl implements CapLineDao{
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
-		String sql = "delete from Cap_Line where INDI_ SEG_ID= ?";
+		String sql = "delete from Cap_Line where INDI_SEG_ID= ?";
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);

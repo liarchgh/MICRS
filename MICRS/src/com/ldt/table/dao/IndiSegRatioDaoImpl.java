@@ -56,32 +56,32 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 			sql = sql + " and id =' "+ item.getId()+"'";
 		}
 		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSegID() != null && item.getIndiSeg().getIndiSegID() != ""){
-			sql = sql + "and INDI_ SEG_ID = '" +item.getIndiSeg().getIndiSegID()+"'";
+			sql = sql + " and INDI_SEG_ID = '" +item.getIndiSeg().getIndiSegID()+"'";
 		}
 		if(item.getIndiSeg()!=null && item.getIndiSeg().getIndiSeg() != null && item.getIndiSeg().getIndiSeg()!=""){
-			sql = sql + "and INDI_ SEG = '"+item.getIndiSeg().getIndiSeg()+"'";
+			sql = sql + " and INDI_SEG = '"+item.getIndiSeg().getIndiSeg()+"'";
 		}
 		
 		if(item.getMedPers()!=null && item.getMedPers().getMedPersNum() != null && item.getMedPers().getMedPersNum() != ""){
-			sql = sql + "and MED_PERS_NUM= '" +item.getMedPers().getMedPersNum()+"'";
+			sql = sql + " and MED_PERS_NUM= '" +item.getMedPers().getMedPersNum()+"'";
 		}
 		if(item.getMedPers()!=null && item.getMedPers().getMedPersClass()!= null && item.getMedPers().getMedPersClass()!=""){
-			sql = sql + "and MED_PERS_CLASS = '"+item.getMedPers().getMedPersClass()+"'";
+			sql = sql + " and MED_PERS_CLASS = '"+item.getMedPers().getMedPersClass()+"'";
 		}
 		if(item.getHospital()!= null && item.getHospital().getHospitalId() != null && item.getHospital().getHospitalId() != ""){
-			sql = sql + "and HOSPITAL_ID='" +item.getHospital().getHospitalId()+"'";
+			sql = sql + " and HOSPITAL_ID='" +item.getHospital().getHospitalId()+"'";
 		}
 		if(item.getHospital()!= null && item.getHospital().getHospitalLevel()!= null && item.getHospital().getHospitalLevel()!= ""){
-			sql = sql + "and HOSPITAL_LEVEL='"+item.getHospital().getHospitalLevel()+"'";
+			sql = sql + " and HOSPITAL_LEVEL='"+item.getHospital().getHospitalLevel()+"'";
 		}
 		if(item.getTopMon()>0){
-			sql = sql + "and TOP_MON = '"+item.getTopMon()+"'";
+			sql = sql + " and TOP_MON = '"+item.getTopMon()+"'";
 		}
 		if(item.getBootomMon()>0){
-			sql = sql + "and BOOTOM_MON ='"+item.getBootomMon()+"'";
+			sql = sql + " and BOOTOM_MON ='"+item.getBootomMon()+"'";
 		}
 		if(item.getRatio()>0){
-			sql = sql + "and RATIO= '"+item.getRatio()+"'";
+			sql = sql + " and RATIO= '"+item.getRatio()+"'";
 		}
 		Connection conn = DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
@@ -89,7 +89,7 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
-			System.out.println(sql);
+//			System.out.println(sql);
 			while(rs.next()){
 				ans.add(new IndiSegRatio(rs.getString(1), new IndiSeg(rs.getString(2), rs.getString(3)), new MedPers(rs.getString(4), rs.getString(5)), new HospitalClass(rs.getString(6),rs.getString(7)), rs.getFloat(8), rs.getFloat(9), rs.getFloat(10)));
 			}
@@ -105,7 +105,7 @@ public class IndiSegRatioDaoImpl implements IndiSegRatioDao{
 	@Override
 	public void updateTable(IndiSegRatio dp) {
 		// TODO Auto-generated method stub
-		String sql = "update INDI_SEG_RATIO set INDI_ SEG_ID=? , INDI_ SEG=?,MED_PERS_NUM=?,"
+		String sql = "update INDI_SEG_RATIO set INDI_SEG_ID=? , INDI_SEG=?,MED_PERS_NUM=?,"
 				+ "MED_PERS_CLASS=?,HOSPITAL_ID=?,HOSPITAL_LEVEL=?,TOP_MON=?,BOOTOM_MON=?,"
 				+ "RATIO=?"
 				+ " where ID = ?";

@@ -35,15 +35,14 @@ public class PersMedInforInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("ss");
+		System.out.println("ss");
 		String outpatientNum = request.getParameter("outpatientNum");
 		String num = request.getParameter("num");
-		String desiMedInsId = request.getParameter("desiMedIns");
+		String desiMedInsId = request.getParameter("desiMedInsId");
 		String indiSegId = request.getParameter("indiSegId");
 		String inDate = request.getParameter("inDate");
 		String outDate = request.getParameter("outDate");
 		String disease = request.getParameter("disease");
-		String hospitalId = request.getParameter("hospitalId");
 		String disNum = request.getParameter("disNum");
 		String outReason = request.getParameter("outReason");
 
@@ -62,7 +61,7 @@ public class PersMedInforInsert extends HttpServlet {
 		if(!diseaseProjects.isEmpty()) {
 			diseaseProject = diseaseProjects.get(0);
 		}
-		List<HospitalClass> hospitalClasss = new HospitalClassDaoImpl().selectHospitalClass(new HospitalClass(hospitalId, null));
+		List<HospitalClass> hospitalClasss = new HospitalClassDaoImpl().selectHospitalClass(new HospitalClass(desiMedIns.getHospitalId().getHospitalId(), null));
 		HospitalClass hospitalClass = null;
 		if(!hospitalClasss.isEmpty()) {
 			hospitalClass = hospitalClasss.get(0);
@@ -78,13 +77,11 @@ public class PersMedInforInsert extends HttpServlet {
 			personInformation = personInformations.get(0);
 		}
 
-//		System.out.println("disease is " + diseaseProject);
 		PersMedInforDaoImpl pp = new PersMedInforDaoImpl();
-		PersMedInfor ans = new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
+	
+		pp.insertPersMedInfor(new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
 				inDate, outDate, diseaseProject, hospitalClass,
-				diseaseInformation, outReason);
-		System.out.println(ans);
-		pp.insertPersMedInfor(ans);
+				diseaseInformation, outReason, "否"));
 	}
 
 	/**

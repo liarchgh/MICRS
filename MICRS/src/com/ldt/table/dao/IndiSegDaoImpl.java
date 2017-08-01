@@ -46,6 +46,7 @@ public class IndiSegDaoImpl implements IndiSegDao {
 		if(item.getIndiSegID() != null && item.getIndiSegID() != ""){
 			sql = sql + " and Indi_Seg_ID = '" + item.getIndiSegID() + "' ";
 		}
+		System.out.println(sql);
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

@@ -62,7 +62,7 @@ public class StandpayInsertServlet extends HttpServlet {
 		MedPers m = mp.get(0);
 		StandPayDao spd = new StandPayDaoImpl();
 		spd.insertStandPay(new StandPay(null, i, m, h, sd));
-		request.getRequestDispatcher("/Manage/production/stand-pay.jsp").forward(request, response);
+		request.getRequestDispatcher("/Manage/production/stand_pay.jsp").forward(request, response);
 		
 	}
 

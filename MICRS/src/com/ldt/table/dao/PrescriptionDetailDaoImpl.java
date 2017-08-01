@@ -89,7 +89,7 @@ public class PrescriptionDetailDaoImpl implements PrescriptionDetailDao {
 	@Override
 	public void updatePrescriptionDetail(PrescriptionDetail item) {
 		// TODO Auto-generated method stub
-		String sql = "update PRESCRIPTION_DETAIL set MEDICINE_CODE=?, PRICE=?, TOTAL=?, ACCOUNT=? where OUTPATIENT_NUM=?";
+		String sql = "update PRESCRIPTION_DETAIL set PRICE=?, TOTAL=?, ACCOUNT=? where OUTPATIENT_NUM=? and MEDICINE_CODE=?";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
@@ -97,11 +97,12 @@ public class PrescriptionDetailDaoImpl implements PrescriptionDetailDao {
 			if(item.getMedicineCode() != null
 					&& item.getMedicineCode().getMedicineCode() != null
 					&& item.getOutpatientNum() != null){
-			ps.setString(1, item.getMedicineCode().getMedicineCode());
-			ps.setFloat(2, item.getPrice());
-			ps.setInt(3, item.getTotal());
-			ps.setFloat(4, item.getAccount());
-			ps.setString(5, item.getOutpatientNum());
+			
+			ps.setFloat(1, item.getPrice());
+			ps.setInt(2, item.getTotal());
+			ps.setFloat(3, item.getAccount());
+			ps.setString(4, item.getOutpatientNum());
+			ps.setString(5, item.getMedicineCode().getMedicineCode());
 			ps.executeUpdate();
 			}
 		} catch (SQLException e) {
@@ -114,14 +115,15 @@ public class PrescriptionDetailDaoImpl implements PrescriptionDetailDao {
 	}
 	
 	@Override
-	public void deleteHospitalOrganization(String id) {
-		String sql = "delete from PRESCRIPTION_DETAIL where OUTPATIENT_NUM = ?";
+	public void deleteHospitalOrganization(String id, String no) {
+		String sql = "delete from PRESCRIPTION_DETAIL where OUTPATIENT_NUM = ? and MEDICINE_CODE = ?";
 		Connection conn =  DBUtil.getPreparedStatement();
 		PreparedStatement ps = null;
 		try {
 			ps = conn.prepareStatement(sql);
-			if(id != null){
+			if(id != null && id != "" && no != null && no!= ""){
 			ps.setString(1, id);
+			ps.setString(2, no);
 			ps.executeUpdate();
 			}
 		} catch (SQLException e) {

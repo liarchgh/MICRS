@@ -64,7 +64,7 @@ public class DesiMedInsDaoImpl implements DesiMedInsDao {
 			sql = sql + " and DESI_MED_INS_ID = '"+ item.getDesiMedInsId() +"'";
 		}
 		if(item.getServiceName() != null && item.getServiceName() != ""){
-			sql = sql + " and SERVICE_NAME = '"+ item.getServiceName()+"''";
+			sql = sql + " and SERVICE_NAME = '"+ item.getServiceName()+"'";
 		}
 		if(item.getHospitalId()!=null && item.getHospitalId().getHospitalId()!= null && item.getHospitalId().getHospitalId()!=""){
 			sql = sql + "and HOSPITAL_ID='"+item.getHospitalId().getHospitalId()+"'";
@@ -148,6 +148,7 @@ public class DesiMedInsDaoImpl implements DesiMedInsDao {
 			ps.setString(10, des.getConnPhone());
 			ps.setString(11, des.getConnCell());
 			ps.setString(12, des.getAddr());
+			ps.setString(13, des.getDesiMedInsId());
 			
 			ps.executeUpdate();
 		} catch (SQLException e) {

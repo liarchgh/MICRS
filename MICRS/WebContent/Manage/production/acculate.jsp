@@ -31,7 +31,7 @@
     <div class="col-md-3 left_col">
       <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-          <a href="/MICRS/Manage/production/index.html" class="site_title"><i class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
+          <a href="/MICRS/Manage/production/index.jsp" class="site_title"><i class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -43,7 +43,7 @@
           </div>
           <div class="profile_info">
             <span>欢迎,</span>
-            <h2>John Doe</h2>
+            <h2>John </h2>
           </div>
         </div>
         <!-- /menu profile quick info -->
@@ -57,49 +57,49 @@
             <ul class="nav side-menu">
               <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/index.html">报销系统简介</a></li>
-                  <li><a href="/MICRS/Manage/production/main1.html">医疗基本信息简介</a></li>
-                  <li><a href="/MICRS/Manage/production/main2.html">医疗待遇审批简介</a></li>
-                  <li><a href="/MICRS/Manage/production/main3.html">医保中心报销简介</a></li>
-                  <li><a href="/MICRS/Manage/production/main4.html">综合查询简介</a></li>
-                  <li><a href="/MICRS/Manage/production/main5.html">公共业务简介</a></li>
+                  <li><a href="/MICRS/Manage/production/index.jsp">报销系统简介</a></li>
+                  <li><a href="/MICRS/Manage/production/main1.jsp">医疗基本信息简介</a></li>
+                  <li><a href="/MICRS/Manage/production/main2.jsp">医疗待遇审批简介</a></li>
+                  <li><a href="/MICRS/Manage/production/main3.jsp">医保中心报销简介</a></li>
+                  <li><a href="/MICRS/Manage/production/main4.jsp">综合查询简介</a></li>
+                  <li><a href="/MICRS/Manage/production/main5.jsp">公共业务简介</a></li>
                 </ul>
               </li>
 
               <li><a><i class="fa fa-edit"></i> 医疗基本信息 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/drug_infor.html">药品信息</a></li>
-                  <li><a href="/MICRS/Manage/production/project_infor.html">*诊疗项目信息</a></li>
-                  <li><a href="/MICRS/Manage/production/dept_pro.html">*服务设施项目</a></li>
-                  <li><a href="/MICRS/Manage/production/disea_infor.html">病种信息</a></li>
-                  <li><a href="/MICRS/Manage/production/struc_infor.html">定点医疗机构信息</a></li>
-                  <li><a href="/MICRS/Manage/production/acculate.html">医疗待遇计算参数信息维护</a></li>
+                  <li><a href="/MICRS/Manage/production/drug_infor.jsp">药品信息</a></li>
+                  <li><a href="/MICRS/Manage/production/project_infor.jsp">*诊疗项目信息</a></li>
+                  <li><a href="/MICRS/Manage/production/dept_pro.jsp">*服务设施项目</a></li>
+                  <li><a href="/MICRS/Manage/production/disea_infor.jsp">病种信息</a></li>
+                  <li><a href="/MICRS/Manage/production/struc_infor.jsp">定点医疗机构信息</a></li>
+                  <li><a href="/MICRS/Manage/production/acculate.jsp">医疗待遇计算参数信息维护</a></li>
                 </ul>
               </li>
 
               <li><a><i class="fa fa-desktop"></i> *医疗待遇审批 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/wait1.html">*人员就诊机构审批</a></li>
-                  <li><a href="/MICRS/Manage/production/wait2.html">*特检特治审批</a></li>
+                  <li><a href="/MICRS/Manage/production/wait1.jsp">*人员就诊机构审批</a></li>
+                  <li><a href="/MICRS/Manage/production/wait2.jsp">*特检特治审批</a></li>
                 </ul>
               </li>
 
               <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/Reimbursement.html">医保报销</a></li>
+                  <li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
                 </ul>
               </li>
 
               <li><a><i class="fa fa-table"></i> 综合查询 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/cost_query.html">医疗人员费用查询</a></li>
+                  <li><a href="/MICRS/Manage/production/cost_query.jsp">医疗人员费用查询</a></li>
                 </ul>
               </li>
 
               <li><a><i class="fa fa-briefcase"></i> 公共业务 <span class="fa fa-chevron-down"></span></a>
                 <ul class="nav child_menu">
-                  <li><a href="/MICRS/Manage/production/unit_infor.html">单位基本信息</a></li>
-                  <li><a href="/MICRS/Manage/production/person_infor.html">个人基本信息</a></li>
+                  <li><a href="/MICRS/Manage/production/unit_infor.jsp">单位基本信息</a></li>
+                  <li><a href="/MICRS/Manage/production/person_infor.jsp">个人基本信息</a></li>
                 </ul>
               </li>
             </ul>
@@ -118,7 +118,7 @@
           <a data-toggle="tooltip" data-placement="top" title="Lock">
             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
           </a>
-          <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.html">
+          <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.jsp">
             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
           </a>
         </div>
@@ -149,7 +149,7 @@
                   </a>
                 </li>
                 <li><a href="javascript:;">起付标准</a></li>
-                <li><a href="/MICRS/Manage/production/login.html"><i class="fa fa-sign-out pull-right"></i> 个人分段自费比例</a></li>
+                <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 个人分段自费比例</a></li>
               </ul>
             </li>
 
@@ -210,7 +210,7 @@
                         <div class="mask" style="height: 350px">
                           <p><i class="fa fa-hand-o-down"></i>点我</p>
                           <div class="tools tools-bottom" style="height: 60px">
-                            <a href="/MICRS/Manage/production/cap_line.html"><i class="fa fa-arrow-right" ></i></a>
+                            <a href="/MICRS/Manage/production/cap_line.jsp"><i class="fa fa-arrow-right" ></i></a>
                           </div>
                         </div>
                       </div>
@@ -228,7 +228,7 @@
                         <div class="mask" style="height: 350px">
                           <p><i class="fa fa-hand-o-down"></i>点我</p>
                           <div class="tools tools-bottom" style="height: 60px">
-                            <a href="/MICRS/Manage/production/stand_pay.html"><i class="fa fa-arrow-right"></i></a>
+                            <a href="/MICRS/Manage/production/stand_pay.jsp"><i class="fa fa-arrow-right"></i></a>
                           </div>
                         </div>
                       </div>
@@ -246,7 +246,7 @@
                         <div class="mask" style="height: 350px">
                           <p><i class="fa fa-hand-o-down"></i>点我</p>
                           <div class="tools tools-bottom" style="height: 60px">
-                            <a href="/MICRS/Manage/production/indi_seg_ratio.html"><i class="fa fa-arrow-right"></i></a>
+                            <a href="/MICRS/Manage/production/indi_seg_ratio.jsp"><i class="fa fa-arrow-right"></i></a>
                           </div>
                         </div>
                       </div>
@@ -271,7 +271,7 @@
       <div class="pull-right">
         医疗保险中心报销系统
         &nbsp;
-        <a href="/MICRS/Manage/production/index.html" target="_blank" title="主页">  主页</a>
+        <a href="/MICRS/Manage/production/index.jsp" target="_blank" title="主页">  主页</a>
       </div>
       <div class="clearfix"></div>
     </footer>
