@@ -26,7 +26,7 @@ public class DiseaseInformationAjax extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("ajax");
+		System.out.println("/DiseaseInformation/Ajax");
 		DiseaseInformationDaoImpl dd = new DiseaseInformationDaoImpl();
 		List<DiseaseInformation> diseaseInformation = dd.selectDiseaseInformation(new DiseaseInformation());
 //		System.out.println(dd.selectDesiMedIns(new DesiMedIns()));

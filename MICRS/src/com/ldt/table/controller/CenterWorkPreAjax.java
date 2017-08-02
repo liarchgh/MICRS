@@ -21,9 +21,11 @@ public class CenterWorkPreAjax extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("/CenterWork/Preview");
 		String midId = request.getParameter("midId");
 		JSONArray jsonarray = JSONArray.fromObject(CalCost.cal(midId));
 		PrintWriter out = response.getWriter();
+		System.out.println(jsonarray.toString());
 		out.write(jsonarray.toString());
 		out.flush();
 		out.close();

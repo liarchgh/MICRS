@@ -28,11 +28,13 @@ public class CalCost {
 		PrescriptionDetailDaoImpl pddi = new PrescriptionDetailDaoImpl();
 		List<PrescriptionDetail> pds = pddi.selectPrescriptionDetail(new PrescriptionDetail(midId, null));
 		//获取就诊信息
+//		System.out.println("pmmm is "+midId);
 		PersMedInforDaoImpl pmidi = new PersMedInforDaoImpl();
 		PersMedInfor pmi = pmidi.selectPersMedInfor(new PersMedInfor(midId,null,null,null,null,null,null,null,null,null, null)).get(0);
 		//获取人员信息
 		PersonInformationDaoImpl pidi = new PersonInformationDaoImpl();
 		PersonInformation pi = pidi.selectPersonInformation(pmi.getNum()).get(0);
+//		System.out.println("coo is "+price+" "+number);
 		//起付标准
 		StandPayDaoImpl spdi = new StandPayDaoImpl();
 		float standPay = 0;
@@ -67,13 +69,20 @@ public class CalCost {
 				float number = pds.get(i).getTotal();
 				float costLim = medicine.getPriceCeiling();
 				String drugKind = medicine.getChargeType();
-				float cost = price * number;
+				float cost = number;
+//				System.out.println("name is "+medicine.getMedicineName());
+//				System.out.println("coo is "+price+" "+number);
+				if(price < costLim) {
+					cost = cost * price;
+				}
+				else {
+					cost = cost * costLim;
+				}
 				reSum += cost;
+				//医疗机构等级
+				System.out.println("reSum is "+reSum);
 				if(Integer.parseInt(medicine.getHospitalID().getHospitalId())
-						>= Integer.parseInt(pmi.getHospital().getHospitalId())){
-					if(price > costLim){
-						price = costLim;
-					}
+						>= Integer.parseInt(pmi.getHospital().getHospitalId()) && medicine.getApprovalMarks().equals("否")){
 					if(drugKind.equals("乙")){
 						cost = cost * 0.5f;
 						selfYi += cost;
@@ -87,35 +96,39 @@ public class CalCost {
 			if(sum > standPay) {
 				reCost = sum - standPay;
 			}
+//			System.out.println("reSum is "+reSum);
 //			System.out.println("sum is "+sum);
 //			System.out.println("reCost is "+reCost);
 			
 			//分段报销
 //			System.out.println("getRatio "+isrs.size());
+			//判断定点医疗机构
 		if(pmi.getDesiMedIns().getDesiMedInsId().equals(pi.getDesiMedIns().getDesiMedInsId())) {
-
-			System.out.println("give is "+give);
+//			System.out.println("give is "+give);
 			for(int i = 0; i < isrs.size(); ++i) {
 				IndiSegRatio isr = isrs.get(i);
-				System.out.println("TopMon is "+isr.getTopMon());
-				System.out.println("BootomMon is "+isr.getBootomMon());
-				System.out.println("give is "+give);
+//				System.out.println("TopMon is "+isr.getTopMon());
+//				System.out.println("BootomMon is "+isr.getBootomMon());
+//				System.out.println("getRatio is "+isr.getRatio());
+//				System.out.println("give is "+give);
 				if(isr.getTopMon() < reCost) {
 					give += (isr.getTopMon() - isr.getBootomMon()) * isr.getRatio();
+//					System.out.println("< is "+((isr.getTopMon() - isr.getBootomMon()) * isr.getRatio()));
 				}
-				else if(give > isr.getBootomMon()){
+				else if(reCost > isr.getBootomMon()){
 					give += (reCost - isr.getBootomMon()) * isr.getRatio();
+//					System.out.println("> is "+((reCost - isr.getBootomMon()) * isr.getRatio()));
 					break;
 				}
 				else {
 					break;
 				}
 			}
-			System.out.println("give is "+give);
+//			System.out.println("give is "+give);
 			float have = (float) (is.getCapLine() - pci.getRemAccumulat()); 
-			System.out.println("have is "+have);
-			System.out.println("CapLine is "+is.getCapLine());
-			System.out.println("RemAccumulat is "+pci.getRemAccumulat());
+//			System.out.println("have is "+have);
+//			System.out.println("CapLine is "+is.getCapLine());
+//			System.out.println("RemAccumulat is "+pci.getRemAccumulat());
 			if(have < give) {
 				give = have;
 			}

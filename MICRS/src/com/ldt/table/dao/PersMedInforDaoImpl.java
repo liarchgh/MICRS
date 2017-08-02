@@ -139,7 +139,7 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 					&& item.getDisNum() != null
 					&& item.getDisNum().getDisNum() != null && !item.getDisNum().getDisNum().equals("")
 					&& item.getDisNum().getDisName() != null && !item.getDisNum().getDisName().equals("")
-					&& item.getOutReason() != null && !item.getOutReason().equals("")&& item.getMark() != null && !item.getMark().equals("")){
+					&& item.getMark() != null && !item.getMark().equals("")){
 			ps = conn.prepareStatement(sql);
 //			System.out.println(item.getNum().getUserId());
 //			System.out.println(item.getDesiMedIns().getDesiMedInsId());

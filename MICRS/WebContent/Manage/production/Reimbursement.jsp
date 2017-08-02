@@ -210,8 +210,8 @@
 											</a></li>
 										</ul>
 										<div id="step-1">
-											<form class="form-horizontal form-label-left" id="userQuery"
-												action="/MICRS/perscost/connect/query" onsubmit="return postForm()">
+											<form class="form-horizontal form-label-left" id="userQuery" method="post"
+												action="/MICRS/perscost/connect/query">
 
 												<div class="form-group">
 													<label
@@ -219,7 +219,7 @@
 														for="first-name">报销人员ID：<span class="required">可为空</span>
 													</label>
 													<div class="col-md-6 col-sm-6 col-xs-12">
-														<input type="text" class="form-control col-md-7 col-xs-12" name="qManId">
+														<input type="text" class="form-control col-md-7 col-xs-12" name="qManId" id="qManId">
 													</div>
 												</div>
 												<div class="form-group">
@@ -228,7 +228,7 @@
 														for="last-name">报销人员姓名：<span class="required">可为空</span>
 													</label>
 													<div class="col-md-6 col-sm-6 col-xs-12">
-														<input type="text" class="form-control col-md-7 col-xs-12" name="qName">
+														<input type="text" class="form-control col-md-7 col-xs-12" name="qName" id="qName">
 													</div>
 												</div>
 												<div class="form-group">
@@ -341,7 +341,7 @@
 							                                        <c:forEach items = "${px}" var="pp" begin="0" end="12" step="1" varStatus="var">
 							                                            <td>${pp}</td>
 							                                        </c:forEach>
-							                                        <td><label><input type="radio" name="one" onclick="setManId(${px[13]})"></label></td>
+							                                        <td><label><input type="radio" name="one" onclick="setManId(${px[13]},'${px[0]}')"></label></td>
 							                                        </tr>
 							                                        </c:forEach>
 																</tbody>
@@ -375,7 +375,6 @@
 														</div>
 													</div>
 												</div>
-												<input type="submit" value="test">
 											</form>
 											<!--<div class="center-block">-->
 											<!--<span>均为空则查询全部</span>-->
@@ -389,8 +388,8 @@
 													<div class="clearfix"></div>
 												</div>
 												<div class="x_content">
-													<form class="form-horizontal form-label-left SubmitForm"
-														target="nm_iframe" action="/MICRS/Insert/PersMedInforT">
+													<form class="form-horizontal form-label-left SubmitForm" method="post"
+														target="nm_iframe" action="/MICRS/Insert/PersMedInforX">
 
 														<div class="form-group">
 															<label
@@ -401,7 +400,7 @@
 																<input type="text" id="outpatientNumber"
 																	class="form-control col-md-7 col-xs-12 prescriptionNumber"
 																	onkeyup="value=value.replace(/[^\d]/g,'');"
-																	onblur="checkOutpatientNumber();setClinicNumber(this);" placeholder="请输入9位数字"
+																	onblur="checkOutpatientNumber(this);setClinicNumber(this);"
 																	name="outpatientNum">
 															</div>
 															<span id="outNumS" class="warning"></span>
@@ -414,8 +413,7 @@
 															<div class="col-md-6 col-sm-6 col-xs-12">
 																<input type="text" id="manId" readonly="readonly"
 																	class="form-control col-md-7 col-xs-12 prescriptionNumber"
-																	onkeyup="value=value.replace(/[^\d]/g,'');"
-																	onblur="checkOutpatientNumber()" name="num">
+																	onkeyup="value=value.replace(/[^\d]/g,'');" name="num">
 															</div>
 														</div>
 														<div class="form-group">
@@ -531,26 +529,25 @@
 													<form class="form-horizontal form-label-left TestForm"
 														action="/MICRS/Insert/PrescriptionDetail"
 														onkeyup="calculatePrice(this)" target="nm_iframe"
-														method="post">
+														method="post" >
 
 														<div class="form-group">
 															<label
-																class="control-label col-md-3 col-sm-3 col-xs-12 formTag "
+																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
 																for="first-name"> 住院号（门诊号） </label>
 															<div class="col-md-6 col-sm-6 col-xs-12">
-																<input type="text" name="OUTPATIENT_NUM" readonly="readonly"
-																	class="form-control col-md-7 col-xs-12 clinicNumber">
+																<input type="text" id="OUTPATIENT_NUM" name="OUTPATIENT_NUM" readonly="readonly"
+																	class="form-control col-md-7 col-xs-12 clinicNumber"/>
 															</div>
 														</div>
-														<div class="form-group">
-															<label
-																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
-																for="last-name">项目编码 </label>
-															<div class="col-md-6 col-sm-6 col-xs-12">
-																<input type="text" id="last-name" name="MEDICINE_CODE"
-																	class="form-control col-md-7 col-xs-12">
-															</div>
-														</div>
+                                                        <div class="form-group">
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag">药品名称 <span class="required"></span>
+															</label>
+                                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                                <select class="select2_group form-control" name="MEDICINE_CODE" id="MEDICINE_CODE" onchange="">
+																</select>
+                                                            </div>
+                                                        </div>
 														<div class="form-group">
 															<label
 																class="control-label col-md-3 col-sm-3 col-xs-12 formTag"
@@ -558,7 +555,7 @@
 															<div class="col-md-6 col-sm-6 col-xs-12">
 																<input type="text" name="PRICE"
 																	class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice"
-																	onkeyup="checkPrompt()" />
+																	onkeyup=""/>
 															</div>
 														</div>
 														<div class="form-group">
@@ -598,7 +595,7 @@
 
 										</div>
 										<div id="step-4">
-											<h2 class="StepTitle">预报销（此时仅显示，不报销，报销请点击按钮）</h2>
+											<h2 class="StepTitle">预报销<span style="color:gray;font-size:smaller;">（此时就诊相关信息已提交；保险信息仅显示，还未报销，报销请点击下方按钮）</span></h2>
 											<!--startprint1-->
 											<iframe id="id_iframe" name="nm_iframe"
 												style="display: none;"></iframe>
@@ -664,146 +661,31 @@
 															style="width: 13.22%; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 															<p class="MsoNormal">
 																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">单位名称</span>
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">姓名</span>
 															</p>
 														</td>
 														<td width="28%" colspan="3" valign="top"
 															style="width: 28.9%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+																<span style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;" id="qName1"></span>
 															</p>
 														</td>
 														<td width="20%" valign="top"
 															style="width: 20.42%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">单位编号</span>
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">个人编号</span>
 															</p>
 														</td>
 														<td width="37%" colspan="2" valign="top"
 															style="width: 37.44%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+																<span
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;" id="qManId1"></span>
 															</p>
 														</td>
 													</tr>
-													<tr style="mso-yfti-irow: 1">
-														<td width="13%" valign="top"
-															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">姓名</span>
-															</p>
-														</td>
-														<td width="13%" colspan="2" valign="top"
-															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-														<td width="15%" valign="top"
-															style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">个人编号</span>
-															</p>
-														</td>
-														<td width="20%" valign="top"
-															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-														<td width="13%" valign="top"
-															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">人员类别</span>
-															</p>
-														</td>
-														<td width="23%" valign="top"
-															style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-													</tr>
-													<tr style="mso-yfti-irow: 2; height: 15.75pt">
-														<td width="13%" valign="top"
-															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">申报原因</span>
-															</p>
-														</td>
-														<td width="13%" colspan="2" valign="top"
-															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span lang="EN-US"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-																</span></span>
-															</p>
-														</td>
-														<td width="15%" valign="top"
-															style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal" style="tab-stops: 140.25pt">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">报销类别</span>
-															</p>
-														</td>
-														<td width="20%" valign="top"
-															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-														<td width="13%" valign="top"
-															style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal" style="tab-stops: 140.25pt">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">住院次数</span>
-															</p>
-														</td>
-														<td width="23%" valign="top"
-															style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-													</tr>
-													<tr style="mso-yfti-irow: 3; height: 15.75pt">
-														<td width="13%" valign="top"
-															style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">就诊医院</span>
-															</p>
-														</td>
-														<td width="28%" colspan="3" valign="top"
-															style="width: 28.9%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-														<td width="20%" valign="top"
-															style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">就诊时段</span>
-															</p>
-														</td>
-														<td width="37%" colspan="2" valign="top"
-															style="width: 37.44%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-															<p class="MsoNormal"
-																style="text-indent: 21.0pt; tab-stops: 140.25pt">
-																<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-															</p>
-														</td>
-													</tr>
+													
 													<tr style="mso-yfti-irow: 4; height: 276.6pt" id="preTable">
 														<td width="100%" colspan="7" valign="top"
 															style="width: 100.0%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 276.6pt">
@@ -817,7 +699,7 @@
 																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">年度累计报销金额：</span>
 															</p>
 															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US">12345678</span>
+																<span lang="EN-US"></span>
 															</p>
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
@@ -924,15 +806,14 @@
 													<!--[endif]-->
 												</tbody>
 											</table>
-
-											<button onclick="test()">SSS</button>
 											<!--endprint1-->
+											<br>
+											<br>
 											<div>
 												<a href="#" class="buttonNext btn btn-success"
 													style="position: absolute; right: 400px; left: 400px"
-													onclick="preview(1)">打印</a>
+													onclick="preview(1)">打印报销单</a>
 											</div>
-											<a href="#" class="buttonFinish btn btn-default">提交并报销</a>
 										</div>
 									</div>
 								</div>
@@ -1023,6 +904,46 @@
 	<!--});-->
 	<!--</script>-->
 	<script>
+	function checkOutpatientNumber(now){
+		$.ajax({
+			url : "/MICRS/PersMed/QUni233?outpatientNumber="+ now.value,
+			type : "GET",
+			dataType : "text",
+			success : function(data) {
+				//alert(data);
+				var outNumS = document.getElementById("outNumS");
+				var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
+				var buttonNextClass = buttonNext.getAttribute("class");
+				outNumS.innerHTML = data;
+				if(data == "此住院号已录入！"){
+					buttonNextClass = buttonNextClass.concat(" buttonDisabled");
+					buttonNext.setAttribute("class",buttonNextClass );
+				}
+				else{
+					buttonNextClass = buttonNextClass.replace(" buttonDisabled","");
+					buttonNext.setAttribute("class",buttonNextClass );
+				}
+			 },
+			error : function() {
+				alert("error");
+			}
+		}); 
+	}
+	function checkEmpty(now){
+		var data = now.value;
+		//alert(data);
+		var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
+		var buttonNextClass = buttonNext.getAttribute("class");
+		outNumS.innerHTML = data;
+		if(data == ""){
+			buttonNextClass = buttonNextClass.concat(" buttonDisabled");
+			buttonNext.setAttribute("class",buttonNextClass );
+		}
+		else{
+			buttonNextClass = buttonNextClass.replace(" buttonDisabled","");
+			buttonNext.setAttribute("class",buttonNextClass );
+		}
+	}
 		function calculatePrice(tar) {
 			var unitPrice = (tar
 					.getElementsByClassName("prescriptionUnitPrice"))[0];
@@ -1052,11 +973,17 @@
 		}
 
 		function clearTable(now) {
+			var jiuzhen = now.parentNode.previousSibling.previousSibling;
+			var ins= jiuzhen.getElementsByTagName("input");
+			var in0val = ins[0].val;
+			var in1val = ins[1].val;
 			now.parentNode.previousSibling.previousSibling.reset();
+			 ins[0].val = in0val;
+			 ins[1].val = in1val;
 		}
 		window.onload = function() {
 			var buttonFinish = document
-					.getElementsByClassName("buttonFinish buttonDisabled btn btn-default")[0];
+					.getElementsByClassName("buttonFinish btn btn-default")[0];
 			buttonFinish.onclick = function() {
 				var forms = document.getElementsByTagName("form");
 				$.ajax({
@@ -1065,7 +992,6 @@
 					type : "GET",
 					dataType : "json",
 					success : function(data) {
-						alert("json");
 						$(data).each(function(i, dd) {
 						});
 					},
@@ -1083,41 +1009,53 @@
 					var ins = document.getElementsByTagName("input");
 					var bus = document.getElementsByTagName("button");
 					var sels = document.getElementsByTagName("select");
+					var texs = document.getElementsByTagName("textarea");
+					forms[1].submit(true);
+					setTimeout("stepDo1()",600);
+					setTimeout("stepDo2()",1000); 
 					for(var i = 0; i < ins.length; ++i){
 						ins[i].disabled="disable";
+					}
+					for(var i = 0; i < texs.length; ++i){
+						texs[i].disabled="disable";
 					}
 					for(var i = 0; i < bus.length; ++i){
 						bus[i].disabled="disable";
 					}
-					for(var i = 0; i < ins.length; ++i){
+					for(var i = 0; i < sels.length; ++i){
 						sels[i].disabled="disable";
 					}
-					/* for (var i = 0; i < forms.length; ++i) {
-						forms[i].disabled="disable";
-					} */
-					$.ajax({
-								url : "/MICRS/CenterWork/Preview?midId="
-										+ forms[1]
-												.getElementsByTagName("input")[0].value,
-								type : "GET",
-								dataType : "json",
-								success : function(data) {
-									$(data)
-											.each(
-													function(i, dd) {
-														var preTable = document
-																.getElementById("preTable");
-														var spans = preTable
-																.getElementsByTagName("span");
-														spans[(i+1)*2+1].innerHTML = "￥"+dd;
-													});
-								},
-								error : function() {
-									alert("error");
-								}
-							});
 				}
+			};
+		}
+		function stepDo1(){
+			var forms = document.getElementsByTagName("form");
+			for (var i = 3; i < forms.length; ++i) {
+				forms[i].submit(true);
 			}
+		}
+		function stepDo2(){
+			var forms = document.getElementsByTagName("form");
+			$.ajax({
+				url : "/MICRS/CenterWork/Preview?midId="
+						+ forms[1].getElementsByTagName("input")[0].value,
+				type : "GET",
+				dataType : "json",
+				success : function(data) {
+					$(data)
+							.each(
+									function(i, dd) {
+										var preTable = document
+												.getElementById("preTable");
+										var spans = preTable
+												.getElementsByTagName("span");
+										spans[(i+1)*2+1].innerHTML = "￥"+dd;
+									});
+				},
+				error : function() {
+					alert("error");
+				}
+			});
 		}
 		function checkDate() {
 			var date1 = document.getElementById("inDate").value;
@@ -1132,30 +1070,7 @@
 				return true;
 			}
 		}
-		function checkOutpatientNumber(now) {
-			var outNum = document.getElementById("outpatientNumber").value;
-			var outNumS = document.getElementById("outNumS");
-			var sta = /^\d{9}$/;
-			if (sta.test(outNum) == false) {
-				outNumS.innerHTML = "应为9位数字";
-				return false;
-			} else {
-				outNumS.innerHTML = "";
-				return true;
-			}
-			$.ajax({
-				url : "/MICRS/PersMed/QUni?medId="+now.value,
-				type : "GET",
-				dataType : "json",
-				success : function(data) {
-					alert(data);
-					$("#diseaseInf").html(str);
-				},
-				error : function() {
-					alert("error");
-				}
-			});
-		}
+		
 		function preview(oper) {
 			var newWin = window.open('', '报销单', '', false);
 			bdhtml = window.document.body.innerHTML;//获取当前页的html代码
@@ -1176,10 +1091,11 @@
 			//alert(index);
 			dis.value = all[index].diease;
 		}//根据第一步选的人员设定就诊信息的人员id
-		function setManId(manId){
+		function setManId(manId, manName){
 			var step = document.getElementsByClassName("disabled");
 			var inManId = document.getElementById("manId");
 			inManId.value = manId;
+			setTableMan(manId, manName);
 		}
 	//根据第二步的住院号设定第三步处方的住院号
 		function setClinicNumber(now){
@@ -1188,6 +1104,31 @@
 				cns[i].value = now.value;
 			}
 		}
+	//设定预报销中的姓名、个人编号
+		function setTableMan(qManId, qName){
+			var qManId1 = document.getElementById("qManId1");
+			var qName1 = document.getElementById("qName1");
+			qManId1.innerHTML = qManId;
+			qName1.innerHTML = qName;
+		}
+	//第三步中保证药品不重复
+        function changeForm(now) {
+            var forms = document.getElementsByTagName("form");
+            var selval = now.value;
+            for (var i = 2; i < forms.length; i++) {
+                var sel = forms[i].getElementsByTagName("select")[0];
+                if (sel.value != selval) {
+                    var ops = sel.getElementsByTagName("option");
+                    for (var j = 0; j < ops.length; ++j) {
+                        if (ops[j].value == selval) {
+                            ops[j].disabled = "disabled";
+                        }
+                    }
+                } else {
+                    sel.disabled = "disabled";
+                }
+            }
+        }
 	</script>
 	<script>
 		$(function() {
@@ -1271,6 +1212,22 @@
 					alert("error");
 				}
 			});
+            $.ajax({
+                url: "/MICRS/reimbur/medcine/ajax",
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    var str = "";
+                    str = str + "<option></option>";
+                    $(data).each(function(i, dl) {
+                        str = str + "<option value=" + dl.medicineCode + ">" + dl.medicineName + "</option>";
+                    });
+                    $("#MEDICINE_CODE").html(str);
+                },
+                error: function() {
+                    alert("error");
+                }
+            });
 		});
 	</script>
 </body>

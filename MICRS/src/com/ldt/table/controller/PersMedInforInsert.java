@@ -27,7 +27,7 @@ import com.ldt.table.dao.PersonInformationDaoImpl;
 /**
  * Servlet implementation class PersMedInforInsert
  */
-@WebServlet("/Insert/PersMedInfor")
+@WebServlet("/Insert/PersMedInforX")
 public class PersMedInforInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,7 @@ public class PersMedInforInsert extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("ss");
+		System.out.println("/Insert/PersMedInforX");
 		String outpatientNum = request.getParameter("outpatientNum");
 		String num = request.getParameter("num");
 		String desiMedInsId = request.getParameter("desiMedInsId");
@@ -45,7 +45,15 @@ public class PersMedInforInsert extends HttpServlet {
 		String disease = request.getParameter("disease");
 		String disNum = request.getParameter("disNum");
 		String outReason = request.getParameter("outReason");
-
+//		System.out.println("outReason is "+outReason);
+//		System.out.println("outpatientNum is "+outpatientNum);
+//		System.out.println("num is "+num);
+//		System.out.println("desiMedInsId is "+desiMedInsId);
+//		System.out.println("indiSegId is "+indiSegId);
+//		System.out.println("inDate is "+inDate);
+//		System.out.println("outDate is "+outDate);
+//		System.out.println("disease is "+disease);
+//		System.out.println("disNum is "+disNum);
 		List<DesiMedIns> desiMedInss = new DesiMedInsDaoImpl().selectDesiMedIns(new DesiMedIns(desiMedInsId, null));
 		DesiMedIns desiMedIns = null;
 		if(!desiMedInss.isEmpty()) {
@@ -78,7 +86,9 @@ public class PersMedInforInsert extends HttpServlet {
 		}
 
 		PersMedInforDaoImpl pp = new PersMedInforDaoImpl();
-	
+//	System.out.println(new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
+//				inDate, outDate, diseaseProject, hospitalClass,
+//				diseaseInformation, outReason, "否"));
 		pp.insertPersMedInfor(new PersMedInfor(outpatientNum, personInformation, desiMedIns, indiSeg,
 				inDate, outDate, diseaseProject, hospitalClass,
 				diseaseInformation, outReason, "否"));

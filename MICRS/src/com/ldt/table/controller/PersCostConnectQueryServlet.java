@@ -33,9 +33,10 @@ public class PersCostConnectQueryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("/perscost/connect/query");
+//		System.out.println("/perscost/connect/query");
 		String no = request.getParameter("qManId");
 		String name = request.getParameter("qName");
+		System.out.println("name is " +name);
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		Connection conn =  DBUtil.getPreparedStatement();
@@ -47,12 +48,13 @@ public class PersCostConnectQueryServlet extends HttpServlet {
 				"from pers_med_infor a, unit_infor b,person_information c,personal_cost_information d " + 
 				"where a.num=c.user_ID and a.num=d.user_ID and c.unit_ID=b.unit_ID" ;
 		if(no != null && no != "") {
-			sql = sql + " and c.userID = '"+no+"'";
+			sql = sql + " and c.user_ID = '"+no+"'";
 		}
 		if(name != null && name != "") {
 			sql = sql + " and c.name = '"+name+"'";
 		}
 		sql = sql + " and d.time = '"+year+"'";
+		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();

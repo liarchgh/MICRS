@@ -29,20 +29,24 @@ public class PrescriptionDetailInsertServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		System.out.println("SS1");
+		System.out.println("/Insert/PrescriptionDetail");
 		String outpatientNum = request.getParameter("OUTPATIENT_NUM");
+		System.out.println("outpatientNum is "+outpatientNum);
 		String medicineCode = request.getParameter("MEDICINE_CODE");
+		System.out.println("medicineCode is "+medicineCode);
 		String Price = request.getParameter("PRICE");
+//		System.out.println("Price is "+Price);
 		String Total = request.getParameter("NUMBER");
+//		System.out.println("Total is "+Total);
 		String Account = request.getParameter("ACCOUNT");
 		Drug drug = null;
 		if(medicineCode!=null && !medicineCode.equals("")) {
 			List<Drug> temp = new DrugListDaoImpl().selectDrug(new Drug(medicineCode, null));
-			if(!temp.isEmpty()) {
+			if(temp.size() > 0) {
 				drug = temp.get(0);
 			}
 		}
-		System.out.println("drug is"+drug);
+		System.out.println("drug on detail is"+drug);
 		float price = 0;
 		if(Price!=null && !Price.equals("")){
 			price = Float.parseFloat(Price);
