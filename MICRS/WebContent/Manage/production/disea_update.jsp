@@ -50,6 +50,25 @@
     			});
     	});
     </script>
+    <script type="text/javascript">
+    	function send(){
+    		var msg = "您确认要提交吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	
+    	function again(){
+    		var msg = "您确认要重置吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    </script>
 </head>
 
 <body class="nav-md">
@@ -70,7 +89,7 @@
                     </div>
                     <div class="profile_info">
                         <span>欢迎,</span>
-                        <h2>John Doe</h2>
+                        <h2>${sessionScope.user.account }</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -114,6 +133,7 @@
                             <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
+                                    <li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
                                 </ul>
                             </li>
 
@@ -136,15 +156,6 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
                     <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.jsp">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
@@ -164,18 +175,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">医疗基本信息
+                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> 疾病基本信息</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <!-- <span class="badge bg-red pull-right">50%</span>-->
-                                        <span>背景</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">帮助</a></li>
+                                
                                 <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
                             </ul>
                         </li>
@@ -199,9 +203,7 @@
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
                                 <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">点击查询!</button>
                           </span>
                             </div>
                         </div>
@@ -255,20 +257,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pcardtype">疾病种类<span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
                                         	<input type = "hidden" id = "hid" value = "${requestScope.d.diseaseNum.diseaseNum }">
-                                            <select class="form-control col-md-7 col-xs-12" id="diseatype" name="diseatype" style="width: 583px">
+                                            <select class="form-control col-md-7 col-xs-12" id="diseatype" name="diseatype">
                                        
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hukouxingzhi">病种报销标志</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="diseasyb" name="diseasyb" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="diseasyb" name="diseasyb" >
                                             	<c:if test="${requestScope.d.disReimbSign.equals('是') }">
                                                 <option selected = "selected">是</option>
                                                 </c:if>
@@ -291,8 +293,8 @@
                                             <a href="/MICRS/Manage/production/disea_query.jsp">
                                                 <button type="button" class="btn btn-primary">取消</button>
                                             </a>
-                                            <button type="reset" class="btn btn-primary">重置</button>
-                                            <button type="submit" class="btn btn-success">提交</button>
+                                            <button type="reset" class="btn btn-primary" onclick="return again()">重置</button>
+                                            <button type="submit" class="btn btn-success" onclick="return send()">提交</button>
                                         </div>
                                     </div>
                                 </form>

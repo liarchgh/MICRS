@@ -49,15 +49,20 @@ public class CenterWorkDoAjax extends HttpServlet {
 		Calendar cc = Calendar.getInstance();
 		int year = cc.get(Calendar.YEAR);
 		PersonalCostInformation pci = pcidi.selectPersonalCostInformation(new PersonalCostInformation(pi, ""+year,0, 0, 0, 0)).get(0);
-		pci.setRemAccumulat(pci.getRemAccumulat() + money.get(1));
+//		System.out.println("pci is "+pci);
+		pci.setRemAccumulat(pci.getRemAccumulat() + money.get(8));
 		pci.setTimes(pci.getTimes()+1);
 		pci.setExpAccumulat(pci.getExpAccumulat() + money.get(6));
 		pci.setPaiedPerAccu(pci.getExpAccumulat() - pci.getRemAccumulat());
 		pcidi.updatePersonalCostInformation(pci);
 		pmi.setMark("是");
+//		System.out.println("pci is "+pci);
 		pmidi.updatePersMedInfor(pmi);
 		if(toWhere!=null && toWhere.equals("search")) {
 			request.getRequestDispatcher("/Manage/production/CenterTreatment.jsp").forward(request, response);
+		}
+		else {
+			request.getRequestDispatcher("/Manage/production/index.jsp").forward(request, response);
 		}
 	}
 

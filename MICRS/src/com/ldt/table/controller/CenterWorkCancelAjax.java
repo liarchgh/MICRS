@@ -47,7 +47,7 @@ public class CenterWorkCancelAjax extends HttpServlet {
 		Calendar cc = Calendar.getInstance();
 		int year = cc.get(Calendar.YEAR);
 		PersonalCostInformation pci = pcidi.selectPersonalCostInformation(new PersonalCostInformation(pi, ""+year,0, 0, 0, 0)).get(0);
-		pci.setRemAccumulat(pci.getRemAccumulat() - money.get(1));
+		pci.setRemAccumulat(pci.getRemAccumulat() - money.get(8));
 		pci.setTimes(pci.getTimes()-1);
 		pci.setExpAccumulat(pci.getExpAccumulat() - money.get(6));
 		pci.setPaiedPerAccu(pci.getExpAccumulat() - pci.getRemAccumulat());

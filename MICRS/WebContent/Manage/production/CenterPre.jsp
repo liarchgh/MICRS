@@ -31,6 +31,15 @@
 
 <!-- Custom Theme Style -->
 <link href="/MICRS/Manage/build/css/custom.css" rel="stylesheet">
+<script language="JavaScript" type="text/javascript">
+        function  printPage(){
+            var newWin=window.open();
+            var titleHTML=document.getElementById("doctitle").innerHTML;
+            newWin.document.write(titleHTML);
+            newWin.document.location.reload();
+            newWin.print();
+        }
+</script>
 </head>
 
 <body class="nav-md">
@@ -53,7 +62,7 @@
 						</div>
 						<div class="profile_info">
 							<span>欢迎,</span>
-							<h2>John Doe</h2>
+							<h2>${sessionScope.user.account }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -99,6 +108,7 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
+										<li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-table"></i> 综合查询 <span
@@ -120,13 +130,7 @@
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
-						<a data-toggle="tooltip" data-placement="top" title="Settings">
-							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
-							class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
+						<a data-toggle="tooltip" data-placement="top" title="Logout"
 							href="/MICRS/Manage/production/login.jsp"> <span class="glyphicon glyphicon-off"
 							aria-hidden="true"></span>
 						</a>
@@ -147,15 +151,11 @@
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
 								aria-expanded="false"> <img
-									src="/MICRS/Manage/production/images/img.jpg" alt="">医疗基本信息
+									src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
 									<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> 病种信息</a></li>
-									<li><a href="javascript:;"> <span
-											class="badge bg-red pull-right">50%</span> <span>背景</span>
-									</a></li>
-									<li><a href="javascript:;">帮助</a></li>
+									
 									<li><a href="/MICRS/Manage/production/login.jsp"><i
 											class="fa fa-sign-out pull-right"></i> 注销</a></li>
 								</ul></li>
@@ -188,58 +188,7 @@
 						<h2 class="StepTitle">预报销（此时仅显示，不报销，报销请点击按钮）</h2>
 						<!--startprint1-->
 						<iframe id="id_iframe" name="nm_iframe" style="display: none;"></iframe>
-						<!-- <table
-												class="table table-striped table-bordered dataTable no-footer"
-												role="grid" aria-describedby="datatable_info"
-												style="width: 400px; position: relative; margin-right: auto; margin-left: auto;">
-											<thead>
-										<tr role="row">
-											<th class="sorting_asc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;">Name</th>
-											<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 309px;">Position</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 143px;">Office</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 76px;">Age</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 140px;">Start date</th>
-												<th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 112px;">Salary</th></tr>
-												</thead>
-												费用总额、报销金额、自费金额、年度累计报销金额、起付标准、分段计算中自费金额、报销封顶线、乙类项目自费金额、特检特治自费金额
-												<tbody id="preTable">
-													<tr role="row" class="odd">
-														<td class="sorting_1">费用总额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="even">
-														<td class="sorting_1">报销金额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="odd">
-														<td class="sorting_1">自费金额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="even">
-														<td class="sorting_1">年度累计报销金额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="odd">
-														<td class="sorting_1">起付标准</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="even">
-														<td class="sorting_1">分段计算中自费金额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="odd">
-														<td class="sorting_1">报销封顶线</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="even">
-														<td class="sorting_1">乙类项目自费金额</td>
-														<td>￥<span>162,700</span></td>
-													</tr>
-													<tr role="row" class="odd">
-														<td class="sorting_1">特检特治自费金额</td>
-														<td>￥<span>162,700</span></td>
-												</tbody>
-											</table> -->
+						<div id="doctitle">
 						<table class="MsoNormalTable" border="1" cellspacing="0"
 							cellpadding="0" width="84%"
 							style="border-collapse: collapse; mso-table-layout-alt: fixed; border: none; mso-border-alt: solid windowtext .5pt; mso-yfti-tbllook: 191; mso-padding-alt: 0cm 5.4pt 0cm 5.4pt; mso-border-insideh: .5pt solid windowtext; mso-border-insidev: .5pt solid windowtext">
@@ -250,146 +199,31 @@
 										style="width: 13.22%; border: solid windowtext 1.0pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 										<p class="MsoNormal">
 											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">单位名称</span>
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">姓名</span>
 										</p>
 									</td>
 									<td width="28%" colspan="3" valign="top"
 										style="width: 28.9%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+											<span id="manName"
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;"></span>
 										</p>
 									</td>
 									<td width="20%" valign="top"
 										style="width: 20.42%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 										<p class="MsoNormal" style="text-indent: 21.0pt">
 											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">单位编号</span>
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">编号</span>
 										</p>
 									</td>
 									<td width="37%" colspan="2" valign="top"
 										style="width: 37.44%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
+											<span id="manId"
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;"></span>
 										</p>
 									</td>
-								</tr>
-								<tr style="mso-yfti-irow: 1">
-									<td width="13%" valign="top"
-										style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">姓名</span>
-										</p>
-									</td>
-									<td width="13%" colspan="2" valign="top"
-										style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-									<td width="15%" valign="top"
-										style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">个人编号</span>
-										</p>
-									</td>
-									<td width="20%" valign="top"
-										style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-									<td width="13%" valign="top"
-										style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">人员类别</span>
-										</p>
-									</td>
-									<td width="23%" valign="top"
-										style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt">
-										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-								</tr>
-								<tr style="mso-yfti-irow: 2; height: 15.75pt">
-									<td width="13%" valign="top"
-										style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">申报原因</span>
-										</p>
-									</td>
-									<td width="13%" colspan="2" valign="top"
-										style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span lang="EN-US"><span style="mso-tab-count: 1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											</span></span>
-										</p>
-									</td>
-									<td width="15%" valign="top"
-										style="width: 15.3%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal" style="tab-stops: 140.25pt">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">报销类别</span>
-										</p>
-									</td>
-									<td width="20%" valign="top"
-										style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-									<td width="13%" valign="top"
-										style="width: 13.62%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal" style="tab-stops: 140.25pt">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">住院次数</span>
-										</p>
-									</td>
-									<td width="23%" valign="top"
-										style="width: 23.82%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-								</tr>
-								<tr style="mso-yfti-irow: 3; height: 15.75pt">
-									<td width="13%" valign="top"
-										style="width: 13.22%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">就诊医院</span>
-										</p>
-									</td>
-									<td width="28%" colspan="3" valign="top"
-										style="width: 28.9%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-									<td width="20%" valign="top"
-										style="width: 20.42%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">就诊时段</span>
-										</p>
-									</td>
-									<td width="37%" colspan="2" valign="top"
-										style="width: 37.44%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 15.75pt">
-										<p class="MsoNormal"
-											style="text-indent: 21.0pt; tab-stops: 140.25pt">
-											<span lang="EN-US"><o:p>&nbsp;</o:p></span>
-										</p>
-									</td>
-								</tr>
+								</tr>	
 								<tr style="mso-yfti-irow: 4; height: 276.6pt" id="preTable">
 									<td width="100%" colspan="7" valign="top"
 										style="width: 100.0%; border: solid windowtext 1.0pt; border-top: none; mso-border-top-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 276.6pt">
@@ -454,7 +288,7 @@
 												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">报销金额：</span>
 										</p>
 										<p class="MsoNormal" style="text-indent: 21.0pt">
-											<span lang="EN-US"></span>
+											<span lang="EN-US" id="giveMoney"></span>
 										</p>
 										<p class="MsoNormal" style="text-indent: 21.0pt">
 											<span
@@ -478,10 +312,7 @@
 										style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.9pt">
 										<p class="MsoNormal" style="text-indent: 21.0pt">
 											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">大写：
-												万 <span class="GramE"> </span>仟 <span class="GramE">
-											</span>佰 <span class="GramE"> </span>拾 <span class="GramE"> </span>元
-												<span class="GramE"> </span>角 <span class="GramE"> </span>分
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;" id="bigNumber">大写：
 											</span>
 										</p>
 									</td>
@@ -492,7 +323,7 @@
 										style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.85pt">
 										<p class="MsoNormal" style="text-indent: 21.0pt">
 											<span
-												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;">小写：</span>
+												style="font-family: 宋体; mso-ascii-font-family: &amp;amp; quot; Times New Roman&amp;amp; quot;; mso-hansi-font-family: &amp;amp;" id="smallNumber">小写：</span>
 										</p>
 									</td>
 								</tr>
@@ -509,13 +340,14 @@
 								<!--[endif]-->
 							</tbody>
 						</table>
+						</div>
 						<br>
 
 						<!--endprint1-->
 						<div>
 							<a href="#" class="buttonNext btn btn-success"
 								style="position: absolute; right: 400px; left: 400px"
-								onclick="preview(1)">打印</a>
+								onclick="printPage()">打印</a>
 						</div>					
 					<div style="float:center;">
 					<a id="doWork" href="/MICRS/CenterWork/Do?midId=" type="button" class="btn btn-round btn-warning">确认报销</a>
@@ -527,16 +359,13 @@
 			<!-- /page content -->
 
 			<!-- footer content -->
-			<footer>
-				<div class="pull-right">
-					Gentelella - Bootstrap Admin Template by Colorlib. More Templates <a
-						href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
-					- Collect from <a href="http://www.cssmoban.com/" title="网页模板"
-						target="_blank">网页模板</a>
-				</div>
-				<div class="clearfix"></div>
-			</footer>
-			<!-- /footer content -->
+        <footer>
+          <div class="pull-right">
+            <a href="/MICRS/Manage/production/index.jsp" target="_blank" title="主页">主页</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
 		</div>
 	</div>
 
@@ -588,7 +417,9 @@
 <script>
 window.onload = function(){
     var url = window.location.href;
-    var paraString = url.substring(url.indexOf("?") + 1, url.length);
+    var allString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+    var paraString = allString[0];
+    var idString = allString[1];
     //参数
     if(paraString!=null && paraString!=""){
 	    var outNum = document.getElementById("doWork");
@@ -607,6 +438,19 @@ window.onload = function(){
 							.getElementsByTagName("span");
 					spans[(i+1)*2+1].innerHTML = "￥"+dd;
 				});
+			stepDo3();
+		},
+		error : function() {
+			alert("error");
+		}
+	});
+    $.ajax({
+		url : "/MICRS/Person/QueryName?manId="+idString,
+		type : "GET",
+		dataType : "text",
+		success : function(data) {
+			document.getElementById("manId").innerHTML = idString;
+			document.getElementById("manName").innerHTML = data;
 		},
 		error : function() {
 			alert("error");
@@ -624,6 +468,44 @@ function preview(oper) {
 	newWin.document.body.innerHTML = prnhtml;
 	newWin.print();
 	//        window.document.body.innerHTML=bdhtml;
+}
+function stepDo3(){
+	//数字大小写转换
+	var moneyString = document.getElementById("giveMoney").innerHTML;
+	var money = parseFloat(moneyString.substring(1));
+	document.getElementById("smallNumber").innerHTML = "小写：￥"+money;
+	var digitUppercase = changeBigNumber(money);
+	document.getElementById("bigNumber").innerHTML = "大写："+digitUppercase;
+}
+function changeBigNumber(n) {
+    var fraction = ['角', '分'];
+    var digit = [
+        '零', '壹', '贰', '叁', '肆',
+        '伍', '陆', '柒', '捌', '玖'
+    ];
+    var unit = [
+        ['元', '万', '亿'],
+        ['', '拾', '佰', '仟']
+    ];
+    var head = n < 0 ? '欠' : '';
+    n = Math.abs(n);
+    var s = '';
+    for (var i = 0; i < fraction.length; i++) {
+        s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
+    }
+    s = s || '整';
+    n = Math.floor(n);
+    for (var i = 0; n > 0 && i < unit[0].length; i++) {
+        var p = '';
+        for (var j = 0; j < unit[1].length && n > 0; j++) {
+            p = digit[n % 10] + unit[1][j] + p;
+            n = Math.floor(n / 10);
+        }
+        s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+    }
+    return head + s.replace(/(零.)*零元/, '元')
+        .replace(/(零.)+/g, '零')
+        .replace(/^整$/, '零元整');
 }
 </script>
 

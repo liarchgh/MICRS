@@ -32,7 +32,7 @@ public class LogInServlet extends HttpServlet {
 			if(!users.isEmpty()){
 				HttpSession session = request.getSession();
 				session.setAttribute("user", users.get(0));
-				request.getRequestDispatcher("/Manage/production/index.html").forward(request, response);
+				request.getRequestDispatcher("/Manage/production/index.jsp").forward(request, response);
 			}
 			else{
 				request.setAttribute("message", "用户名或密码错误");

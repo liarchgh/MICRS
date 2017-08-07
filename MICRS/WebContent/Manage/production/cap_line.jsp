@@ -78,7 +78,7 @@
                     </div>
                     <div class="profile_info">
                         <span>欢迎,</span>
-                        <h2>John</h2>
+                        <h2>${sessionScope.user.account }</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -122,6 +122,7 @@
                             <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
+                                     <li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
                                 </ul>
                             </li>
 
@@ -144,15 +145,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
+                    
                     <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.jsp">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
@@ -162,38 +155,20 @@
         </div>
 
         <!-- top navigation -->
-        <div class="top_nav">
-            <div class="nav_menu">
-                <nav>
-                    <div class="nav toggle">
-                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                    </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="">
+            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
+              <span class=" fa fa-angle-down"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-usermenu pull-right">
+              <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
+            </ul>
+          </li>
 
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="">
-                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">医疗基本信息
-                                <span class=" fa fa-angle-down"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> 医疗待遇计算参数信息维护</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>封顶线</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">起付标准</a></li>
-                                <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 个人分段自费比例</a></li>
-                            </ul>
-                        </li>
-                        </li>
-                    </ul>
-                    </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+
+
+        </ul>
         <!-- /top navigation -->
 
         <!-- page content -->

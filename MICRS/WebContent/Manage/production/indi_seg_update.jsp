@@ -22,6 +22,25 @@
 
     <!-- Custom Theme Style -->
     <link href="/MICRS/Manage/build/css/custom.css" rel="stylesheet">
+    <script type="text/javascript">
+    	function send(){
+    		var msg = "您确认要提交吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	
+    	function again(){
+    		var msg = "您确认要重置吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    </script>
 </head>
 
 <body class="nav-md">
@@ -42,7 +61,7 @@
                     </div>
                     <div class="profile_info">
                         <span>欢迎,</span>
-                        <h2>John Doe</h2>
+                        <h2>${sessionScope.user.account} </h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -92,6 +111,7 @@
                             <li><a><i class="fa fa-table"></i> 综合查询 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/MICRS/Manage/production/cost_query.jsp">医疗人员费用查询</a></li>
+                                    <li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
                                 </ul>
                             </li>
 
@@ -108,15 +128,6 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
                     <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.jsp">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
@@ -136,18 +147,11 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">医疗基本信息
+                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> 定点医疗机构信息</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <!-- <span class="badge bg-red pull-right">50%</span>-->
-                                        <span>背景</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">帮助</a></li>
+                                
                                 <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
                             </ul>
                         </li>
@@ -171,9 +175,7 @@
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
                                 <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">点击查询!</button>
                           </span>
                             </div>
                         </div>
@@ -211,10 +213,10 @@
                                     </div>
 
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="med_per_class">医疗人员类别 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="med_per_class" required="required" name="med_per_class" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="med_per_class" required="required" name="med_per_class">
                                                 <option></option>
                                                 <option>医生</option>
                                                 <option>护士</option>
@@ -225,10 +227,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="strucclass">医院等级 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="strucclass" name="strucclass" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="strucclass" name="strucclass">
                                                 <option ></option>
                                                 <option>一级</option>
                                                 <option>二级</option>
@@ -239,10 +241,10 @@
                                     </div>
 
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="structype">医疗类别 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="structype" name="structype" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="structype" name="structype">
                                                 <option></option>
                                                 <option>城镇居民医疗</option>
                                                 <option>新农合</option>
@@ -281,8 +283,8 @@
                                             <a href="/MICRS/Manage/production/indi_seg_ratio.jsp">
                                                 <button type="button" class="btn btn-primary">取消</button>
                                             </a>
-                                            <button type="reset" class="btn btn-primary">重置</button>
-                                            <button type="submit" class="btn btn-success">提交</button>
+                                            <button type="reset" class="btn btn-primary" onclick="return again()">重置</button>
+                                            <button type="submit" class="btn btn-success" onclick="return send()">提交</button>
                                         </div>
                                     </div>
                                 </form>

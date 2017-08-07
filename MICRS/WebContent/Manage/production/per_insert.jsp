@@ -82,6 +82,25 @@
     			});
     	});
     </script>
+    <script type="text/javascript">
+    	function send(){
+    		var msg = "您确认要提交吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	
+    	function again(){
+    		var msg = "您确认要重置吗？";
+    		if(confirm(msg) == true){
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    </script>
 </head>
 
 <body class="nav-md">
@@ -90,7 +109,7 @@
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="/MICRS/Manage/production/index.html" class="site_title"><i class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
+                    <a href="/MICRS/Manage/production/index.jsp" class="site_title"><i class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -102,7 +121,7 @@
                     </div>
                     <div class="profile_info">
                         <span>欢迎,</span>
-                        <h2>John Doe</h2>
+                        <h2>${sessionScope.user.account }</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -116,49 +135,50 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> 主页 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/index.html">报销系统简介</a></li>
-                                    <li><a href="/MICRS/Manage/production/main1.html">医疗基本信息简介</a></li>
-                                    <li><a href="/MICRS/Manage/production/main2.html">医疗待遇审批简介</a></li>
-                                    <li><a href="/MICRS/Manage/production/main3.html">医保中心报销简介</a></li>
-                                    <li><a href="/MICRS/Manage/production/main4.html">综合查询简介</a></li>
-                                    <li><a href="/MICRS/Manage/production/main5.html">公共业务简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/index.jsp">报销系统简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/main1.jsp">医疗基本信息简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/main2.jsp">医疗待遇审批简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/main3.jsp">医保中心报销简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/main4.jsp">综合查询简介</a></li>
+                                    <li><a href="/MICRS/Manage/production/main5.jsp">公共业务简介</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-edit"></i> 医疗基本信息 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/drug_infor.html">药品信息</a></li>
-                                    <li><a href="/MICRS/Manage/production/project_infor.html">*诊疗项目信息</a></li>
-                                    <li><a href="/MICRS/Manage/production/dept_pro.html">*服务设施项目</a></li>
-                                    <li><a href="/MICRS/Manage/production/disea_infor.html">病种信息</a></li>
-                                    <li><a href="/MICRS/Manage/production/struc_infor.html">定点医疗机构信息</a></li>
-                                    <li><a href="/MICRS/Manage/production/acculate.html">医疗报销计算参数</a></li>
+                                    <li><a href="/MICRS/Manage/production/drug_infor.jsp">药品信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/project_infor.jsp">*诊疗项目信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/dept_pro.jsp">*服务设施项目</a></li>
+                                    <li><a href="/MICRS/Manage/production/disea_infor.jsp">病种信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/struc_infor.jsp">定点医疗机构信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/acculate.jsp">医疗报销计算参数</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-desktop"></i> *医疗待遇审批 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/wait1.html">*人员就诊机构审批</a></li>
-                                    <li><a href="/MICRS/Manage/production/wait2.html">*特检特治审批</a></li>
+                                    <li><a href="/MICRS/Manage/production/wait1.jsp">*人员就诊机构审批</a></li>
+                                    <li><a href="/MICRS/Manage/production/wait2.jsp">*特检特治审批</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-medkit"></i> 医保中心报销 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/Reimbursement.html">医保报销</a></li>
+                                    <li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
+                                    <li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-table"></i> 综合查询 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/cost_query.html">医疗人员费用查询</a></li>
+                                    <li><a href="/MICRS/Manage/production/cost_query.jsp">医疗人员费用查询</a></li>
                                 </ul>
                             </li>
 
                             <li><a><i class="fa fa-briefcase"></i> 公共业务 <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="/MICRS/Manage/production/unit_infor.html">单位基本信息</a></li>
-                                    <li><a href="/MICRS/Manage/production/person_infor.html">个人基本信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/unit_infor.jsp">单位基本信息</a></li>
+                                    <li><a href="/MICRS/Manage/production/person_infor.jsp">个人基本信息</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -168,16 +188,7 @@
 
                 <!-- /menu footer buttons -->
                 <div class="sidebar-footer hidden-small">
-                    <a data-toggle="tooltip" data-placement="top" title="Settings">
-                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                        <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Lock">
-                        <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                    </a>
-                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.html">
+                    <a data-toggle="tooltip" data-placement="top" title="Logout" href="/MICRS/Manage/production/login.jsp">
                         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -196,19 +207,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">公共业务
+                                <img src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> 个人基本信息</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">20%</span>
-                                        <span>背景</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">帮助</a></li>
-                                <li><a href="/MICRS/Manage/production/login.html"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
+                                
+                                <li><a href="/MICRS/Manage/production/login.jsp"><i class="fa fa-sign-out pull-right"></i> 注销</a></li>
                             </ul>
                         </li>
                         </li>
@@ -229,9 +233,7 @@
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search for...">
                                 <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">点击查询!</button>
                           </span>
                             </div>
                         </div>
@@ -265,7 +267,7 @@
 
                                 <form action="/MICRS/person/insert" class="form-horizontal form-label-left" novalidate method = "post">
 
-                                    <p>该页面的主要功能是进行<code>个人基本信息</code>的注册，带<code>*</code>是<code>必填项</code>，点击此处可以跳转到<a href="/MICRS/Manage/production/per_query.html">查询页面</a>
+                                    <p>该页面的主要功能是进行<code>个人基本信息</code>的注册，带<code>*</code>是<code>必填项</code>，点击此处可以跳转到<a href="/MICRS/Manage/production/per_query.jsp">查询页面</a>
                                     </p>
                                     <span class="section">个人基本信息</span>
 
@@ -277,7 +279,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">性别</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <div id="sex" class="btn-group" data-toggle="buttons">
@@ -291,10 +293,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pcardtype">证件类型 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="pcardtype" name="pcardtype" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="pcardtype" name="pcardtype">
                                                 <option></option>
                                                 <option>身份证</option>
                                                 <option>军人证</option>
@@ -344,10 +346,10 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hukouxingzhi">户口性质</label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="hukouxingzhi" name="hukouxingzhi" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="hukouxingzhi" name="hukouxingzhi">
                                                 <option></option>
                                                 <option>城镇</option>
                                                 <option>农村</option>
@@ -355,27 +357,27 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="med_per_class">医疗人员类别 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="med_per_class" required="required" name="med_per_class" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="med_per_class" required="required" name="med_per_class">
                  
                                             </select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="hospital_code">服务机构名称 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="hospital_code" required="required" name="hospital_code" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="hospital_code" required="required" name="hospital_code">
                                      		</select>
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="unit_code">单位名称 <span class="required">*</span></label>
-                                        <div class="col-md-9 col-sm-9 col-xs-12">
-                                            <select class="form-control col-md-7 col-xs-12" id="unit_code" required="required" name="unit_code" style="width: 583px">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select class="form-control col-md-7 col-xs-12" id="unit_code" required="required" name="unit_code">
 
                                             </select>
                                         </div>
@@ -392,11 +394,11 @@
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                            <a href="/MICRS/Manage/production/person_infor.html">
+                                            <a href="/MICRS/Manage/production/person_infor.jsp">
                                                 <button type="button" class="btn btn-primary">取消</button>
                                             </a>
-                                            <button type="reset" class="btn btn-primary">重置</button>
-                                            <button type="submit" class="btn btn-success">提交</button>
+                                            <button type="reset" class="btn btn-primary" onclick="return again()">重置</button>
+                                            <button type="submit" class="btn btn-success" onclick="return send()">提交</button>
                                         </div>
                                     </div>
                                 </form>
@@ -411,10 +413,10 @@
         <!-- footer content -->
         <footer>
             <div class="pull-right">
-                <a href="/MICRS/Manage/production/per_query.html" target="_blank" title="个人基本信息">个人基本信息</a>
+                <a href="/MICRS/Manage/production/per_query.jsp" target="_blank" title="个人基本信息">个人基本信息</a>
                 &nbsp;
                 &nbsp;
-                <a href="/MICRS/Manage/production/index.html" target="_blank" title="主页">主页</a>
+                <a href="/MICRS/Manage/production/index.jsp" target="_blank" title="主页">主页</a>
             </div>
             <div class="clearfix"></div>
         </footer>

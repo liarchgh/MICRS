@@ -28,6 +28,7 @@
 
 <!-- Custom Theme Style -->
 <link href="/MICRS/Manage/build/css/custom.min.css" rel="stylesheet">
+<link href="/MICRS/layui-v1.0.9_rls/layui/css/layui.css" rel="stylesheet">
 
 </head>
 
@@ -37,7 +38,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="index.html" class="site_title"><i
+						<a href="/MICRS/Manage/production/index.jsp" class="site_title"><i
 							class="fa fa-hospital-o"></i> <span>医疗保险中心报销系统</span></a>
 					</div>
 
@@ -46,12 +47,12 @@
 					<!-- menu profile quick info -->
 					<div class="profile clearfix">
 						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..."
+							<img src="/MICRS/Manage/production/images/img.jpg" alt="..."
 								class="img-circle profile_img">
 						</div>
 						<div class="profile_info">
 							<span>欢迎,</span>
-							<h2>John Doe</h2>
+							<h2>${sessionScope.user.account }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -67,50 +68,50 @@
 								<li><a><i class="fa fa-home"></i> 主页 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="index.html">报销系统简介</a></li>
-										<li><a href="main1.html">药品安全简介</a></li>
-										<li><a href="main2.html">诊疗项目简介</a></li>
-										<li><a href="main3.html">服务项目简介</a></li>
-										<li><a href="main4.html">疾病信息简介</a></li>
-										<li><a href="main5.html">定点医疗机构简介</a></li>
-										<li><a href="main6.html">医疗报销计算参数简介</a></li>
+									   <li><a href="/MICRS/Manage/production/index.jsp">报销系统简介</a></li>
+					                   <li><a href="/MICRS/Manage/production/main1.jsp">医疗基本信息简介</a></li>
+					                   <li><a href="/MICRS/Manage/production/main2.jsp">医疗待遇审批简介</a></li>
+					                   <li><a href="/MICRS/Manage/production/main3.jsp">医保中心报销简介</a></li>
+					                   <li><a href="/MICRS/Manage/production/main4.jsp">综合查询简介</a></li>
+					                   <li><a href="/MICRS/Manage/production/main5.jsp">公共业务简介</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-edit"></i> 医疗基本信息 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="drug_infor.html">药品信息</a></li>
-										<li><a href="project_infor.html">*诊疗项目信息</a></li>
-										<li><a href="dept_pro.html">*服务设施项目</a></li>
-										<li><a href="disea_infor.html">病种信息</a></li>
-										<li><a href="struc_infor.html">定点医疗机构信息</a></li>
-										<li><a href="acculate.html">医疗报销计算参数</a></li>
+										<li><a href="/MICRS/Manage/production/drug_infor.jsp">药品信息</a></li>
+										<li><a href="/MICRS/Manage/production/project_infor.jsp">*诊疗项目信息</a></li>
+										<li><a href="/MICRS/Manage/production/dept_pro.jsp">*服务设施项目</a></li>
+										<li><a href="/MICRS/Manage/production/disea_infor.jsp">病种信息</a></li>
+										<li><a href="/MICRS/Manage/production/struc_infor.jsp">定点医疗机构信息</a></li>
+										<li><a href="/MICRS/Manage/production/acculate.jsp">医疗报销计算参数</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-desktop"></i> *医疗待遇审批 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="wait1.html">*人员就诊机构审批</a></li>
-										<li><a href="wait2.html">*特检特治审批</a></li>
+										<li><a href="/MICRS/Manage/production/wait1.jsp">*人员就诊机构审批</a></li>
+										<li><a href="/MICRS/Manage/production/wait2.jsp">*特检特治审批</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-medkit"></i> 医保中心报销 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="Reimbursement.html">医保报销</a></li>
+										<li><a href="/MICRS/Manage/production/Reimbursement.jsp">医保报销</a></li>
+										<li><a href="/MICRS/Manage/production/CenterTreatment.jsp">就诊信息查询（报销相关）</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-table"></i> 综合查询 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="cost_query.html">医疗人员费用查询</a></li>
+										<li><a href="/MICRS/Manage/production/cost_query.jsp">医疗人员费用查询</a></li>
 									</ul></li>
 
 								<li><a><i class="fa fa-briefcase"></i> 公共业务 <span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="unit_infor.html">单位基本信息</a></li>
-										<li><a href="person_infor.html">个人基本信息</a></li>
+										<li><a href="/MICRS/Manage/production/unit_infor.jsp">单位基本信息</a></li>
+										<li><a href="/MICRS/Manage/production/person_infor.jsp">个人基本信息</a></li>
 									</ul></li>
 							</ul>
 						</div>
@@ -119,14 +120,8 @@
 
 					<!-- /menu footer buttons -->
 					<div class="sidebar-footer hidden-small">
-						<a data-toggle="tooltip" data-placement="top" title="Settings">
-							<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-							<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="Lock"> <span
-							class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-						</a> <a data-toggle="tooltip" data-placement="top" title="Logout"
-							href="login.html"> <span class="glyphicon glyphicon-off"
+						<a data-toggle="tooltip" data-placement="top" title="Logout"
+							href="/MICRS/Manage/production/login.jsp"> <span class="glyphicon glyphicon-off"
 							aria-hidden="true"></span>
 						</a>
 					</div>
@@ -145,16 +140,12 @@
 						<ul class="nav navbar-nav navbar-right">
 							<li class=""><a href="javascript:;"
 								class="user-profile dropdown-toggle" data-toggle="dropdown"
-								aria-expanded="false"> <img src="images/img.jpg" alt="">医保中心报销
+								aria-expanded="false"> <img src="/MICRS/Manage/production/images/img.jpg" alt="">${sessionScope.user.account }
 									<span class=" fa fa-angle-down"></span>
 							</a>
 								<ul class="dropdown-menu dropdown-usermenu pull-right">
-									<li><a href="javascript:;"> 医保报销</a></li>
-									<li><a href="javascript:;"> <!-- <span class="badge bg-red pull-right">50%</span>-->
-											<span>背景</span>
-									</a></li>
-									<li><a href="javascript:;">帮助</a></li>
-									<li><a href="login.html"><i
+									
+									<li><a href="/MICRS/Manage/production/login.jsp"><i
 											class="fa fa-sign-out pull-right"></i> 注销</a></li>
 								</ul></li>
 
@@ -453,7 +444,7 @@
 																				<span class="add-on input-group-addon"><i
 																					class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
 																				<input type="date" class="form-control"
-																					name="inDate" id="inDate" onblur="checkDate()">
+																					name="inDate" id="inDate" onblur="checkDate();checkEmpty(this);">
 																			</div>
 																		</div>
 																	</div>
@@ -474,7 +465,7 @@
 																				<span class="add-on input-group-addon"><i
 																					class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
 																				<input type="date" class="form-control"
-																					name="outDate" id="outDate" onblur="checkDate()">
+																					name="outDate" id="outDate" onblur="checkDate();checkEmpty();">
 																			</div>
 																		</div>
 																	</div>
@@ -541,10 +532,10 @@
 															</div>
 														</div>
                                                         <div class="form-group">
-                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag">药品名称 <span class="required"></span>
+                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12 formTag">药品名称
 															</label>
                                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                                <select class="select2_group form-control" name="MEDICINE_CODE" id="MEDICINE_CODE" onchange="">
+                                                                <select class="select2_group form-control" name="MEDICINE_CODE" id="MEDICINE_CODE">
 																</select>
                                                             </div>
                                                         </div>
@@ -555,7 +546,7 @@
 															<div class="col-md-6 col-sm-6 col-xs-12">
 																<input type="text" name="PRICE"
 																	class="form-control col-md-7 col-xs-12 inputPrompt prescriptionUnitPrice"
-																	onkeyup=""/>
+																	onkeyup="checkPrompt();"/>
 															</div>
 														</div>
 														<div class="form-group">
@@ -674,7 +665,7 @@
 															style="width: 20.42%; border: solid windowtext 1.0pt; border-left: none; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 21.9pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">个人编号</span>
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">编号</span>
 															</p>
 														</td>
 														<td width="37%" colspan="2" valign="top"
@@ -750,7 +741,7 @@
 																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">报销金额：</span>
 															</p>
 															<p class="MsoNormal" style="text-indent: 21.0pt">
-																<span lang="EN-US"></span>
+																<span lang="EN-US" id="giveMoney"></span>
 															</p>
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
@@ -774,11 +765,7 @@
 															style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.9pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">大写：
-																	万 <span class="GramE"> </span>仟 <span class="GramE">
-																</span>佰 <span class="GramE"> </span>拾 <span class="GramE">
-																</span>元 <span class="GramE"> </span>角 <span class="GramE">
-																</span>分
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;" id="bigNumber">大写：
 																</span>
 															</p>
 														</td>
@@ -789,7 +776,7 @@
 															style="width: 81.28%; border-top: none; border-left: none; border-bottom: solid windowtext 1.0pt; border-right: solid windowtext 1.0pt; mso-border-top-alt: solid windowtext .5pt; mso-border-left-alt: solid windowtext .5pt; mso-border-alt: solid windowtext .5pt; padding: 0cm 5.4pt 0cm 5.4pt; height: 7.85pt">
 															<p class="MsoNormal" style="text-indent: 21.0pt">
 																<span
-																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;">小写：</span>
+																	style="font-family: 宋体; mso-ascii-font-family: &amp;quot; Times New Roman&amp;quot;; mso-hansi-font-family: &amp;quot;Times New Roman&amp;quot;" id="smallNumber">小写：</span>
 															</p>
 														</td>
 													</tr>
@@ -916,8 +903,10 @@
 				var buttonNextClass = buttonNext.getAttribute("class");
 				outNumS.innerHTML = data;
 				if(data == "此住院号已录入！"){
-					buttonNextClass = buttonNextClass.concat(" buttonDisabled");
-					buttonNext.setAttribute("class",buttonNextClass );
+					if(buttonNextClass.indexOf("buttonDisabled") == -1){
+						buttonNextClass = buttonNextClass.concat(" buttonDisabled");
+						buttonNext.setAttribute("class",buttonNextClass );
+					}
 				}
 				else{
 					buttonNextClass = buttonNextClass.replace(" buttonDisabled","");
@@ -934,10 +923,11 @@
 		//alert(data);
 		var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
 		var buttonNextClass = buttonNext.getAttribute("class");
-		outNumS.innerHTML = data;
 		if(data == ""){
-			buttonNextClass = buttonNextClass.concat(" buttonDisabled");
-			buttonNext.setAttribute("class",buttonNextClass );
+			if(buttonNextClass.indexOf("buttonDisabled") == -1){
+				buttonNextClass = buttonNextClass.concat(" buttonDisabled");
+				buttonNext.setAttribute("class",buttonNextClass );
+			}
 		}
 		else{
 			buttonNextClass = buttonNextClass.replace(" buttonDisabled","");
@@ -989,51 +979,122 @@
 				$.ajax({
 					url : "/MICRS/CenterWork/Do?midId="
 							+ forms[1].getElementsByTagName("input")[0].value,
-					type : "GET",
-					dataType : "json",
-					success : function(data) {
-						$(data).each(function(i, dd) {
-						});
-					},
-					error : function() {
-						alert("error");
-					}
+					type : "GET"
 				});
-				window.location.href = "/MICRS/Manage/production/index.html";
+				window.location.href = "/MICRS/Manage/production/index.jsp";
 			};
 			var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
 			buttonNext.onclick = function() {
 				var step = document.getElementsByClassName("selected");
+				setTimeout("stepDo4()",200);
 				if (step[0].rel == "3") {
+					layui.use(['layer', 'form'], function(){
+						  var layer = layui.layer;
+						  layer.msg('处理中……', {
+							  icon: 16
+							  ,shade: 0.01
+							});
+					 });
 					var forms = document.getElementsByTagName("form");
-					var ins = document.getElementsByTagName("input");
-					var bus = document.getElementsByTagName("button");
-					var sels = document.getElementsByTagName("select");
-					var texs = document.getElementsByTagName("textarea");
-					forms[1].submit(true);
-					setTimeout("stepDo1()",600);
-					setTimeout("stepDo2()",1000); 
-					for(var i = 0; i < ins.length; ++i){
-						ins[i].disabled="disable";
+					var ttime = 100;
+					var tplus = 500;
+					setTimeout("stepDo0()",ttime);
+					for(var i = 3; i < forms.length; ++i){
+						ttime = ttime + tplus;
+						setTimeout("stepDo1("+i+")",ttime);
 					}
-					for(var i = 0; i < texs.length; ++i){
-						texs[i].disabled="disable";
-					}
-					for(var i = 0; i < bus.length; ++i){
-						bus[i].disabled="disable";
-					}
-					for(var i = 0; i < sels.length; ++i){
-						sels[i].disabled="disable";
-					}
+					ttime = ttime + tplus;
+					setTimeout("stepDo2()",ttime);
+					ttime = ttime + tplus * 2;
+					setTimeout("stepDo3()",ttime);
+				}else{
+					layui.use(['layer', 'form'], function(){
+						  var layer = layui.layer;
+							layer.load(2);
+							setTimeout(function(){
+								  layer.closeAll('loading');
+								}, 100);
+					 });
 				}
 			};
 		}
-		function stepDo1(){
-			var forms = document.getElementsByTagName("form");
-			for (var i = 3; i < forms.length; ++i) {
-				forms[i].submit(true);
+		function stepDo4(){
+			var step = document.getElementsByClassName("selected");
+			if(step[0].rel == "2"){
+				var buttonNext = document.getElementsByClassName("buttonNext btn btn-success")[3];
+				var buttonNextClass = buttonNext.getAttribute("class");
+				if(buttonNextClass.indexOf("buttonDisabled") == -1){
+					buttonNextClass = buttonNextClass.concat(" buttonDisabled");
+					buttonNext.setAttribute("class",buttonNextClass );
+				}
 			}
 		}
+		function stepDo3(){
+			//数字大小写转换
+			var moneyString = document.getElementById("giveMoney").innerHTML;
+			var money = parseFloat(moneyString.substring(1));
+			document.getElementById("smallNumber").innerHTML = "小写：￥"+money;
+			var digitUppercase = changeBigNumber(money);
+			document.getElementById("bigNumber").innerHTML = "大写："+digitUppercase;
+
+			//锁定所有输入区域
+			var ins = document.getElementsByTagName("input");
+			var bus = document.getElementsByTagName("button");
+			var sels = document.getElementsByTagName("select");
+			var texs = document.getElementsByTagName("textarea");
+			for(var i = 0; i < ins.length; ++i){
+				ins[i].disabled="disable";
+			}
+			for(var i = 0; i < texs.length; ++i){
+				texs[i].disabled="disable";
+			}
+			for(var i = 0; i < bus.length; ++i){
+				bus[i].disabled="disable";
+			}
+			for(var i = 0; i < sels.length; ++i){
+				sels[i].disabled="disable";
+			}
+		}
+		function changeBigNumber(n) {
+		    var fraction = ['角', '分'];
+		    var digit = [
+		        '零', '壹', '贰', '叁', '肆',
+		        '伍', '陆', '柒', '捌', '玖'
+		    ];
+		    var unit = [
+		        ['元', '万', '亿'],
+		        ['', '拾', '佰', '仟']
+		    ];
+		    var head = n < 0 ? '欠' : '';
+		    n = Math.abs(n);
+		    var s = '';
+		    for (var i = 0; i < fraction.length; i++) {
+		        s += (digit[Math.floor(n * 10 * Math.pow(10, i)) % 10] + fraction[i]).replace(/零./, '');
+		    }
+		    s = s || '整';
+		    n = Math.floor(n);
+		    for (var i = 0; n > 0 && i < unit[0].length; i++) {
+		        var p = '';
+		        for (var j = 0; j < unit[1].length && n > 0; j++) {
+		            p = digit[n % 10] + unit[1][j] + p;
+		            n = Math.floor(n / 10);
+		        }
+		        s = p.replace(/(零.)*零$/, '').replace(/^$/, '零') + unit[0][i] + s;
+		    }
+		    return head + s.replace(/(零.)*零元/, '元')
+		        .replace(/(零.)+/g, '零')
+		        .replace(/^整$/, '零元整');
+		}
+		
+		function stepDo0(){
+			var forms = document.getElementsByTagName("form");
+			forms[1].submit(true);
+		}
+		function stepDo1(i){
+			var forms = document.getElementsByTagName("form");
+			forms[i].submit(true);
+		}
+		//设置预览
 		function stepDo2(){
 			var forms = document.getElementsByTagName("form");
 			$.ajax({
@@ -1042,15 +1103,14 @@
 				type : "GET",
 				dataType : "json",
 				success : function(data) {
-					$(data)
-							.each(
-									function(i, dd) {
-										var preTable = document
-												.getElementById("preTable");
-										var spans = preTable
-												.getElementsByTagName("span");
-										spans[(i+1)*2+1].innerHTML = "￥"+dd;
-									});
+					$(data).each(
+						function(i, dd) {
+							var preTable = document
+									.getElementById("preTable");
+							var spans = preTable
+									.getElementsByTagName("span");
+							spans[(i+1)*2+1].innerHTML = "￥"+dd;
+						});
 				},
 				error : function() {
 					alert("error");
@@ -1230,6 +1290,7 @@
             });
 		});
 	</script>
+	<script src = "/MICRS/layui-v1.0.9_rls/layui/layui.js" type="text/javascript"></script>
 </body>
 
 </html>

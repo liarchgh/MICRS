@@ -95,11 +95,15 @@ public class PersMedInforDaoImpl implements PersMedInforDao {
 			rs = ps.executeQuery();
 //			System.out.println("1st is "+rs.getString(1));
 			while(rs.next()){
+				String date1 = rs.getString(6);
+				date1 = date1.split(" ")[0];
+				String date2 = rs.getString(7);
+				date2 = date2.split(" ")[0];
 				ans.add(new PersMedInfor(rs.getString(1),
 						new PersonInformation(rs.getString(2), null),
 						new DesiMedIns(rs.getString(3), null),
 						new IndiSeg(rs.getString(4), rs.getString(5)),
-						rs.getString(6), rs.getString(7),
+						date1, date2,
 						new DiseaseProject(rs.getString(8), null),
 						new HospitalClass(rs.getString(9), rs.getString(10)),
 						new DiseaseInformation(rs.getString(11), rs.getString(12)),

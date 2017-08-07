@@ -17,7 +17,7 @@ import com.ldt.table.dao.PrescriptionDetailDaoImpl;
 
 public class CalCost {
 	public static List<String> cal(String midId){
-		System.out.println("CalCost.cal");
+//		System.out.println("CalCost.cal");
 		float reCost = 0;
 		float give = 0;
 		float sum = 0;

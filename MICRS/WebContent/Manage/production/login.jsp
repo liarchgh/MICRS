@@ -52,12 +52,12 @@
             </form>
             <div>
                 <br>
-                <a href="/MICRS/Manage/production/signUp.html" title="signUp" style="color: #404ada;">还没有账户，去注册></a>
+                <a href="/MICRS/Manage/production/signUp.jsp" title="signUp" style="color: #404ada;">还没有账户，去注册></a>
             </div>
         </div>
         <br>
         <br>
-        <div align="center">Collect from <a href="http://www.who.int/zh/" target="_blank" title="医疗保险中心" style="color: #da9000;">医疗保险中心</a></div>
+        <div align="center">Made for <a href="http://www.who.int/zh/" target="_blank" title="医疗保险中心" style="color: #da9000;">医疗保险中心</a></div>
 
         <!-- Javascript -->
         <script src="/MICRS/Manage/production/assets/js/jquery-1.8.2.min.js"></script>

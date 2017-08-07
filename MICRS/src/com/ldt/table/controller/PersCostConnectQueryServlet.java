@@ -44,8 +44,9 @@ public class PersCostConnectQueryServlet extends HttpServlet {
 		ResultSet rs = null;
 		List<List<String> > stl = new ArrayList<List<String> >();	
 		List<String> userIds = new ArrayList<String>();	
-		String sql = "select c.name, c.Certificate_ID, c.sex, c.birthday,c.med_pers_class,c.unit_ID,b.unit_name,d.times,a.out_date,a.dis_name,d.rem_accumulat,d.paied_per_accu,d.exp_accumulat, c.user_id " + 
-				"from pers_med_infor a, unit_infor b,person_information c,personal_cost_information d " + 
+		String sql = "select c.name, c.Certificate_ID, c.sex, c.birthday,c.med_pers_class,c.unit_ID,b.unit_name,d.times,a.out_date,a.dis_name,d.rem_accumulat,d.paied_per_accu,d.exp_accumulat, c.user_id\r\n" + 
+				"from (select pers.* from(select num,max(out_date) out_date  from pers_med_infor  group by num) per, pers_med_infor pers \r\n" + 
+				"where per.num = pers.num and per.out_date = pers.out_date) a, unit_infor b,person_information c,personal_cost_information d\r\n" + 
 				"where a.num=c.user_ID and a.num=d.user_ID and c.unit_ID=b.unit_ID" ;
 		if(no != null && no != "") {
 			sql = sql + " and c.user_ID = '"+no+"'";
@@ -54,13 +55,19 @@ public class PersCostConnectQueryServlet extends HttpServlet {
 			sql = sql + " and c.name = '"+name+"'";
 		}
 		sql = sql + " and d.time = '"+year+"'";
-		System.out.println(sql);
+//		System.out.println(sql);
 		try {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				List<String> stt = new ArrayList<String>();
 				for (int i= 1;i<=14; i++) {
+					if(i == 4 || i == 9) {
+						String nows = rs.getString(i);
+						nows = nows.split(" ")[0];
+						stt.add(nows);
+						continue;
+					}
 					stt.add(rs.getString(i));
 				}
 				stl.add(stt);
@@ -73,7 +80,7 @@ public class PersCostConnectQueryServlet extends HttpServlet {
 		}
 		if(stl.size() != 0) {
 			request.setAttribute("list", stl);
-			System.out.println("stl are "+stl);
+//			System.out.println("stl are "+stl);
 			request.getRequestDispatcher("/Manage/production/Reimbursement.jsp").forward(request, response);
 		}else {
 			request.getRequestDispatcher("/Manage/production/Reimbursement.jsp").forward(request, response);
